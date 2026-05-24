@@ -62,7 +62,7 @@ export const TrackOrder: React.FC = () => {
   ];
 
   return (
-    <div className="flex-grow pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-4xl mx-auto w-full">
+    <main className="flex-grow pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-4xl mx-auto w-full">
       {/* Header */}
       <header className="text-center space-y-4 mb-10 relative">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-40 w-3/4 h-3/4 mx-auto pointer-events-none"></div>
@@ -248,7 +248,7 @@ export const TrackOrder: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </main>
   );
 };
 

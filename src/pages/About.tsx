@@ -4,7 +4,7 @@ import { Award, Compass, Eye, MapPin } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
-    <div className="flex-grow">
+    <main className="flex-grow">
       {/* Hero Banner Header */}
       <header className="relative pt-28 pb-10 md:pt-[140px] md:pb-20 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-6">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-50 w-3/4 h-3/4 left-[12.5%] top-[12.5%] pointer-events-none"></div>
@@ -135,7 +135,7 @@ export const About: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 export default About;
