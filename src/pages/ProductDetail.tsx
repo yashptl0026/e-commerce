@@ -345,35 +345,37 @@ export const ProductDetail: React.FC = () => {
       </div>
 
       {/* Recommendations Slider */}
-      <section className="mt-16 md:mt-32 border-t border-white/5 pt-8 md:pt-16">
-        <div className="flex justify-between items-end mb-10">
-          <div>
-            <span className="text-[10px] text-primary uppercase font-bold tracking-[0.2em] mb-1.5 block">Complete the look</span>
-            <h2 className="font-display font-extrabold text-2xl uppercase tracking-tight text-on-surface">You May Also Like</h2>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {recommendations.map((item) => (
-            <div key={item.id} className="group cursor-pointer relative">
-              <Link to={`/product/${item.id}`} className="space-y-4">
-                <div className="aspect-[4/5] overflow-hidden rounded-2xl glass-level-1 relative group shadow-lg border border-white/5 hover:border-white/20 transition-all duration-300">
-                  <img
-                    src={item.images[0]}
-                    alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-body-md font-semibold text-on-surface group-hover:text-primary transition-colors truncate">
-                    {item.name}
-                  </h3>
-                  <p className="text-xs font-display font-semibold text-primary">
-                    ${item.price.toLocaleString()}
-                  </p>
-                </div>
-              </Link>
+      <section className="w-full bg-[#0b0e15] border-t border-white/5 py-12 md:py-24 mt-16 md:mt-32">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="flex justify-between items-end mb-10">
+            <div>
+              <span className="text-[10px] text-primary uppercase font-bold tracking-[0.2em] mb-1.5 block">Complete the look</span>
+              <h2 className="font-display font-extrabold text-2xl uppercase tracking-tight text-on-surface">You May Also Like</h2>
             </div>
-          ))}
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {recommendations.map((item) => (
+              <div key={item.id} className="group cursor-pointer relative">
+                <Link to={`/product/${item.id}`} className="space-y-4">
+                  <div className="aspect-[4/5] overflow-hidden rounded-2xl glass-level-1 relative group shadow-lg border border-white/5 hover:border-white/20 transition-all duration-300">
+                    <img
+                      src={item.images[0]}
+                      alt={item.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-body-md font-semibold text-on-surface group-hover:text-primary transition-colors truncate">
+                      {item.name}
+                    </h3>
+                    <p className="text-xs font-display font-semibold text-primary">
+                      ${item.price.toLocaleString()}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </main>

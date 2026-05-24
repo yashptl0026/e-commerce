@@ -26,7 +26,7 @@ export const NavBar: React.FC = () => {
   return (
     <>
       <nav className="fixed top-0 w-full z-40 bg-white/5 dark:bg-[#10131a]/5 backdrop-blur-xl border-b border-white/10 shadow-2xl h-20">
-        <div className="flex justify-between items-center w-full px-4 sm:px-6 md:px-12 max-w-7xl mx-auto h-full">
+        <div className="flex justify-between items-center w-full md:px-6 max-w-7xl mx-auto h-full">
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -48,8 +48,7 @@ export const NavBar: React.FC = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${
-                  isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
+                `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
                 }`
               }
             >
@@ -58,8 +57,7 @@ export const NavBar: React.FC = () => {
             <NavLink
               to="/collection"
               className={({ isActive }) =>
-                `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${
-                  isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
+                `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
                 }`
               }
             >
@@ -68,8 +66,7 @@ export const NavBar: React.FC = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${
-                  isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
+                `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
                 }`
               }
             >
@@ -79,14 +76,13 @@ export const NavBar: React.FC = () => {
               <NavLink
                 to="/support"
                 className={({ isActive }) =>
-                  `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${
-                    isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
+                  `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
                   }`
                 }
               >
                 Support
               </NavLink>
-              
+
               {/* Dropdown Menu */}
               <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 hidden group-hover:block w-48 glass-level-2 border border-white/10 rounded-2xl p-2 shadow-2xl z-50 before:content-[''] before:absolute before:inset-x-0 before:-top-2 before:h-2">
                 <Link

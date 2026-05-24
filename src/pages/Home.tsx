@@ -100,43 +100,45 @@ export const Home: React.FC = () => {
       </header>
 
       {/* Curated Categories */}
-      <section className="py-10 md:py-20 px-4 md:px-6 max-w-7xl mx-auto space-y-6 md:space-y-10">
-        <motion.h2
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl font-display font-bold text-on-surface border-l-4 border-primary pl-4"
-        >
-          Curated Categories
-        </motion.h2>
+      <section className="w-full bg-[#0b0e15] border-y border-white/5 py-12 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-6 md:space-y-10">
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-display font-bold text-on-surface border-l-4 border-primary pl-4"
+          >
+            Curated Categories
+          </motion.h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {categories.map((cat, idx) => (
-            <motion.div
-              key={cat.key}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-              onClick={() => navigate(`/collection?category=${cat.key}`)}
-              className="glass-level-1 rounded-3xl overflow-hidden relative group img-zoom cursor-pointer aspect-[4/5] card-hover"
-            >
-              <img
-                src={cat.img}
-                alt={cat.name}
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#10131a]/95 via-[#10131a]/40 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-6 w-full space-y-2">
-                <h3 className="text-xl font-display font-semibold text-on-surface group-hover:text-primary transition-colors">
-                  {cat.name}
-                </h3>
-                <p className="text-xs text-on-surface-variant flex items-center gap-1.5 font-medium tracking-wide">
-                  {cat.desc} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
-                </p>
-              </div>
-            </motion.div>
-          ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {categories.map((cat, idx) => (
+              <motion.div
+                key={cat.key}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                onClick={() => navigate(`/collection?category=${cat.key}`)}
+                className="glass-level-1 rounded-3xl overflow-hidden relative group img-zoom cursor-pointer aspect-[4/5] card-hover"
+              >
+                <img
+                  src={cat.img}
+                  alt={cat.name}
+                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#10131a]/95 via-[#10131a]/40 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-6 w-full space-y-2">
+                  <h3 className="text-xl font-display font-semibold text-on-surface group-hover:text-primary transition-colors">
+                    {cat.name}
+                  </h3>
+                  <p className="text-xs text-on-surface-variant flex items-center gap-1.5 font-medium tracking-wide">
+                    {cat.desc} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -167,7 +169,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Flash Sale Banner */}
-      <section className="w-full bg-gradient-dynamic py-12 md:py-20 relative overflow-hidden my-8 md:my-16">
+      <section className="w-full bg-gradient-dynamic py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-30"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 text-center lg:text-left">
           <div className="space-y-4">
@@ -212,53 +214,55 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Trust Badges - The Lumina Standard */}
-      <section className="py-10 md:py-20 px-4 md:px-6 max-w-7xl mx-auto space-y-8 md:space-y-12">
-        <div className="text-center space-y-2 max-w-xl mx-auto">
-          <h2 className="text-3xl font-display font-bold text-on-surface">The Lumina Standard</h2>
-          <p className="text-on-surface-variant text-sm sm:text-base leading-relaxed">
-            Excellence woven into every detail of your digital acquisition experience.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="glass-level-1 p-8 rounded-3xl text-center card-hover">
-            <div className="w-14 h-14 rounded-full glass-level-2 flex items-center justify-center mx-auto mb-6 text-primary border border-primary/20">
-              <Truck className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-display font-semibold text-on-surface mb-2">Fast Delivery</h3>
-            <p className="text-sm text-on-surface-variant leading-relaxed">
-              Complimentary express shipping on all premium orders globally, tracked in real-time.
+      <section className="w-full bg-[#0b0e15] border-y border-white/5 py-12 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-8 md:space-y-12">
+          <div className="text-center space-y-2 max-w-xl mx-auto">
+            <h2 className="text-3xl font-display font-bold text-on-surface">The Lumina Standard</h2>
+            <p className="text-on-surface-variant text-sm sm:text-base leading-relaxed">
+              Excellence woven into every detail of your digital acquisition experience.
             </p>
           </div>
 
-          <div className="glass-level-1 p-8 rounded-3xl text-center card-hover">
-            <div className="w-14 h-14 rounded-full glass-level-2 flex items-center justify-center mx-auto mb-6 text-primary border border-primary/20">
-              <ShieldCheck className="w-6 h-6" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="glass-level-1 p-8 rounded-3xl text-center card-hover">
+              <div className="w-14 h-14 rounded-full glass-level-2 flex items-center justify-center mx-auto mb-6 text-primary border border-primary/20">
+                <Truck className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-display font-semibold text-on-surface mb-2">Fast Delivery</h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Complimentary express shipping on all premium orders globally, tracked in real-time.
+              </p>
             </div>
-            <h3 className="text-lg font-display font-semibold text-on-surface mb-2">Secure Payment</h3>
-            <p className="text-sm text-on-surface-variant leading-relaxed">
-              Bank-grade 256-bit encryption ensuring your transactions are always secure.
-            </p>
-          </div>
 
-          <div className="glass-level-1 p-8 rounded-3xl text-center card-hover">
-            <div className="w-14 h-14 rounded-full glass-level-2 flex items-center justify-center mx-auto mb-6 text-primary border border-primary/20">
-              <Award className="w-6 h-6" />
+            <div className="glass-level-1 p-8 rounded-3xl text-center card-hover">
+              <div className="w-14 h-14 rounded-full glass-level-2 flex items-center justify-center mx-auto mb-6 text-primary border border-primary/20">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-display font-semibold text-on-surface mb-2">Secure Payment</h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Bank-grade 256-bit encryption ensuring your transactions are always secure.
+              </p>
             </div>
-            <h3 className="text-lg font-display font-semibold text-on-surface mb-2">Premium Quality</h3>
-            <p className="text-sm text-on-surface-variant leading-relaxed">
-              Uncompromising craftsmanship, finest materials, and lifetime support guarantees.
-            </p>
-          </div>
 
-          <div className="glass-level-1 p-8 rounded-3xl text-center card-hover">
-            <div className="w-14 h-14 rounded-full glass-level-2 flex items-center justify-center mx-auto mb-6 text-primary border border-primary/20">
-              <Headphones className="w-6 h-6" />
+            <div className="glass-level-1 p-8 rounded-3xl text-center card-hover">
+              <div className="w-14 h-14 rounded-full glass-level-2 flex items-center justify-center mx-auto mb-6 text-primary border border-primary/20">
+                <Award className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-display font-semibold text-on-surface mb-2">Premium Quality</h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Uncompromising craftsmanship, finest materials, and lifetime support guarantees.
+              </p>
             </div>
-            <h3 className="text-lg font-display font-semibold text-on-surface mb-2">24/7 Support</h3>
-            <p className="text-sm text-on-surface-variant leading-relaxed">
-              Dedicated private support desk available via digital live chat at any moment.
-            </p>
+
+            <div className="glass-level-1 p-8 rounded-3xl text-center card-hover">
+              <div className="w-14 h-14 rounded-full glass-level-2 flex items-center justify-center mx-auto mb-6 text-primary border border-primary/20">
+                <Headphones className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-display font-semibold text-on-surface mb-2">24/7 Support</h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Dedicated private support desk available via digital live chat at any moment.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -266,7 +270,7 @@ export const Home: React.FC = () => {
       {/* Testimonials */}
       <section className="py-10 md:py-20 px-4 md:px-6 max-w-7xl mx-auto space-y-8 md:space-y-12">
         <h2 className="text-3xl font-display font-bold text-on-surface text-center">Voices of Elegance</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="glass-level-1 p-8 rounded-3xl flex flex-col justify-between border border-white/5 shadow-xl">
             <div className="space-y-6">

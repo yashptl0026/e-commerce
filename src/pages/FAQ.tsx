@@ -93,9 +93,9 @@ export const FAQ: React.FC = () => {
   };
 
   return (
-    <main className="flex-grow pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-5xl mx-auto w-full">
+    <main className="flex-grow">
       {/* Header */}
-      <header className="text-center space-y-4 mb-12 md:mb-16 relative">
+      <header className="pt-28 pb-10 md:pt-[140px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-4 relative">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-40 w-3/4 h-3/4 mx-auto pointer-events-none"></div>
         <div className="relative z-10 space-y-3">
           <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Questions & Answers</span>
@@ -109,76 +109,78 @@ export const FAQ: React.FC = () => {
       </header>
 
       {/* Main Content Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start relative z-10">
-        
-        {/* Navigation Categories */}
-        <div className="md:col-span-4 flex md:flex-col gap-2 overflow-x-auto pb-4 md:pb-0 scrollbar-none whitespace-nowrap">
-          {faqCategories.map((category, idx) => (
-            <button
-              key={idx}
-              onClick={() => {
-                setActiveCategory(idx);
-                setOpenIndex(null);
-              }}
-              className={`flex items-center gap-3.5 px-5 py-4 rounded-2xl font-display font-bold text-xs uppercase tracking-wider text-left border transition-all duration-300 w-full shrink-0 md:shrink-1 ${
-                activeCategory === idx
-                  ? 'bg-primary/10 border-primary/30 text-primary shadow-lg shadow-primary/5'
-                  : 'glass-level-1 border-white/5 text-on-surface-variant hover:border-white/15 hover:text-on-surface'
-              }`}
-            >
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all ${
-                activeCategory === idx ? 'bg-primary/20 border-primary/20 text-primary' : 'bg-white/5 border-white/5'
-              }`}>
-                {category.icon}
-              </div>
-              <span>{category.title}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* FAQs Accordion */}
-        <div className="md:col-span-8 space-y-4">
-          <motion.div
-            key={activeCategory}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="space-y-4"
-          >
-            {faqCategories[activeCategory].items.map((item, idx) => {
-              const isOpen = openIndex === idx;
-              return (
-                <div key={idx} className="glass-level-1 rounded-2xl border border-white/5 overflow-hidden shadow-xl">
-                  <button
-                    onClick={() => toggleItem(idx)}
-                    className="w-full p-6 flex justify-between items-center text-left hover:text-primary transition-colors group"
-                  >
-                    <span className="font-display font-bold text-sm sm:text-base text-on-surface group-hover:text-primary leading-snug flex items-center gap-3">
-                      <HelpCircle className="w-4 h-4 text-primary shrink-0 opacity-80" />
-                      {item.q}
-                    </span>
-                    <ChevronDown className={`w-4 h-4 text-on-surface-variant transition-transform shrink-0 ml-4 ${isOpen ? 'rotate-180 text-primary' : ''}`} />
-                  </button>
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                      >
-                        <p className="px-6 pb-6 text-xs sm:text-sm text-on-surface-variant leading-relaxed font-body border-t border-white/2">
-                          {item.a}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+      <section className="w-full bg-[#0b0e15] border-t border-white/5 py-12 md:py-24 mt-8 md:mt-16">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-start relative z-10">
+          
+          {/* Navigation Categories */}
+          <div className="md:col-span-4 flex md:flex-col gap-2 overflow-x-auto pb-4 md:pb-0 scrollbar-none whitespace-nowrap">
+            {faqCategories.map((category, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setActiveCategory(idx);
+                  setOpenIndex(null);
+                }}
+                className={`flex items-center gap-3.5 px-5 py-4 rounded-2xl font-display font-bold text-xs uppercase tracking-wider text-left border transition-all duration-300 w-full shrink-0 md:shrink-1 ${
+                  activeCategory === idx
+                    ? 'bg-primary/10 border-primary/30 text-primary shadow-lg shadow-primary/5'
+                    : 'glass-level-1 border-white/5 text-on-surface-variant hover:border-white/15 hover:text-on-surface'
+                }`}
+              >
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all ${
+                  activeCategory === idx ? 'bg-primary/20 border-primary/20 text-primary' : 'bg-white/5 border-white/5'
+                }`}>
+                  {category.icon}
                 </div>
-              );
-            })}
-          </motion.div>
+                <span>{category.title}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* FAQs Accordion */}
+          <div className="md:col-span-8 space-y-4">
+            <motion.div
+              key={activeCategory}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="space-y-4"
+            >
+              {faqCategories[activeCategory].items.map((item, idx) => {
+                const isOpen = openIndex === idx;
+                return (
+                  <div key={idx} className="glass-level-1 rounded-2xl border border-white/5 overflow-hidden shadow-xl">
+                    <button
+                      onClick={() => toggleItem(idx)}
+                      className="w-full p-6 flex justify-between items-center text-left hover:text-primary transition-colors group"
+                    >
+                      <span className="font-display font-bold text-sm sm:text-base text-on-surface group-hover:text-primary leading-snug flex items-center gap-3">
+                        <HelpCircle className="w-4 h-4 text-primary shrink-0 opacity-80" />
+                        {item.q}
+                      </span>
+                      <ChevronDown className={`w-4 h-4 text-on-surface-variant transition-transform shrink-0 ml-4 ${isOpen ? 'rotate-180 text-primary' : ''}`} />
+                    </button>
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                        >
+                          <p className="px-6 pb-6 text-xs sm:text-sm text-on-surface-variant leading-relaxed font-body border-t border-white/2">
+                            {item.a}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </motion.div>
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 };
