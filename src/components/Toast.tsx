@@ -10,11 +10,11 @@ export const Toast: React.FC = () => {
     <AnimatePresence>
       {toast && (
         <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 20, scale: 0.9 }}
+          initial={{ opacity: 0, x: 100, scale: 0.9 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          exit={{ opacity: 0, x: 50, scale: 0.9 }}
           transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-          className="fixed bottom-8 right-8 z-[100] flex items-center gap-3 glass-level-2 glass-shadow px-6 py-4 rounded-xl max-w-sm border border-white/10"
+          className="fixed top-24 right-4 sm:right-8 z-[100] flex items-center gap-3 glass-level-2 glass-shadow px-6 py-4 rounded-xl max-w-sm border border-white/10"
         >
           {toast.type === 'success' && <CheckCircle2 className="w-5 h-5 text-primary" />}
           {toast.type === 'error' && <AlertCircle className="w-5 h-5 text-error" />}
