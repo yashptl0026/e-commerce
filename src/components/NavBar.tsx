@@ -88,7 +88,7 @@ export const NavBar: React.FC = () => {
               </NavLink>
               
               {/* Dropdown Menu */}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 hidden group-hover:block w-48 glass-level-2 border border-white/10 rounded-2xl p-2 shadow-2xl z-50">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 hidden group-hover:block w-48 glass-level-2 border border-white/10 rounded-2xl p-2 shadow-2xl z-50 before:content-[''] before:absolute before:inset-x-0 before:-top-2 before:h-2">
                 <Link
                   to="/faq"
                   className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
