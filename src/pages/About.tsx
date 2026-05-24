@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Compass, Eye } from 'lucide-react';
+import { Award, Compass, Eye, MapPin } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
     <div className="flex-grow">
       {/* Hero Banner Header */}
       <header className="relative pt-28 pb-10 md:pt-[140px] md:pb-20 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-6">
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-50 w-3/4 h-3/4 left-1/8 top-1/8 pointer-events-none"></div>
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-50 w-3/4 h-3/4 left-[12.5%] top-[12.5%] pointer-events-none"></div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -24,7 +24,7 @@ export const About: React.FC = () => {
         </motion.div>
       </header>
 
-      {/* Visual Showcase (Using direct Stitch high quality campaign image URL!) */}
+      {/* Visual Showcase (Using generated high quality campaign image!) */}
       <section className="px-4 md:px-6 max-w-7xl mx-auto my-6 md:my-12">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
@@ -34,7 +34,7 @@ export const About: React.FC = () => {
           className="aspect-[21/9] rounded-3xl overflow-hidden glass-level-1 border border-white/10 shadow-2xl relative"
         >
           <img
-            src="https://lh3.googleusercontent.com/aida/ADBb0uiOEyIESYav25O5wd9sQsAEeYa4x-EjG9QxRPTqzlXOZY9Jb5jWKQDB1UhrHU9mujgIfhJwGUhWcib3UdoJ_8K7TAaqL8OlSitK8_q5Iwni4smMuqLH6hYL9uqkWkSTBrBN1tV3f_e9JNtSUmGEC_IZ7oOqwEzTU9s8n7rzPFSHnjavnu9hij7BfcZdzL3BoaqSq0lVvzXjkIDregkCYpDbYUrU4K9AF_kM3AM9cL297E0hg60kJKVwKbw"
+            src="/about_campaign.png"
             alt="Lumina Luxe Campaign"
             className="w-full h-full object-cover opacity-75"
           />
@@ -55,7 +55,7 @@ export const About: React.FC = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass-level-1 p-8 rounded-3xl space-y-4 border border-white/5 shadow-xl flex flex-col justify-center"
+            className="glass-level-1 p-8 rounded-3xl space-y-4 border border-white/5 shadow-xl flex flex-col justify-center card-hover"
           >
             <div className="w-12 h-12 rounded-full glass-level-2 flex items-center justify-center text-primary border border-primary/20">
               <Eye className="w-5 h-5" />
@@ -70,7 +70,7 @@ export const About: React.FC = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass-level-1 p-8 rounded-3xl space-y-4 border border-white/5 shadow-xl flex flex-col justify-center"
+            className="glass-level-1 p-8 rounded-3xl space-y-4 border border-white/5 shadow-xl flex flex-col justify-center card-hover"
           >
             <div className="w-12 h-12 rounded-full glass-level-2 flex items-center justify-center text-primary border border-primary/20">
               <Compass className="w-5 h-5" />
@@ -103,21 +103,30 @@ export const About: React.FC = () => {
           Global Showrooms
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          <div className="glass-level-1 p-8 rounded-3xl border border-white/5 shadow-xl space-y-2">
+          <div className="glass-level-1 p-8 rounded-3xl border border-white/5 shadow-xl space-y-3 card-hover flex flex-col items-center">
+            <div className="w-10 h-10 rounded-full glass-level-2 border border-white/10 flex items-center justify-center text-primary">
+              <MapPin className="w-5 h-5" />
+            </div>
             <h4 className="font-display font-bold text-lg text-primary">SOHO, NYC</h4>
             <p className="text-xs text-on-surface-variant leading-relaxed">
               742 Frost Obsidian Boulevard<br />
               New York, NY 10001
             </p>
           </div>
-          <div className="glass-level-1 p-8 rounded-3xl border border-white/5 shadow-xl space-y-2">
+          <div className="glass-level-1 p-8 rounded-3xl border border-white/5 shadow-xl space-y-3 card-hover flex flex-col items-center">
+            <div className="w-10 h-10 rounded-full glass-level-2 border border-white/10 flex items-center justify-center text-primary">
+              <MapPin className="w-5 h-5" />
+            </div>
             <h4 className="font-display font-bold text-lg text-primary">MAYFAIR, LONDON</h4>
             <p className="text-xs text-on-surface-variant leading-relaxed">
               18 Lumina Lane, Mayfair<br />
               London, W1S 4PP
             </p>
           </div>
-          <div className="glass-level-1 p-8 rounded-3xl border border-white/5 shadow-xl space-y-2">
+          <div className="glass-level-1 p-8 rounded-3xl border border-white/5 shadow-xl space-y-3 card-hover flex flex-col items-center">
+            <div className="w-10 h-10 rounded-full glass-level-2 border border-white/10 flex items-center justify-center text-primary">
+              <MapPin className="w-5 h-5" />
+            </div>
             <h4 className="font-display font-bold text-lg text-primary">GINZA, TOKYO</h4>
             <p className="text-xs text-on-surface-variant leading-relaxed">
               4-9-1 Ginza, Chuo-ku<br />
