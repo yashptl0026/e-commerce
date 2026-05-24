@@ -75,16 +75,46 @@ export const NavBar: React.FC = () => {
             >
               Our Story
             </NavLink>
-            <NavLink
-              to="/support"
-              className={({ isActive }) =>
-                `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${
-                  isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
-                }`
-              }
-            >
-              Support
-            </NavLink>
+            <div className="relative group py-2">
+              <NavLink
+                to="/support"
+                className={({ isActive }) =>
+                  `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${
+                    isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
+                  }`
+                }
+              >
+                Support
+              </NavLink>
+              
+              {/* Dropdown Menu */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 hidden group-hover:block w-48 glass-level-2 border border-white/10 rounded-2xl p-2 shadow-2xl z-50">
+                <Link
+                  to="/faq"
+                  className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
+                >
+                  FAQ Help
+                </Link>
+                <Link
+                  to="/track-order"
+                  className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
+                >
+                  Track Order
+                </Link>
+                <Link
+                  to="/contact"
+                  className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
+                >
+                  Contact Us
+                </Link>
+                <Link
+                  to="/support"
+                  className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all border-t border-white/5 text-left"
+                >
+                  Live Chat Concierge
+                </Link>
+              </div>
+            </div>
           </div>
 
           {/* Action Buttons */}
@@ -195,6 +225,29 @@ export const NavBar: React.FC = () => {
                 >
                   Support
                 </Link>
+                <div className="flex flex-col gap-4 pl-4 border-l border-white/10 text-sm">
+                  <Link
+                    to="/faq"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-on-surface-variant hover:text-primary transition-colors"
+                  >
+                    FAQ Help
+                  </Link>
+                  <Link
+                    to="/track-order"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-on-surface-variant hover:text-primary transition-colors"
+                  >
+                    Track Order
+                  </Link>
+                  <Link
+                    to="/contact"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-on-surface-variant hover:text-primary transition-colors"
+                  >
+                    Contact Us
+                  </Link>
+                </div>
                 <Link
                   to="/dashboard"
                   onClick={() => setIsMobileMenuOpen(false)}
