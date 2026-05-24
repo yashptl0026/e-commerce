@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SlidersHorizontal, ChevronDown, RefreshCw } from 'lucide-react';
@@ -22,6 +22,7 @@ export const Collection: React.FC = () => {
   const [sortBy, setSortBy] = useState<string>('latest');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState<boolean>(false);
+  const observerRef = useRef<HTMLDivElement | null>(null);
 
   // Sync category state with query params
   useEffect(() => {
@@ -32,6 +33,11 @@ export const Collection: React.FC = () => {
     }
     setCurrentPage(1);
   }, [categoryParam]);
+
+  // Reset page to 1 when any filter criteria changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategories, maxPrice, selectedColor, selectedSize, sortBy, searchParam, filterParam]);
 
   // Handle reset filters
   const handleClearFilters = () => {
@@ -142,13 +148,38 @@ export const Collection: React.FC = () => {
       });
   }, [products, searchParam, selectedCategories, maxPrice, filterParam, selectedColor, selectedSize, sortBy]);
 
-  // Pagination Configuration
+  // Infinite Scroll / Auto-loading Configuration
   const itemsPerPage = 6;
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-  const paginatedProducts = useMemo(() => {
-    const startIdx = (currentPage - 1) * itemsPerPage;
-    return filteredProducts.slice(startIdx, startIdx + itemsPerPage);
+  const totalPages = useMemo(() => Math.ceil(filteredProducts.length / itemsPerPage), [filteredProducts.length, itemsPerPage]);
+  const visibleProducts = useMemo(() => {
+    return filteredProducts.slice(0, currentPage * itemsPerPage);
   }, [filteredProducts, currentPage, itemsPerPage]);
+
+  // Infinite scroll intersection observer setup
+  useEffect(() => {
+    if (currentPage >= totalPages) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const first = entries[0];
+        if (first.isIntersecting) {
+          setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const sentinel = observerRef.current;
+    if (sentinel) {
+      observer.observe(sentinel);
+    }
+
+    return () => {
+      if (sentinel) {
+        observer.unobserve(sentinel);
+      }
+    };
+  }, [currentPage, totalPages]);
 
   return (
     <main className="flex-grow pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
@@ -336,7 +367,7 @@ export const Collection: React.FC = () => {
         {/* Product Grid Area */}
         <section className="lg:col-span-9 flex flex-col gap-10">
           <AnimatePresence mode="wait">
-            {paginatedProducts.length > 0 ? (
+            {visibleProducts.length > 0 ? (
               <motion.div
                 layout
                 initial={{ opacity: 0 }}
@@ -344,7 +375,7 @@ export const Collection: React.FC = () => {
                 exit={{ opacity: 0 }}
                 className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"
               >
-                {paginatedProducts.map((product) => (
+                {visibleProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </motion.div>
@@ -371,42 +402,18 @@ export const Collection: React.FC = () => {
             )}
           </AnimatePresence>
 
-          {/* Pagination Controls */}
-          {totalPages > 1 && (
-            <div className="flex justify-center items-center gap-2 mt-8">
-              <button
-                disabled={currentPage === 1}
-                onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                className="w-10 h-10 flex items-center justify-center rounded-lg glass-level-1 border border-white/10 text-on-surface hover:bg-white/5 transition-all disabled:opacity-30 disabled:pointer-events-none"
-              >
-                &larr;
-              </button>
-              
-              {[...Array(totalPages)].map((_, i) => {
-                const pageNum = i + 1;
-                const isCurrent = currentPage === pageNum;
-                return (
-                  <button
-                    key={pageNum}
-                    onClick={() => setCurrentPage(pageNum)}
-                    className={`w-10 h-10 flex items-center justify-center rounded-lg font-display text-sm font-semibold border transition-all ${
-                      isCurrent
-                        ? 'bg-primary text-[#002e6a] border-primary font-bold'
-                        : 'glass-level-1 border-white/10 text-on-surface hover:bg-white/5'
-                    }`}
-                  >
-                    {pageNum}
-                  </button>
-                );
-              })}
+          {/* Infinite Scroll / Auto-loader sentinel */}
+          {currentPage < totalPages && (
+            <div ref={observerRef} className="py-12 flex justify-center items-center text-primary/60">
+              <RefreshCw className="w-5 h-5 animate-spin" />
+              <span className="ml-2 font-display text-xs font-bold tracking-widest uppercase">Loading More Pieces...</span>
+            </div>
+          )}
 
-              <button
-                disabled={currentPage === totalPages}
-                onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-                className="w-10 h-10 flex items-center justify-center rounded-lg glass-level-1 border border-white/10 text-on-surface hover:bg-white/5 transition-all disabled:opacity-30 disabled:pointer-events-none"
-              >
-                &rarr;
-              </button>
+          {/* End of results message */}
+          {currentPage >= totalPages && filteredProducts.length > 0 && (
+            <div className="py-12 text-center text-on-surface-variant/30 font-display text-[10px] font-bold uppercase tracking-[0.2em] border-t border-white/5 mt-8">
+              All curated products loaded
             </div>
           )}
         </section>
