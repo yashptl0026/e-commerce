@@ -18,9 +18,9 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full bg-[#0b0e15] text-on-surface border-t border-white/5 py-16 px-6 md:px-12 max-w-7xl mx-auto rounded-t-3xl mt-auto z-10 relative">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10">
-        
+    <footer className="w-full bg-[#0b0e15] text-on-surface border-t border-white/5 py-16 px-6 md:px-12  rounded-t-3xl mt-auto z-10 relative">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 max-w-7xl mx-auto">
+
         {/* Brand Column */}
         <div className="col-span-1 sm:col-span-2 lg:col-span-2 space-y-6">
           <h2 className="text-2xl font-display font-bold tracking-tighter text-on-surface">LUMINA LUXE</h2>

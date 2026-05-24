@@ -354,7 +354,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Special Inner Circle Box */}
-      <section className="py-10 md:py-20 px-4 md:px-6 max-w-7xl mx-auto mb-8 md:mb-16 relative">
+      <section className="pb-10 md:pb-20 px-4 md:px-6 max-w-7xl mx-auto relative">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 blur-3xl rounded-full opacity-40 z-0"></div>
         <div className="glass-level-1 rounded-3xl p-10 md:p-16 text-center relative z-10 border border-white/10 flex flex-col items-center space-y-6">
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-on-surface">Join the Inner Circle</h2>
