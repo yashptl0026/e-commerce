@@ -37,14 +37,14 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Support Links (Merged with Legal) */}
+        {/* Support Links */}
         <div className="space-y-4 col-span-1">
           <h4 className="font-display font-semibold text-sm uppercase tracking-widest text-on-surface">Support</h4>
           <nav className="flex flex-col gap-2.5 text-sm">
-            <Link to="/support" className="text-on-surface-variant hover:text-primary transition-colors">Shipping & Delivery</Link>
-            <Link to="/support" className="text-on-surface-variant hover:text-primary transition-colors">Returns & Exchanges</Link>
-            <Link to="/support" className="text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link to="/support" className="text-on-surface-variant hover:text-primary transition-colors">Terms of Service</Link>
+            <Link to="/track-order" className="text-on-surface-variant hover:text-primary transition-colors">Track Order</Link>
+            <Link to="/faq" className="text-on-surface-variant hover:text-primary transition-colors">FAQ Help</Link>
+            <Link to="/support" className="text-on-surface-variant hover:text-primary transition-colors">Concierge Desk</Link>
+            <Link to="/contact" className="text-on-surface-variant hover:text-primary transition-colors">Contact Us</Link>
           </nav>
         </div>
 
@@ -53,9 +53,9 @@ export const Footer: React.FC = () => {
           <h4 className="font-display font-semibold text-sm uppercase tracking-widest text-on-surface">Company</h4>
           <nav className="flex flex-col gap-2.5 text-sm">
             <Link to="/about" className="text-on-surface-variant hover:text-primary transition-colors">About Us</Link>
-            <Link to="/about" className="text-on-surface-variant hover:text-primary transition-colors">Sustainability</Link>
-            <Link to="/about" className="text-on-surface-variant hover:text-primary transition-colors">Careers</Link>
-            <Link to="/support" className="text-on-surface-variant hover:text-primary transition-colors">Store Locator</Link>
+            <Link to="/about" className="text-on-surface-variant hover:text-primary transition-colors">Global Showrooms</Link>
+            <Link to="/privacy" className="text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-on-surface-variant hover:text-primary transition-colors">Terms of Service</Link>
           </nav>
         </div>
 

@@ -15,6 +15,11 @@ import { OrderConfirmation } from './pages/OrderConfirmation';
 import { Dashboard } from './pages/Dashboard';
 import { Support } from './pages/Support';
 import { About } from './pages/About';
+import { Privacy } from './pages/Privacy';
+import { Terms } from './pages/Terms';
+import { FAQ } from './pages/FAQ';
+import { Contact } from './pages/Contact';
+import { TrackOrder } from './pages/TrackOrder';
 
 // ScrollToTop utility helper to reset window scroll position on route change
 function ScrollToTop() {
@@ -47,6 +52,11 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/support" element={<Support />} />
           <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/track-order" element={<TrackOrder />} />
         </Routes>
         
         {/* Footer */}
