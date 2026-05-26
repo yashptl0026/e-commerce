@@ -6,7 +6,7 @@ export const About: React.FC = () => {
   return (
     <main className="flex-grow">
       {/* Hero Banner Header */}
-      <header className="relative pt-28 pb-10 md:pt-[140px] md:pb-20 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-6">
+      <header className="relative pt-24 pb-10 md:pt-[120px] md:pb-20 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-6">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-50 w-3/4 h-3/4 left-[12.5%] top-[12.5%] pointer-events-none"></div>
 
         <motion.div
@@ -31,17 +31,17 @@ export const About: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="aspect-[21/9] rounded-3xl overflow-hidden glass-level-1 border border-white/10 shadow-2xl relative"
+          className="aspect-[21/9] rounded-3xl overflow-hidden glass-level-1 border border-border shadow-2xl relative"
         >
           <img
             src="/about_campaign.png"
             alt="Lumina Luxe Campaign"
             className="w-full h-full object-cover opacity-75"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#10131a] via-transparent to-[#10131a]/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40"></div>
           <div className="absolute bottom-8 left-8 max-w-md space-y-2 hidden md:block text-left">
-            <h3 className="text-lg font-display font-bold text-white uppercase tracking-wider">A Cinematic Universe</h3>
-            <p className="text-xs text-white/70 leading-relaxed">
+            <h3 className="text-lg font-display font-bold text-on-surface uppercase tracking-wider">A Cinematic Universe</h3>
+            <p className="text-xs text-on-surface-variant leading-relaxed">
               Every detail in our collections represents hours of tailored design, high-contrast imagery, and premium technical fabric selection.
             </p>
           </div>
@@ -49,14 +49,14 @@ export const About: React.FC = () => {
       </section>
 
       {/* Mission / Value Cards Grid */}
-      <section className="w-full bg-[#0b0e15] border-y border-white/5 py-12 md:py-24 my-8 md:my-16">
+      <section className="w-full bg-surface-container-lowest border-y border-border py-12 md:py-24 my-8 md:my-16">
         <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-10 md:space-y-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="glass-level-1 p-8 rounded-3xl space-y-4 border border-white/5 shadow-xl flex flex-col justify-center card-hover"
+              className="glass-level-1 p-8 rounded-3xl space-y-4 border border-border shadow-xl flex flex-col justify-center card-hover"
             >
               <div className="w-12 h-12 rounded-full glass-level-2 flex items-center justify-center text-primary border border-primary/20">
                 <Eye className="w-5 h-5" />
@@ -71,7 +71,7 @@ export const About: React.FC = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="glass-level-1 p-8 rounded-3xl space-y-4 border border-white/5 shadow-xl flex flex-col justify-center card-hover"
+              className="glass-level-1 p-8 rounded-3xl space-y-4 border border-border shadow-xl flex flex-col justify-center card-hover"
             >
               <div className="w-12 h-12 rounded-full glass-level-2 flex items-center justify-center text-primary border border-primary/20">
                 <Compass className="w-5 h-5" />
@@ -100,13 +100,13 @@ export const About: React.FC = () => {
       </section>
 
       {/* Showroom timeline */}
-      <section className="w-full bg-[#0b0e15] border-t border-white/5 py-12 md:py-24 mt-8 md:mt-16">
+      <section className="w-full bg-surface-container-lowest border-t border-border py-12 md:py-24 mt-8 md:mt-16">
         <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-8 md:space-y-12">
           <h2 className="text-2xl sm:text-3xl font-display font-bold text-on-surface text-center uppercase tracking-wider">
             Global Showrooms
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div className="glass-level-1 p-8 rounded-3xl border border-white/5 shadow-xl space-y-3 card-hover flex flex-col items-center">
+            <div className="glass-level-1 p-8 rounded-3xl border border-border shadow-xl space-y-3 card-hover flex flex-col items-center">
               <div className="w-10 h-10 rounded-full glass-level-2 border border-white/10 flex items-center justify-center text-primary">
                 <MapPin className="w-5 h-5" />
               </div>
@@ -116,7 +116,7 @@ export const About: React.FC = () => {
                 New York, NY 10001
               </p>
             </div>
-            <div className="glass-level-1 p-8 rounded-3xl border border-white/5 shadow-xl space-y-3 card-hover flex flex-col items-center">
+            <div className="glass-level-1 p-8 rounded-3xl border border-border shadow-xl space-y-3 card-hover flex flex-col items-center">
               <div className="w-10 h-10 rounded-full glass-level-2 border border-white/10 flex items-center justify-center text-primary">
                 <MapPin className="w-5 h-5" />
               </div>
@@ -126,7 +126,7 @@ export const About: React.FC = () => {
                 London, W1S 4PP
               </p>
             </div>
-            <div className="glass-level-1 p-8 rounded-3xl border border-white/5 shadow-xl space-y-3 card-hover flex flex-col items-center">
+            <div className="glass-level-1 p-8 rounded-3xl border border-border shadow-xl space-y-3 card-hover flex flex-col items-center">
               <div className="w-10 h-10 rounded-full glass-level-2 border border-white/10 flex items-center justify-center text-primary">
                 <MapPin className="w-5 h-5" />
               </div>

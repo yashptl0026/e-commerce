@@ -49,7 +49,7 @@ export const Contact: React.FC = () => {
   return (
     <main className="flex-grow">
       {/* Header */}
-      <header className="pt-28 pb-10 md:pt-[140px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-4 relative">
+      <header className="pt-24 pb-10 md:pt-[120px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-4 relative">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-40 w-3/4 h-3/4 mx-auto pointer-events-none"></div>
         <div className="relative z-10 space-y-3">
           <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Client Relations</span>
@@ -62,7 +62,7 @@ export const Contact: React.FC = () => {
         </div>
       </header>
 
-      <section className="w-full bg-[#0b0e15] border-t border-white/5 py-12 md:py-24 mt-8 md:mt-16">
+      <section className="w-full bg-surface-container-lowest border-t border-border py-12 md:py-24 mt-8 md:mt-16">
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
           {/* Contact Info Cards */}
           <div className="lg:col-span-5 space-y-6">
@@ -104,7 +104,7 @@ export const Contact: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="glass-level-1 p-6 rounded-3xl border border-white/5 shadow-lg space-y-4"
+              className="glass-level-1 p-6 rounded-3xl border border-border shadow-lg space-y-4"
             >
               <div className="flex items-center gap-2 text-primary font-display font-bold text-xs uppercase tracking-wider">
                 <MapPin className="w-4.5 h-4.5" />
@@ -124,7 +124,7 @@ export const Contact: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="glass-level-2 p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl"
+              className="glass-level-2 p-6 sm:p-10 rounded-3xl shadow-2xl"
             >
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -144,7 +144,7 @@ export const Contact: React.FC = () => {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. John Doe"
-                        className="w-full bg-white/5 border border-white/10 rounded-full px-5 py-3 text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full bg-surface-container border border-border rounded-full px-5 py-3 text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all"
                       />
                     </div>
 
@@ -159,7 +159,7 @@ export const Contact: React.FC = () => {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.g. john@example.com"
-                        className="w-full bg-white/5 border border-white/10 rounded-full px-5 py-3 text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full bg-surface-container border border-border rounded-full px-5 py-3 text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -172,7 +172,7 @@ export const Contact: React.FC = () => {
                     <select
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full bg-[#191b23] border border-white/10 rounded-full px-5 py-3 text-xs text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all cursor-pointer"
+                      className="w-full bg-surface-container border border-border rounded-full px-5 py-3 text-xs text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all cursor-pointer"
                     >
                       <option value="General Inquiry">General Inquiry / Styling Advice</option>
                       <option value="Order Status">Order Status & Tracking</option>
@@ -192,14 +192,14 @@ export const Contact: React.FC = () => {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Draft your message detail here..."
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3.5 text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all resize-none"
+                      className="w-full bg-surface-container border border-border rounded-2xl px-5 py-3.5 text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all resize-none"
                     />
                   </div>
 
                   {/* Submit button */}
                   <button
                     type="submit"
-                    className="w-full bg-primary text-[#002e6a] font-display font-extrabold text-xs py-3.5 rounded-full flex items-center justify-center gap-1.5 btn-primary-glow active:scale-98 transition-all shadow-xl"
+                    className="w-full bg-primary text-on-primary font-display font-extrabold text-xs py-3.5 rounded-full flex items-center justify-center gap-1.5 btn-primary-glow active:scale-98 transition-all shadow-xl"
                   >
                     <Send className="w-4 h-4" /> SUBMIT MESSAGE
                   </button>

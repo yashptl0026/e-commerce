@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full bg-[#0b0e15] text-on-surface border-t border-white/5 py-16 px-6 md:px-12  rounded-t-3xl mt-auto z-10 relative">
+    <footer className="w-full bg-surface-container-lowest text-on-surface border-t border-border py-16 px-6 md:px-12 rounded-t-3xl mt-auto z-10 relative">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 max-w-7xl mx-auto">
 
         {/* Brand Column */}
@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="Email address"
-                className="w-full sm:w-auto flex-grow bg-white/5 border border-white/10 rounded-full px-5 py-2.5 text-on-surface placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-transparent text-sm backdrop-blur-sm"
+                className="w-full sm:w-auto flex-grow bg-surface-container-high border border-border rounded-full px-5 py-2.5 text-on-surface placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-transparent text-sm backdrop-blur-sm"
               />
               <button
                 type="submit"
@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
+      <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
         <span>© {new Date().getFullYear()} LUMINA LUXE. ALL RIGHTS RESERVED.</span>
         <div className="flex gap-6 font-display font-medium uppercase tracking-widest text-[10px]">
           <span>Visa</span>

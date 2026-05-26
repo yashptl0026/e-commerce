@@ -28,9 +28,9 @@ export const OrderConfirmation: React.FC = () => {
 
   if (!order) {
     return (
-      <div className="flex-grow pt-32 pb-24 text-center max-w-7xl mx-auto flex flex-col items-center justify-center gap-6">
+      <div className="flex-grow pt-28 pb-24 text-center max-w-7xl mx-auto flex flex-col items-center justify-center gap-6">
         <h2 className="text-3xl font-display font-bold">No Order Confirmed</h2>
-        <Link to="/" className="bg-primary text-[#002e6a] font-display font-bold py-3 px-8 rounded-full">
+        <Link to="/" className="bg-primary text-on-primary font-display font-bold py-3 px-8 rounded-full">
           Return to Home
         </Link>
       </div>
@@ -38,7 +38,7 @@ export const OrderConfirmation: React.FC = () => {
   }
 
   return (
-    <main className="flex-grow pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-3xl mx-auto w-full text-center space-y-8 md:space-y-12">
+    <main className="flex-grow pt-20 pb-16 md:pt-28 md:pb-24 px-4 md:px-6 max-w-3xl mx-auto w-full text-center space-y-8 md:space-y-12">
       {/* Success Icon */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
@@ -140,7 +140,7 @@ export const OrderConfirmation: React.FC = () => {
       <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
         <Link
           to="/collection"
-          className="bg-primary text-[#002e6a] font-display font-bold py-3.5 px-8 rounded-full btn-primary-glow flex items-center justify-center gap-2"
+          className="bg-primary text-on-primary font-display font-bold py-3.5 px-8 rounded-full btn-primary-glow flex items-center justify-center gap-2"
         >
           <ShoppingBag className="w-4 h-4" /> Continue Shopping
         </Link>

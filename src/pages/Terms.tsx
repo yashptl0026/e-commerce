@@ -37,7 +37,7 @@ export const Terms: React.FC = () => {
   ];
 
   return (
-    <main className="flex-grow pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-5xl mx-auto w-full">
+    <main className="flex-grow pt-20 pb-16 md:pt-28 md:pb-24 px-4 md:px-6 max-w-5xl mx-auto w-full">
       {/* Header */}
       <header className="text-center space-y-4 mb-12 md:mb-16 relative">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-40 w-3/4 h-3/4 mx-auto pointer-events-none"></div>
@@ -61,10 +61,10 @@ export const Terms: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.05, duration: 0.5 }}
-            className="glass-level-1 p-6 md:p-8 rounded-3xl border border-white/5 shadow-xl flex flex-col gap-4 card-hover"
+            className="glass-level-1 p-6 md:p-8 rounded-3xl border border-border shadow-xl flex flex-col gap-4 card-hover"
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full glass-level-2 border border-white/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full glass-level-2 border border-border flex items-center justify-center">
                 {section.icon}
               </div>
               <h3 className="font-display font-bold text-sm sm:text-base text-on-surface uppercase tracking-wide">
@@ -83,7 +83,7 @@ export const Terms: React.FC = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mt-12 text-center text-xs text-on-surface-variant max-w-lg mx-auto leading-relaxed border-t border-white/5 pt-8"
+        className="mt-12 text-center text-xs text-on-surface-variant max-w-lg mx-auto leading-relaxed border-t border-border pt-8"
       >
         For inquiries regarding our terms, commercial licensing, or physical boutique showroom guidelines, please contact our Legal Department at{" "}
         <a href="mailto:legal@luminaluxe.com" className="text-primary underline hover:text-secondary transition-colors">

@@ -1,21 +1,60 @@
 @import "tailwindcss";
 
-@theme {
-  --color-background: #10131a;
-  --color-surface: #10131a;
-  --color-surface-dim: #10131a;
-  --color-surface-bright: #363941;
-  --color-surface-container-lowest: #0b0e15;
-  --color-surface-container-low: #191b23;
-  --color-surface-container: #1d2027;
-  --color-surface-container-high: #272a31;
-  --color-surface-container-highest: #32353c;
-  --color-on-surface: #e1e2ec;
-  --color-on-surface-variant: #c2c6d6;
-  --color-inverse-surface: #e1e2ec;
-  --color-inverse-on-surface: #2e3038;
-  --color-outline: #8c909f;
-  --color-outline-variant: #424754;
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-background: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-surface-dim: #f8fafc;
+  --color-surface-bright: #e2e8f0;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f8fafc;
+  --color-surface-container: #f1f5f9;
+  --color-surface-container-high: #e2e8f0;
+  --color-surface-container-highest: #cbd5e1;
+  --color-on-surface: #111827;
+  --color-on-surface-variant: #4b5563;
+  --color-inverse-surface: #0f1115;
+  --color-inverse-on-surface: #f5f7fa;
+  --color-outline: #64748b;
+  --color-outline-variant: #cbd5e1;
+  --color-surface-tint: #1e3a8a;
+  --color-primary: #1e3a8a;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #e0f2fe;
+  --color-on-primary-container: #0369a1;
+  --color-inverse-primary: #adc6ff;
+  --color-secondary: #581c87;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #f3e8ff;
+  --color-on-secondary-container: #6b21a8;
+  --color-tertiary: #4b5563;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #f1f5f9;
+  --color-on-tertiary-container: #1f2937;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #410002;
+  --color-border: #e5e7eb;
+}
+
+.dark {
+  --color-background: #0f1115;
+  --color-surface: #161b22;
+  --color-surface-dim: #0f1115;
+  --color-surface-bright: #2a2f3a;
+  --color-surface-container-lowest: #0a0c10;
+  --color-surface-container-low: #12161a;
+  --color-surface-container: #161b22;
+  --color-surface-container-high: #1f242c;
+  --color-surface-container-highest: #262c36;
+  --color-on-surface: #f5f7fa;
+  --color-on-surface-variant: #aab2bf;
+  --color-inverse-surface: #f5f7fa;
+  --color-inverse-on-surface: #0f1115;
+  --color-outline: #575f6c;
+  --color-outline-variant: #2a2f3a;
   --color-surface-tint: #adc6ff;
   --color-primary: #adc6ff;
   --color-on-primary: #002e6a;
@@ -34,6 +73,44 @@
   --color-on-error: #690005;
   --color-error-container: #93000a;
   --color-on-error-container: #ffdad6;
+  --color-border: #2a2f3a;
+}
+
+@theme {
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-dim: var(--color-surface-dim);
+  --color-surface-bright: var(--color-surface-bright);
+  --color-surface-container-lowest: var(--color-surface-container-lowest);
+  --color-surface-container-low: var(--color-surface-container-low);
+  --color-surface-container: var(--color-surface-container);
+  --color-surface-container-high: var(--color-surface-container-high);
+  --color-surface-container-highest: var(--color-surface-container-highest);
+  --color-on-surface: var(--color-on-surface);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --color-inverse-surface: var(--color-inverse-surface);
+  --color-inverse-on-surface: var(--color-inverse-on-surface);
+  --color-outline: var(--color-outline);
+  --color-outline-variant: var(--color-outline-variant);
+  --color-surface-tint: var(--color-surface-tint);
+  --color-primary: var(--color-primary);
+  --color-on-primary: var(--color-on-primary);
+  --color-primary-container: var(--color-primary-container);
+  --color-on-primary-container: var(--color-on-primary-container);
+  --color-inverse-primary: var(--color-inverse-primary);
+  --color-secondary: var(--color-secondary);
+  --color-on-secondary: var(--color-on-secondary);
+  --color-secondary-container: var(--color-secondary-container);
+  --color-on-secondary-container: var(--color-on-secondary-container);
+  --color-tertiary: var(--color-tertiary);
+  --color-on-tertiary: var(--color-on-tertiary);
+  --color-tertiary-container: var(--color-tertiary-container);
+  --color-on-tertiary-container: var(--color-on-tertiary-container);
+  --color-error: var(--color-error);
+  --color-on-error: var(--color-on-error);
+  --color-error-container: var(--color-error-container);
+  --color-on-error-container: var(--color-on-error-container);
+  --color-border: var(--color-border);
   
   --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
@@ -52,23 +129,81 @@
 
 /* Glassmorphism Styles */
 .glass-level-0 {
+  background-color: #ffffff;
+  background-image: radial-gradient(circle at top right, rgba(59, 130, 246, 0.03), transparent 50%);
+}
+
+.dark .glass-level-0 {
   background-color: #0F172A;
   background-image: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 50%);
 }
 
 .glass-level-1 {
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+}
+
+.dark .glass-level-1 {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
 }
 
 .glass-level-2 {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
 }
+
+.dark .glass-level-2 {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+
+/* Premium Glassmorphism */
+.premium-glass {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.03),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+}
+
+.dark .premium-glass {
+  background-color: rgba(22, 27, 34, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.dropdown-glass {
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.08),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+}
+
+.dark .dropdown-glass {
+  background-color: rgba(22, 27, 34, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+
 
 .glass-shadow {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
@@ -147,14 +282,28 @@ input[type="submit"] {
 
 body {
   margin: 0;
-  background-color: #10131a;
-  color: #e1e2ec;
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
   font-family: "Inter", system-ui, sans-serif;
   overflow-x: hidden;
+}
+
+/* Global premium theme transitions */
+body, main, header, section, footer, nav, button, input, select, textarea, a, .glass-level-1, .glass-level-2 {
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Custom Select Option Styles for Chrome/Windows theme safety */
+select option {
+  background-color: var(--color-surface-container);
+  color: var(--color-on-surface);
 }

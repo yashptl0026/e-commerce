@@ -95,7 +95,7 @@ export const FAQ: React.FC = () => {
   return (
     <main className="flex-grow">
       {/* Header */}
-      <header className="pt-28 pb-10 md:pt-[140px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-4 relative">
+      <header className="pt-24 pb-10 md:pt-[120px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-4 relative">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-40 w-3/4 h-3/4 mx-auto pointer-events-none"></div>
         <div className="relative z-10 space-y-3">
           <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Questions & Answers</span>
@@ -109,7 +109,7 @@ export const FAQ: React.FC = () => {
       </header>
 
       {/* Main Content Layout */}
-      <section className="w-full bg-[#0b0e15] border-t border-white/5 py-12 md:py-24 mt-8 md:mt-16">
+      <section className="w-full bg-surface-container-lowest border-t border-border py-12 md:py-24 mt-8 md:mt-16">
         <div className="max-w-5xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-start relative z-10">
           
           {/* Navigation Categories */}
@@ -124,16 +124,17 @@ export const FAQ: React.FC = () => {
                 className={`flex items-center gap-3.5 px-5 py-4 rounded-2xl font-display font-bold text-xs uppercase tracking-wider text-left border transition-all duration-300 w-full shrink-0 md:shrink-1 ${
                   activeCategory === idx
                     ? 'bg-primary/10 border-primary/30 text-primary shadow-lg shadow-primary/5'
-                    : 'glass-level-1 border-white/5 text-on-surface-variant hover:border-white/15 hover:text-on-surface'
+                    : 'premium-glass text-on-surface-variant hover:text-on-surface'
                 }`}
               >
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all ${
-                  activeCategory === idx ? 'bg-primary/20 border-primary/20 text-primary' : 'bg-white/5 border-white/5'
+                  activeCategory === idx ? 'bg-primary/20 border-primary/20 text-primary' : 'bg-surface-container border-border'
                 }`}>
                   {category.icon}
                 </div>
                 <span>{category.title}</span>
               </button>
+
             ))}
           </div>
 
@@ -149,7 +150,7 @@ export const FAQ: React.FC = () => {
               {faqCategories[activeCategory].items.map((item, idx) => {
                 const isOpen = openIndex === idx;
                 return (
-                  <div key={idx} className="glass-level-1 rounded-2xl border border-white/5 overflow-hidden shadow-xl">
+                  <div key={idx} className="premium-glass rounded-2xl overflow-hidden shadow-xl">
                     <button
                       onClick={() => toggleItem(idx)}
                       className="w-full p-6 flex justify-between items-center text-left hover:text-primary transition-colors group"
@@ -168,7 +169,7 @@ export const FAQ: React.FC = () => {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.25 }}
                         >
-                          <p className="px-6 pb-6 text-xs sm:text-sm text-on-surface-variant leading-relaxed font-body border-t border-white/2">
+                          <p className="px-6 pb-6 text-xs sm:text-sm text-on-surface-variant leading-relaxed font-body border-t border-border">
                             {item.a}
                           </p>
                         </motion.div>

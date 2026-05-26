@@ -64,7 +64,7 @@ export const TrackOrder: React.FC = () => {
   return (
     <main className="flex-grow">
       {/* Header */}
-      <header className="pt-28 pb-10 md:pt-[140px] md:pb-16 px-4 md:px-6 max-w-4xl mx-auto text-center space-y-4 relative">
+      <header className="pt-24 pb-10 md:pt-[120px] md:pb-16 px-4 md:px-6 max-w-4xl mx-auto text-center space-y-4 relative">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-40 w-3/4 h-3/4 mx-auto pointer-events-none"></div>
         <div className="relative z-10 space-y-3">
           <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Shipping Registry</span>
@@ -77,10 +77,10 @@ export const TrackOrder: React.FC = () => {
         </div>
       </header>
 
-      <section className="w-full bg-[#0b0e15] border-t border-white/5 py-12 md:py-24 mt-8 md:mt-16">
+      <section className="w-full bg-surface-container-lowest border-t border-border py-12 md:py-24 mt-8 md:mt-16">
         <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-10">
           {/* Lookup Form */}
-          <div className="glass-level-2 p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl mb-8 relative z-10">
+          <div className="glass-level-2 p-6 sm:p-8 rounded-3xl shadow-2xl mb-8 relative z-10">
             <form onSubmit={handleTrack} className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-end">
               <div className="sm:col-span-5 space-y-2">
                 <label className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">
@@ -92,7 +92,7 @@ export const TrackOrder: React.FC = () => {
                   value={orderId}
                   onChange={(e) => setOrderId(e.target.value)}
                   placeholder="e.g. ORD-109283"
-                  className="w-full bg-white/5 border border-white/10 rounded-full px-5 py-3 text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all"
+                  className="w-full bg-surface-container border border-border rounded-full px-5 py-3 text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all"
                 />
               </div>
 
@@ -106,7 +106,7 @@ export const TrackOrder: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="e.g. john@example.com"
-                  className="w-full bg-white/5 border border-white/10 rounded-full px-5 py-3 text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all"
+                  className="w-full bg-surface-container border border-border rounded-full px-5 py-3 text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent transition-all"
                 />
               </div>
 
@@ -114,7 +114,7 @@ export const TrackOrder: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSearching}
-                  className="w-full bg-primary text-[#002e6a] hover:bg-primary-container font-display font-extrabold text-xs h-[42px] rounded-full flex items-center justify-center gap-1.5 btn-primary-glow transition-all active:scale-98 disabled:opacity-50 disabled:scale-100"
+                  className="w-full bg-primary text-on-primary hover:bg-primary-container font-display font-extrabold text-xs h-[42px] rounded-full flex items-center justify-center gap-1.5 btn-primary-glow transition-all active:scale-98 disabled:opacity-50 disabled:scale-100"
                 >
                   {isSearching ? (
                     <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></span>
@@ -160,7 +160,7 @@ export const TrackOrder: React.FC = () => {
                         <div key={idx} className="flex flex-col items-center text-center space-y-3 relative z-10">
                           <div className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all ${
                             isDone
-                              ? 'bg-primary text-[#002e6a] border-primary font-bold shadow-lg shadow-primary/20'
+                              ? 'bg-primary text-on-primary border-primary font-bold shadow-lg shadow-primary/20'
                               : 'bg-white/5 border-white/10 text-on-surface-variant'
                           } ${isCurrent ? 'ring-4 ring-primary/20 animate-pulse' : ''}`}>
                             {isDone ? <CheckCircle2 className="w-5 h-5" /> : <Package className="w-5 h-5" />}

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
 import { Toast } from './components/Toast';
@@ -20,22 +21,38 @@ import { Terms } from './pages/Terms';
 import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
 import { TrackOrder } from './pages/TrackOrder';
+import { NotFound } from './pages/NotFound';
 
 // ScrollToTop utility helper to reset window scroll position on route change
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.body.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.body.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [location]);
 
   return null;
 }
 
 function App() {
   return (
-    <AppProvider>
-      <Router>
+    <ThemeProvider>
+      <AppProvider>
+        <Router>
         <ScrollToTop />
         
         {/* Navigation */}
@@ -57,6 +74,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/track-order" element={<TrackOrder />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         
         {/* Footer */}
@@ -64,8 +82,9 @@ function App() {
         
         {/* Toast Notification HUD */}
         <Toast />
-      </Router>
-    </AppProvider>
+        </Router>
+      </AppProvider>
+    </ThemeProvider>
   );
 }
 

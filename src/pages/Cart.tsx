@@ -60,7 +60,7 @@ export const Cart: React.FC = () => {
   const recommendations = products.slice(5, 9);
 
   return (
-    <main className="flex-grow pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
+    <main className="flex-grow pt-20 pb-16 md:pt-28 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
       <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface mb-10 uppercase tracking-tight">
         Your Bag
       </h1>
@@ -263,7 +263,7 @@ export const Cart: React.FC = () => {
             </p>
             <Link
               to="/collection"
-              className="bg-primary text-[#002e6a] font-display font-bold py-3 px-8 rounded-full btn-primary-glow mt-2"
+              className="bg-primary text-on-primary font-display font-bold py-3 px-8 rounded-full btn-primary-glow mt-2"
             >
               Start Shopping
             </Link>

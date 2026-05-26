@@ -66,7 +66,7 @@ export const Home: React.FC = () => {
   return (
     <div className="flex-grow">
       {/* Hero Section */}
-      <header className="relative pt-28 pb-12 md:pt-[140px] md:pb-24 px-4 md:px-6 max-w-7xl mx-auto flex flex-col items-center justify-center text-center min-h-[70vh] md:min-h-[85vh] overflow-hidden">
+      <header className="relative pt-24 pb-12 md:pt-[120px] md:pb-24 px-4 md:px-6 max-w-7xl mx-auto flex flex-col items-center justify-center text-center min-h-[70vh] md:min-h-[85vh] overflow-hidden">
         {/* Animated Radial Gradients */}
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 via-secondary/15 to-transparent blur-3xl rounded-full opacity-60 w-3/4 h-3/4 left-1/8 top-1/8 pointer-events-none"></div>
 
@@ -85,13 +85,13 @@ export const Home: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <button
               onClick={() => navigate('/collection')}
-              className="bg-primary text-[#002e6a] font-display font-bold py-3.5 px-8 rounded-full btn-primary-glow hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl"
+              className="bg-primary text-on-primary font-display font-bold py-3.5 px-8 rounded-full btn-primary-glow hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl"
             >
               Shop Now
             </button>
             <button
               onClick={() => navigate('/about')}
-              className="bg-transparent border border-white/20 text-on-surface font-display font-bold py-3.5 px-8 rounded-full hover:bg-white/5 transition-all duration-300 backdrop-blur-md"
+              className="bg-transparent border border-border text-on-surface font-display font-bold py-3.5 px-8 rounded-full hover:bg-on-surface/5 transition-all duration-300 backdrop-blur-md"
             >
               Explore Our Story
             </button>
@@ -100,7 +100,7 @@ export const Home: React.FC = () => {
       </header>
 
       {/* Curated Categories */}
-      <section className="w-full bg-[#0b0e15] border-y border-white/5 py-12 md:py-24">
+      <section className="w-full bg-surface-container-lowest border-y border-border py-12 md:py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-6 md:space-y-10">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
@@ -127,7 +127,7 @@ export const Home: React.FC = () => {
                   alt={cat.name}
                   className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#10131a]/95 via-[#10131a]/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6 w-full space-y-2">
                   <h3 className="text-xl font-display font-semibold text-on-surface group-hover:text-primary transition-colors">
                     {cat.name}
@@ -214,7 +214,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Trust Badges - The Lumina Standard */}
-      <section className="w-full bg-[#0b0e15] border-y border-white/5 py-12 md:py-24">
+      <section className="w-full bg-surface-container-lowest border-y border-border py-12 md:py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-8 md:space-y-12">
           <div className="text-center space-y-2 max-w-xl mx-auto">
             <h2 className="text-3xl font-display font-bold text-on-surface">The Lumina Standard</h2>
@@ -356,7 +356,7 @@ export const Home: React.FC = () => {
       {/* Special Inner Circle Box */}
       <section className="pb-10 md:pb-20 px-4 md:px-6 max-w-7xl mx-auto relative">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 blur-3xl rounded-full opacity-40 z-0"></div>
-        <div className="glass-level-1 rounded-3xl p-10 md:p-16 text-center relative z-10 border border-white/10 flex flex-col items-center space-y-6">
+        <div className="premium-glass rounded-3xl p-10 md:p-16 text-center relative z-10 flex flex-col items-center space-y-6">
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-on-surface">Join the Inner Circle</h2>
           <p className="text-on-surface-variant max-w-xl leading-relaxed text-sm sm:text-base">
             Subscribe below to receive exclusive notifications for limited product collections, custom sizing sessions, and private editorial events.
@@ -369,7 +369,7 @@ export const Home: React.FC = () => {
                 footerEmailInput.focus();
               }
             }}
-            className="bg-primary text-[#002e6a] font-display font-bold py-3 px-8 rounded-full btn-primary-glow active:scale-95 transition-all duration-300"
+            className="bg-primary text-on-primary font-display font-bold py-3 px-8 rounded-full btn-primary-glow active:scale-95 transition-all duration-300"
           >
             Access Membership
           </button>

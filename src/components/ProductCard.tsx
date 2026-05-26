@@ -110,7 +110,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {/* Mobile-only Quick Add Button */}
             <button
               onClick={handleQuickAdd}
-              className="sm:hidden p-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full hover:bg-primary hover:text-[#002e6a] transition-all active:scale-90"
+              className="sm:hidden p-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full hover:bg-primary hover:text-on-primary transition-all active:scale-90"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
             </button>

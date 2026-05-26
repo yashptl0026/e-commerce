@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, ShoppingBag, Heart, Settings, MapPin, Mail, Phone, Calendar } from 'lucide-react';
 import { useApp } from '../context/AppContext';
@@ -6,9 +7,16 @@ import { ProductCard } from '../components/ProductCard';
 
 export const Dashboard: React.FC = () => {
   const { userProfile, orders, wishlist, products, updateProfile } = useApp();
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // Dashboard Tabs: 'profile' | 'orders' | 'wishlist'
-  const [activeTab, setActiveTab] = useState<'profile' | 'orders' | 'wishlist'>('profile');
+  const activeTab = (searchParams.get('tab') || (location.state as any)?.tab || 'profile') as 'profile' | 'orders' | 'wishlist';
+
+  const handleTabChange = (tab: 'profile' | 'orders' | 'wishlist') => {
+    setSearchParams({ tab });
+  };
+
 
   // Edit details forms
   const [isEditing, setIsEditing] = useState(false);
@@ -25,16 +33,16 @@ export const Dashboard: React.FC = () => {
   const wishlistedProducts = products.filter((p) => wishlist.includes(p.id));
 
   return (
-    <main className="flex-grow pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
+    <main className="flex-grow pt-20 pb-16 md:pt-28 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
       <div className="flex flex-col lg:flex-row gap-8 items-start">
         
         {/* Navigation Sidebar Drawer */}
-        <aside className="w-full lg:w-64 shrink-0 glass-level-1 border border-white/5 p-4 rounded-2xl shadow-xl flex lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible whitespace-nowrap scrollbar-none">
+        <aside className="w-full lg:w-64 shrink-0 premium-glass p-4 rounded-2xl shadow-xl flex lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible whitespace-nowrap scrollbar-none">
           <button
-            onClick={() => setActiveTab('profile')}
+            onClick={() => handleTabChange('profile')}
             className={`w-auto lg:w-full shrink-0 text-center lg:text-left px-5 py-3 rounded-xl font-display text-xs font-bold uppercase tracking-wider flex items-center justify-center lg:justify-start gap-3 transition-all ${
               activeTab === 'profile'
-                ? 'bg-primary text-[#002e6a] shadow-[0_0_15px_rgba(173,198,255,0.3)]'
+                ? 'bg-primary text-on-primary shadow-[0_0_15px_rgba(173,198,255,0.3)]'
                 : 'text-on-surface hover:bg-white/5'
             }`}
           >
@@ -42,10 +50,10 @@ export const Dashboard: React.FC = () => {
           </button>
           
           <button
-            onClick={() => setActiveTab('orders')}
+            onClick={() => handleTabChange('orders')}
             className={`w-auto lg:w-full shrink-0 text-center lg:text-left px-5 py-3 rounded-xl font-display text-xs font-bold uppercase tracking-wider flex items-center justify-center lg:justify-start gap-3 transition-all ${
               activeTab === 'orders'
-                ? 'bg-primary text-[#002e6a] shadow-[0_0_15px_rgba(173,198,255,0.3)]'
+                ? 'bg-primary text-on-primary shadow-[0_0_15px_rgba(173,198,255,0.3)]'
                 : 'text-on-surface hover:bg-white/5'
             }`}
           >
@@ -53,10 +61,10 @@ export const Dashboard: React.FC = () => {
           </button>
 
           <button
-            onClick={() => setActiveTab('wishlist')}
+            onClick={() => handleTabChange('wishlist')}
             className={`w-auto lg:w-full shrink-0 text-center lg:text-left px-5 py-3 rounded-xl font-display text-xs font-bold uppercase tracking-wider flex items-center justify-center lg:justify-start gap-3 transition-all ${
               activeTab === 'wishlist'
-                ? 'bg-primary text-[#002e6a] shadow-[0_0_15px_rgba(173,198,255,0.3)]'
+                ? 'bg-primary text-on-primary shadow-[0_0_15px_rgba(173,198,255,0.3)]'
                 : 'text-on-surface hover:bg-white/5'
             }`}
           >
@@ -65,7 +73,8 @@ export const Dashboard: React.FC = () => {
         </aside>
 
         {/* Content Pane Area */}
-        <section className="flex-grow w-full glass-level-1 border border-white/5 p-6 md:p-8 rounded-2xl shadow-xl min-h-[50vh]">
+        <section className="flex-grow w-full premium-glass p-6 md:p-8 rounded-2xl shadow-xl min-h-[50vh]">
+
           <AnimatePresence mode="wait">
             {activeTab === 'profile' && (
               <motion.div
@@ -162,7 +171,7 @@ export const Dashboard: React.FC = () => {
                     </div>
                     <button
                       type="submit"
-                      className="bg-primary text-[#002e6a] font-display font-bold py-2.5 px-6 rounded-full text-xs"
+                      className="bg-primary text-on-primary font-display font-bold py-2.5 px-6 rounded-full text-xs"
                     >
                       Save Changes
                     </button>

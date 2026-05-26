@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CreditCard, Truck, ShieldCheck } from 'lucide-react';
+import { CreditCard, Truck, ShieldCheck, Lock, Award } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export const Checkout: React.FC = () => {
@@ -86,7 +86,7 @@ export const Checkout: React.FC = () => {
   };
 
   return (
-    <main className="flex-grow pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-5xl mx-auto w-full">
+    <main className="flex-grow pt-20 pb-16 md:pt-28 md:pb-24 px-4 md:px-6 max-w-5xl mx-auto w-full">
       {/* Step Indicators */}
       <div className="flex items-center justify-between max-w-md mx-auto mb-12 relative">
         <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white/10 z-0 -translate-y-1/2"></div>
@@ -99,8 +99,8 @@ export const Checkout: React.FC = () => {
             key={s}
             className={`w-10 h-10 rounded-full flex items-center justify-center font-display text-sm font-bold z-10 border transition-all ${
               step >= s
-                ? 'bg-primary text-[#002e6a] border-primary shadow-[0_0_15px_rgba(173,198,255,0.4)]'
-                : 'bg-[#10131a] text-on-surface-variant border-white/10'
+                ? 'bg-primary text-on-primary border-primary shadow-[0_0_15px_rgba(173,198,255,0.4)]'
+                : 'bg-surface-container text-on-surface-variant border-white/10'
             }`}
           >
             {s === 1 && <Truck className="w-4 h-4" />}
@@ -207,7 +207,7 @@ export const Checkout: React.FC = () => {
                   <div className="pt-4">
                     <button
                       type="submit"
-                      className="w-full py-3.5 bg-primary text-[#002e6a] font-display font-bold text-sm rounded-full btn-primary-glow"
+                      className="w-full py-3.5 bg-primary text-on-primary font-display font-bold text-sm rounded-full btn-primary-glow"
                     >
                       Continue to Payment
                     </button>
@@ -311,7 +311,7 @@ export const Checkout: React.FC = () => {
                     </button>
                     <button
                       type="submit"
-                      className="w-2/3 py-3.5 bg-primary text-[#002e6a] font-display font-bold text-sm rounded-full btn-primary-glow"
+                       className="w-2/3 py-3.5 bg-primary text-on-primary font-display font-bold text-sm rounded-full btn-primary-glow"
                     >
                       Review Order
                     </button>
@@ -363,7 +363,7 @@ export const Checkout: React.FC = () => {
                     </button>
                     <button
                       onClick={handleCompleteOrder}
-                      className="w-2/3 py-3.5 bg-primary text-[#002e6a] font-display font-bold text-sm rounded-full btn-primary-glow flex items-center justify-center gap-2"
+                       className="w-2/3 py-3.5 bg-primary text-on-primary font-display font-bold text-sm rounded-full btn-primary-glow flex items-center justify-center gap-2"
                     >
                       PLACE ORDER &bull; ${total.toLocaleString()}
                     </button>
@@ -374,54 +374,113 @@ export const Checkout: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        {/* Pricing Summary Side */}
-        <div className="lg:col-span-4 glass-level-2 rounded-2xl p-6 border border-white/10 shadow-2xl space-y-6">
-          <h3 className="font-display font-bold text-base uppercase tracking-wider text-on-surface border-b border-white/5 pb-2">
-            Bag Items ({cart.length})
-          </h3>
+        {/* Pricing Summary & Trust Side */}
+        <div className="lg:col-span-4 space-y-6">
+          <div className="glass-level-2 rounded-2xl p-6 border border-white/10 shadow-2xl space-y-6">
+            <h3 className="font-display font-bold text-base uppercase tracking-wider text-on-surface border-b border-white/5 pb-2">
+              Bag Items ({cart.length})
+            </h3>
 
-          {/* Cart items summary scroll */}
-          <div className="space-y-4 max-h-72 overflow-y-auto custom-scrollbar pr-1">
-            {cart.map((item) => (
-              <div key={`${item.product.id}-${item.selectedColor}-${item.selectedSize}`} className="flex gap-4">
-                <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0 border border-white/5">
-                  <img src={item.product.images[0]} alt={item.product.name} className="w-full h-full object-cover" />
+            {/* Cart items summary scroll */}
+            <div className="space-y-4 max-h-72 overflow-y-auto custom-scrollbar pr-1">
+              {cart.map((item) => (
+                <div key={`${item.product.id}-${item.selectedColor}-${item.selectedSize}`} className="flex gap-4">
+                  <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0 border border-white/5">
+                    <img src={item.product.images[0]} alt={item.product.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex-grow min-w-0 space-y-0.5">
+                    <h4 className="text-xs font-semibold truncate text-on-surface">{item.product.name}</h4>
+                    <p className="text-[10px] text-on-surface-variant font-medium uppercase tracking-wider">
+                      {item.selectedColor} &bull; {item.selectedSize} &bull; Qty {item.quantity}
+                    </p>
+                    <p className="text-xs font-display font-bold text-primary">${(item.product.price * item.quantity).toLocaleString()}</p>
+                  </div>
                 </div>
-                <div className="flex-grow min-w-0 space-y-0.5">
-                  <h4 className="text-xs font-semibold truncate text-on-surface">{item.product.name}</h4>
-                  <p className="text-[10px] text-on-surface-variant font-medium uppercase tracking-wider">
-                    {item.selectedColor} &bull; {item.selectedSize} &bull; Qty {item.quantity}
-                  </p>
-                  <p className="text-xs font-display font-bold text-primary">${(item.product.price * item.quantity).toLocaleString()}</p>
-                </div>
+              ))}
+            </div>
+
+            <div className="space-y-3.5 text-xs text-on-surface-variant font-medium border-t border-white/5 pt-4">
+              <div className="flex justify-between">
+                <span>Subtotal</span>
+                <span className="font-display text-on-surface">${subtotal.toLocaleString()}</span>
               </div>
-            ))}
+              {discountVal > 0 && (
+                <div className="flex justify-between text-primary font-bold">
+                  <span>Discount applied</span>
+                  <span>-${discountVal.toLocaleString()}</span>
+                </div>
+              )}
+              <div className="flex justify-between">
+                <span>Shipping</span>
+                <span className="font-display text-on-surface">
+                  {shippingCost === 0 ? 'Free' : `$${shippingCost.toLocaleString()}`}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>Estimated Tax</span>
+                <span className="font-display text-on-surface">${tax.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between font-display font-extrabold text-sm text-on-surface border-t border-white/5 pt-3">
+                <span>Total</span>
+                <span className="text-primary text-base">${total.toLocaleString()}</span>
+              </div>
+            </div>
           </div>
 
-          <div className="space-y-3.5 text-xs text-on-surface-variant font-medium border-t border-white/5 pt-4">
-            <div className="flex justify-between">
-              <span>Subtotal</span>
-              <span className="font-display text-on-surface">${subtotal.toLocaleString()}</span>
-            </div>
-            {discountVal > 0 && (
-              <div className="flex justify-between text-primary font-bold">
-                <span>Discount applied</span>
-                <span>-${discountVal.toLocaleString()}</span>
+          {/* Trust & Security Badges */}
+          <div className="glass-level-1 rounded-2xl p-5 border border-white/5 shadow-xl space-y-4">
+            <h4 className="font-display font-extrabold text-[10px] uppercase tracking-widest text-on-surface flex items-center gap-2 border-b border-white/5 pb-2.5">
+              <ShieldCheck className="w-4 h-4 text-primary" /> Commercial Trust & Security
+            </h4>
+            
+            <div className="space-y-3.5">
+              <div className="flex gap-3">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/20">
+                  <Lock className="w-4 h-4" />
+                </div>
+                <div>
+                  <h5 className="text-[11px] font-bold text-on-surface uppercase tracking-wide">SSL 256-Bit Encrypted</h5>
+                  <p className="text-[10px] text-on-surface-variant/70 leading-normal font-body">
+                    Your digital transaction details are fully encrypted and secure.
+                  </p>
+                </div>
               </div>
-            )}
-            <div className="flex justify-between">
-              <span>Shipping</span>
-              <span className="font-display text-on-surface">
-                {shippingCost === 0 ? 'Free' : `$${shippingCost.toLocaleString()}`}
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span>Estimated Tax</span>
-              <span className="font-display text-on-surface">${tax.toLocaleString()}</span>
-            </div>
-            <div className="flex justify-between font-display font-extrabold text-sm text-on-surface border-t border-white/5 pt-3">
-              <span>Total</span>
-              <span className="text-primary text-base">${total.toLocaleString()}</span>
+
+              <div className="flex gap-3">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/20">
+                  <CreditCard className="w-4 h-4" />
+                </div>
+                <div>
+                  <h5 className="text-[11px] font-bold text-on-surface uppercase tracking-wide">PCI-DSS Level 1 Compliant</h5>
+                  <p className="text-[10px] text-on-surface-variant/70 leading-normal font-body">
+                    Commercial transactions are processed under elite international financial safety standards.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/20">
+                  <Truck className="w-4 h-4" />
+                </div>
+                <div>
+                  <h5 className="text-[11px] font-bold text-on-surface uppercase tracking-wide">Insured Signature Delivery</h5>
+                  <p className="text-[10px] text-on-surface-variant/70 leading-normal font-body">
+                    Complimentary express dispatch, fully insured with digital tracking and signature requirement.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/20">
+                  <Award className="w-4 h-4" />
+                </div>
+                <div>
+                  <h5 className="text-[11px] font-bold text-on-surface uppercase tracking-wide">Bespoke Quality Guarantee</h5>
+                  <p className="text-[10px] text-on-surface-variant/70 leading-normal font-body">
+                    Every luxury artifact undergoes meticulous hand-inspection prior to custom packaging.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

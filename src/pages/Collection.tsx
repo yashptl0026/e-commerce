@@ -182,7 +182,7 @@ export const Collection: React.FC = () => {
   }, [currentPage, totalPages]);
 
   return (
-    <main className="flex-grow pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
+    <main className="flex-grow pt-20 pb-16 md:pt-28 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
       {/* Header Banner */}
       <header className="mb-12 space-y-6">
         <nav className="flex items-center gap-2 text-xs text-on-surface-variant font-display font-medium tracking-widest uppercase">
@@ -219,7 +219,7 @@ export const Collection: React.FC = () => {
                   setSortBy(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="w-full appearance-none bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors cursor-pointer text-on-surface"
+                className="w-full appearance-none bg-surface-container border border-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors cursor-pointer text-on-surface"
               >
                 <option value="latest">Latest Drops</option>
                 <option value="price-low">Price: Low to High</option>
@@ -233,7 +233,7 @@ export const Collection: React.FC = () => {
             {/* Mobile Filter Button */}
             <button
               onClick={() => setIsMobileFilterOpen(true)}
-              className="lg:hidden p-2.5 glass-level-1 border border-white/10 rounded-lg text-on-surface flex items-center justify-center"
+              className="lg:hidden p-2.5 glass-level-1 border border-border rounded-lg text-on-surface flex items-center justify-center"
             >
               <SlidersHorizontal className="w-5 h-5" />
             </button>
@@ -343,7 +343,7 @@ export const Collection: React.FC = () => {
                       }}
                       className={`py-1.5 rounded-lg font-display text-xs font-semibold border transition-all ${
                         isSelected
-                          ? 'bg-primary text-[#002e6a] border-primary font-bold'
+                          ? 'bg-primary text-on-primary border-primary font-bold'
                           : 'glass-level-1 border-white/10 text-on-surface hover:bg-white/5'
                       }`}
                     >
@@ -394,7 +394,7 @@ export const Collection: React.FC = () => {
                 </p>
                 <button
                   onClick={handleClearFilters}
-                  className="bg-primary text-[#002e6a] font-display font-bold py-2.5 px-6 rounded-full btn-primary-glow mt-2"
+                  className="bg-primary text-on-primary font-display font-bold py-2.5 px-6 rounded-full btn-primary-glow mt-2"
                 >
                   Clear All Filters
                 </button>
@@ -426,17 +426,17 @@ export const Collection: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-[#10131a]/80 backdrop-blur-md lg:hidden"
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
           >
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="absolute inset-y-0 right-0 w-4/5 max-w-sm bg-[#10131a] border-l border-white/10 p-6 overflow-y-auto space-y-6 flex flex-col justify-between"
+              className="absolute inset-y-0 right-0 w-4/5 max-w-sm bg-surface-container border-l border-border p-6 overflow-y-auto space-y-6 flex flex-col justify-between"
             >
               <div className="space-y-6">
-                <div className="flex justify-between items-center pb-2 border-b border-white/10">
+                <div className="flex justify-between items-center pb-2 border-b border-border">
                   <h3 className="font-display font-extrabold text-lg text-on-surface">Filters</h3>
                   <button onClick={() => setIsMobileFilterOpen(false)} className="p-1 hover:text-primary transition-colors text-on-surface">
                     ✕
@@ -510,7 +510,7 @@ export const Collection: React.FC = () => {
                           key={size}
                           onClick={() => setSelectedSize(isSelected ? null : size)}
                           className={`py-1.5 rounded-lg font-display text-xs border ${
-                            isSelected ? 'bg-primary text-[#002e6a] border-primary font-bold' : 'glass-level-1 border-white/10 text-on-surface'
+                            isSelected ? 'bg-primary text-on-primary border-primary font-bold' : 'glass-level-1 border-white/10 text-on-surface'
                           }`}
                         >
                           {size}
@@ -533,7 +533,7 @@ export const Collection: React.FC = () => {
                 </button>
                 <button
                   onClick={() => setIsMobileFilterOpen(false)}
-                  className="w-full py-2.5 bg-primary text-[#002e6a] rounded-xl text-sm font-bold shadow-lg"
+                  className="w-full py-2.5 bg-primary text-on-primary rounded-xl text-sm font-bold shadow-lg"
                 >
                   Apply Filters
                 </button>

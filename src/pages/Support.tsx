@@ -42,10 +42,15 @@ export const Support: React.FC = () => {
   ]);
   const [inputVal, setInputVal] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollChatToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   useEffect(() => {
@@ -92,7 +97,7 @@ export const Support: React.FC = () => {
   return (
     <main className="flex-grow">
       {/* Header */}
-      <header className="pt-28 pb-10 md:pt-[140px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto space-y-4">
+      <header className="pt-24 pb-10 md:pt-[120px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto space-y-4">
         <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Support Desk</span>
         <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface uppercase tracking-tight">
           Support Center
@@ -102,7 +107,7 @@ export const Support: React.FC = () => {
         </p>
       </header>
 
-      <section className="w-full bg-[#0b0e15] border-t border-white/5 py-12 md:py-24 mt-8 md:mt-16">
+      <section className="w-full bg-surface-container-lowest border-t border-border py-12 md:py-24 mt-8 md:mt-16">
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* FAQs list Side */}
@@ -110,7 +115,7 @@ export const Support: React.FC = () => {
             {faqs.map((faq, idx) => {
               const isOpen = activeFaq === idx;
               return (
-                <div key={idx} className="glass-level-1 rounded-2xl border border-white/5 overflow-hidden shadow-lg">
+                <div key={idx} className="premium-glass rounded-2xl overflow-hidden shadow-lg">
                   <button
                     onClick={() => setActiveFaq(isOpen ? null : idx)}
                     className="w-full p-5 flex justify-between items-center text-left hover:text-primary transition-colors group"
@@ -140,12 +145,12 @@ export const Support: React.FC = () => {
 
           {/* Live Chat Concierge Side */}
           <div className="lg:col-span-6 lg:sticky lg:top-32">
-            <div className="glass-level-2 rounded-3xl border border-white/10 shadow-2xl overflow-hidden flex flex-col h-[550px]">
+            <div className="premium-glass rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[550px]">
               {/* Header */}
-              <div className="bg-[#0b0e15]/40 p-5 border-b border-white/10 flex items-center gap-3.5">
+              <div className="bg-surface-container-low p-5 border-b border-border flex items-center gap-3.5">
                 <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary relative animate-pulse">
                   <Headphones className="w-5 h-5" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500 absolute bottom-0 right-0 border border-[#10131a]"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-500 absolute bottom-0 right-0 border border-background"></span>
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-sm text-on-surface">Lumina Support</h3>
@@ -154,7 +159,10 @@ export const Support: React.FC = () => {
               </div>
 
               {/* Message window */}
-              <div className="flex-grow p-5 overflow-y-auto space-y-4 custom-scrollbar bg-white/2">
+              <div
+                ref={chatContainerRef}
+                className="flex-grow p-5 overflow-y-auto space-y-4 custom-scrollbar bg-surface-container-lowest"
+              >
                 {messages.map((msg, idx) => {
                   const isBot = msg.sender === 'bot';
                   return (
@@ -170,7 +178,7 @@ export const Support: React.FC = () => {
                       
                       <div className={`p-4 rounded-2xl text-xs leading-relaxed space-y-1 shadow-lg ${
                         isBot
-                          ? 'glass-level-1 border-white/5 rounded-tl-sm text-on-surface-variant'
+                          ? 'premium-glass rounded-tl-sm text-on-surface-variant'
                           : 'accent-gradient text-white rounded-tr-sm'
                       }`}>
                         <p>{msg.text}</p>
@@ -187,23 +195,23 @@ export const Support: React.FC = () => {
                     <div className="w-8 h-8 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center text-primary shrink-0">
                       <Headphones className="w-3.5 h-3.5 animate-spin" />
                     </div>
-                    <div className="glass-level-1 border border-white/5 p-4 rounded-2xl rounded-tl-sm text-xs text-on-surface-variant flex items-center gap-2 shadow-lg">
+                    <div className="premium-glass p-4 rounded-2xl rounded-tl-sm text-xs text-on-surface-variant flex items-center gap-2 shadow-lg">
                       <Loader2 className="w-3.5 h-3.5 animate-spin text-primary" />
                       <span>Assistant is drafting...</span>
                     </div>
                   </div>
                 )}
 
-                <div ref={messagesEndRef} />
+
               </div>
 
               {/* Quick helper buttons */}
-              <div className="px-5 py-3 border-t border-white/5 flex gap-2 overflow-x-auto scrollbar-none whitespace-nowrap bg-white/2">
+              <div className="px-5 py-3 border-t border-border flex gap-2 overflow-x-auto scrollbar-none whitespace-nowrap bg-surface-container-low">
                 {['Track order', 'Return policy', 'Showroom hours'].map((btn) => (
                   <button
                     key={btn}
                     onClick={() => handleSendMessage(btn)}
-                    className="bg-white/5 border border-white/10 hover:border-primary/30 rounded-full px-4 py-1.5 text-[10px] font-display font-semibold uppercase tracking-wider hover:text-primary transition-all duration-300"
+                    className="bg-surface-container border border-border hover:border-primary/30 rounded-full px-4 py-1.5 text-[10px] font-display font-semibold uppercase tracking-wider hover:text-primary transition-all duration-300"
                   >
                     {btn}
                   </button>
@@ -216,18 +224,19 @@ export const Support: React.FC = () => {
                   e.preventDefault();
                   handleSendMessage(inputVal);
                 }}
-                className="p-4 bg-[#0b0e15]/40 border-t border-white/10 flex gap-2"
+                className="p-4 bg-surface-container-low border-t border-border flex gap-2"
               >
                 <input
                   type="text"
                   value={inputVal}
                   onChange={(e) => setInputVal(e.target.value)}
                   placeholder="Ask support a question..."
-                  className="flex-grow bg-white/5 border border-white/10 rounded-full px-5 py-2.5 text-xs text-on-surface placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent"
+                  className="flex-grow bg-surface-container border border-border rounded-full px-5 py-2.5 text-xs text-on-surface placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent"
                 />
+
                 <button
                   type="submit"
-                  className="w-10 h-10 rounded-full bg-primary text-[#002e6a] hover:scale-102 active:scale-95 duration-150 transition-all flex items-center justify-center btn-primary-glow border border-primary/25 shrink-0"
+                  className="w-10 h-10 rounded-full bg-primary text-on-primary hover:scale-102 active:scale-95 duration-150 transition-all flex items-center justify-center btn-primary-glow border border-primary/25 shrink-0"
                 >
                   <Send className="w-4.5 h-4.5" />
                 </button>
