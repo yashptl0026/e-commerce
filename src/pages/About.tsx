@@ -14,12 +14,12 @@ export const About: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="relative z-10 space-y-4 max-w-3xl mx-auto"
         >
-          <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">The Lumina Story</span>
+          <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">The Aetheria Story</span>
           <h1 className="text-4xl sm:text-6xl font-display font-extrabold tracking-tight text-on-surface uppercase">
             Define. Design. Deliver.
           </h1>
           <p className="text-body-lg text-on-surface-variant leading-relaxed text-sm sm:text-base">
-            Lumina Luxe was born out of a desire to create a silent, sophisticated gallery for premium digital artifacts and luxury physical wear. The aesthetic merges clean SaaS utility with the evocative warmth of high fashion.
+            Aetheria Luxe was born out of a desire to create a silent, sophisticated gallery for premium digital artifacts and luxury physical wear. The aesthetic merges clean SaaS utility with the evocative warmth of high fashion.
           </p>
         </motion.div>
       </header>
@@ -35,7 +35,7 @@ export const About: React.FC = () => {
         >
           <img
             src="/about_campaign.png"
-            alt="Lumina Luxe Campaign"
+            alt="Aetheria Luxe Campaign"
             className="w-full h-full object-cover opacity-75"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40"></div>
@@ -94,7 +94,7 @@ export const About: React.FC = () => {
             Sustainability & Responsibility
           </h2>
           <p className="text-white/80 leading-relaxed text-sm sm:text-base max-w-2xl">
-            We are dedicated to building a zero-waste supply chain. All Lumina garments use certified organic fibers, GOTS non-toxic dyes, and Bluesign processing. By manufacturing in small, bespoke drops, we reduce excess stock waste, preserving raw materials and respecting our environment.
+            We are dedicated to building a zero-waste supply chain. All Aetheria garments use certified organic fibers, GOTS non-toxic dyes, and Bluesign processing. By manufacturing in small, bespoke drops, we reduce excess stock waste, preserving raw materials and respecting our environment.
           </p>
         </div>
       </section>
@@ -122,7 +122,7 @@ export const About: React.FC = () => {
               </div>
               <h4 className="font-display font-bold text-lg text-primary">MAYFAIR, LONDON</h4>
               <p className="text-xs text-on-surface-variant leading-relaxed">
-                18 Lumina Lane, Mayfair<br />
+                18 Aetheria Lane, Mayfair<br />
                 London, W1S 4PP
               </p>
             </div>

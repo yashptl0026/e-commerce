@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Globe, Share2, Mail, Check } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { sanitizeInput, validateEmail, checkRateLimit } from '../utils/security';
 
 export const Footer: React.FC = () => {
   const { showToast } = useApp();
@@ -10,10 +11,31 @@ export const Footer: React.FC = () => {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
+    const cleanEmail = sanitizeInput(email.trim());
+
+    if (!cleanEmail) {
+      showToast('Please enter your email address.', 'error');
+      return;
+    }
+
+    if (!validateEmail(cleanEmail)) {
+      showToast('Please enter a valid email address.', 'error');
+      return;
+    }
+
+    // Client-side rate limiting check (60s limit)
+    const rateCheck = checkRateLimit('newsletter', 60000);
+    if (!rateCheck.allowed) {
+      showToast(`Too many attempts. Please wait ${rateCheck.timeLeft}s before signing up again.`, 'error');
+      return;
+    }
+
+    try {
       showToast('Thank you for joining our inner circle!', 'success');
       setSubscribed(true);
       setEmail('');
+    } catch (error) {
+      showToast('An unexpected issue occurred. Please try again later.', 'error');
     }
   };
 
@@ -23,7 +45,7 @@ export const Footer: React.FC = () => {
 
         {/* Brand Column */}
         <div className="col-span-1 sm:col-span-2 lg:col-span-2 space-y-6">
-          <h2 className="text-2xl font-display font-bold tracking-tighter text-on-surface">LUMINA LUXE</h2>
+          <h2 className="text-2xl font-display font-bold tracking-tighter text-on-surface">AETHERIA LUXE</h2>
           <p className="font-body text-on-surface-variant max-w-sm leading-relaxed text-sm">
             Curating the finest in modern elegance. Defining the intersection of performance, design, and prestige since 2024. Experience luxury without compromise.
           </p>
@@ -94,7 +116,7 @@ export const Footer: React.FC = () => {
 
       {/* Footer Bottom */}
       <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
-        <span>© {new Date().getFullYear()} LUMINA LUXE. ALL RIGHTS RESERVED.</span>
+        <span>© {new Date().getFullYear()} AETHERIA LUXE. ALL RIGHTS RESERVED.</span>
         <div className="flex gap-6 font-display font-medium uppercase tracking-widest text-[10px]">
           <span>Visa</span>
           <span>Amex</span>

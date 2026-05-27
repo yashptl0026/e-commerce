@@ -43,7 +43,7 @@ export const NotFound: React.FC = () => {
           className="space-y-4"
         >
           <h1 className="text-2xl sm:text-4xl font-display font-extrabold text-on-surface uppercase tracking-tight">
-            Lost In The Lumina Universe
+            Lost In The Aetheria Universe
           </h1>
           <p className="text-sm sm:text-base text-on-surface-variant max-w-md mx-auto leading-relaxed font-body">
             The page you are looking for has either been moved, archived, or is temporarily unavailable. Let us guide you back to our curated collections.

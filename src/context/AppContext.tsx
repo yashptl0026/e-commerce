@@ -7,6 +7,9 @@ interface AppContextType {
   wishlist: string[];
   orders: Order[];
   userProfile: UserProfile;
+  isLoggedIn: boolean;
+  login: (email: string, name: string) => void;
+  logout: () => void;
   addToCart: (product: Product, quantity: number, color: string, size: string) => void;
   removeFromCart: (productId: string, color: string, size: string) => void;
   updateCartQuantity: (productId: string, color: string, size: string, quantity: number) => void;
@@ -55,14 +58,14 @@ const mockProducts: Product[] = [
       'Responsibly Sourced Down (RDS) certified',
       'Produced in a carbon-neutral certified facility'
     ],
-    shippingInfo: 'Complimentary shipping in signature Lumina Luxe packaging. Returns accepted within 30 days.'
+    shippingInfo: 'Complimentary shipping in signature Aetheria Luxe packaging. Returns accepted within 30 days.'
   },
   {
     id: 'obsidian-smart-watch',
     name: 'Obsidian Smart Watch',
     price: 299.00,
     originalPrice: 375.00,
-    category: 'accessories',
+    category: 'watches',
     subCategory: 'Watches',
     description: 'A sleek, matte black designer smart watch with glowing mechanical style display layout, floating in a dark, atmospheric tech-luxury aesthetic.',
     images: [
@@ -93,7 +96,7 @@ const mockProducts: Product[] = [
     id: 'lunar-elite-sneakers',
     name: 'Lunar Elite Sneakers',
     price: 185.00,
-    category: 'fashion',
+    category: 'footwear',
     subCategory: 'Footwear',
     description: 'Ultralight performance sneakers featuring high-contrast futuristic lines and premium knit mesh engineered for elite comfort and visual distinction.',
     images: [
@@ -280,8 +283,8 @@ const mockProducts: Product[] = [
     ]
   },
   {
-    id: 'lumina-silk-shirt',
-    name: 'Lumina Silk Shirt',
+    id: 'aetheria-silk-shirt',
+    name: 'Aetheria Silk Shirt',
     price: 480.00,
     category: 'fashion',
     subCategory: 'Tailoring',
@@ -311,7 +314,7 @@ const mockProducts: Product[] = [
     id: 'aero-lux-sneaker',
     name: 'Aero-Lux Sneaker',
     price: 720.00,
-    category: 'fashion',
+    category: 'footwear',
     subCategory: 'Footwear',
     description: 'High-performance designer high-tops, displaying reflective technical details on an obsidian and cyan platform.',
     images: [
@@ -389,7 +392,7 @@ const mockProducts: Product[] = [
     id: 'apex-terrain-boots',
     name: 'Apex Terrain Boots',
     price: 1200.00,
-    category: 'fashion',
+    category: 'footwear',
     subCategory: 'Footwear',
     description: 'Matte black luxury leather boots featuring a chunky sculptural sole, technical protection, and high-fashion aesthetics.',
     images: [
@@ -464,10 +467,10 @@ const mockProducts: Product[] = [
     ]
   },
   {
-    id: 'lumina-luxury-serum',
-    name: 'Lumina Luxury Serum',
+    id: 'aetheria-luxury-serum',
+    name: 'Aetheria Luxury Serum',
     price: 185.00,
-    category: 'decor',
+    category: 'beauty',
     subCategory: 'Beauty',
     description: 'A collection of luxury skincare serums housed in frosted glass bottles. Pure premium extracts designed to hydrate and revitalize.',
     images: [
@@ -492,7 +495,7 @@ const mockProducts: Product[] = [
     id: 'shadow-chronograph',
     name: 'Shadow Chronograph Watch',
     price: 2400.00,
-    category: 'accessories',
+    category: 'watches',
     subCategory: 'Watches',
     description: 'A minimalist stealth mechanical wristwatch with a sleek carbon dial and a matte black stainless steel band.',
     images: [
@@ -565,22 +568,34 @@ const defaultProfile: UserProfile = {
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
-    const saved = localStorage.getItem('lumina_cart');
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem('aetheria_cart');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
   });
 
   const [wishlist, setWishlist] = useState<string[]>(() => {
-    const saved = localStorage.getItem('lumina_wishlist');
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem('aetheria_wishlist');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
   });
 
   const [orders, setOrders] = useState<Order[]>(() => {
-    const saved = localStorage.getItem('lumina_orders');
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem('aetheria_orders');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
   });
 
   const [userProfile, setUserProfile] = useState<UserProfile>(() => {
-    const saved = localStorage.getItem('lumina_profile');
+    const saved = localStorage.getItem('aetheria_profile');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -595,22 +610,46 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return defaultProfile;
   });
 
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem('aetheria_logged_in') === 'true';
+    } catch (e) {
+      return false;
+    }
+  });
+
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
   useEffect(() => {
-    localStorage.setItem('lumina_cart', JSON.stringify(cart));
+    try {
+      localStorage.setItem('aetheria_cart', JSON.stringify(cart));
+    } catch (e) {
+      console.error('Local storage write failed for cart:', e);
+    }
   }, [cart]);
 
   useEffect(() => {
-    localStorage.setItem('lumina_wishlist', JSON.stringify(wishlist));
+    try {
+      localStorage.setItem('aetheria_wishlist', JSON.stringify(wishlist));
+    } catch (e) {
+      console.error('Local storage write failed for wishlist:', e);
+    }
   }, [wishlist]);
 
   useEffect(() => {
-    localStorage.setItem('lumina_orders', JSON.stringify(orders));
+    try {
+      localStorage.setItem('aetheria_orders', JSON.stringify(orders));
+    } catch (e) {
+      console.error('Local storage write failed for orders:', e);
+    }
   }, [orders]);
 
   useEffect(() => {
-    localStorage.setItem('lumina_profile', JSON.stringify(userProfile));
+    try {
+      localStorage.setItem('aetheria_profile', JSON.stringify(userProfile));
+    } catch (e) {
+      console.error('Local storage write failed for profile:', e);
+    }
   }, [userProfile]);
 
   const showToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
@@ -630,105 +669,163 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, [toast]);
 
+  const login = (email: string, name: string) => {
+    try {
+      setIsLoggedIn(true);
+      localStorage.setItem('aetheria_logged_in', 'true');
+      setUserProfile((prev) => ({
+        ...prev,
+        fullName: name,
+        email: email
+      }));
+      showToast(`Welcome back, ${name}.`, 'success');
+    } catch (error) {
+      showToast('Error during sign-in simulation.', 'error');
+    }
+  };
+
+  const logout = () => {
+    try {
+      setIsLoggedIn(false);
+      localStorage.setItem('aetheria_logged_in', 'false');
+      showToast('Signed out successfully.', 'info');
+    } catch (error) {
+      showToast('Error during sign-out.', 'error');
+    }
+  };
+
   const addToCart = (product: Product, quantity: number, color: string, size: string) => {
-    setCart((prev) => {
-      const existingIdx = prev.findIndex(
-        (item) =>
-          item.product.id === product.id &&
-          item.selectedColor === color &&
-          item.selectedSize === size
-      );
+    try {
+      setCart((prev) => {
+        const existingIdx = prev.findIndex(
+          (item) =>
+            item.product.id === product.id &&
+            item.selectedColor === color &&
+            item.selectedSize === size
+        );
 
-      if (existingIdx > -1) {
-        const next = [...prev];
-        next[existingIdx].quantity += quantity;
-        showToast(`Updated quantity of ${product.name} in your bag.`, 'success');
-        return next;
-      }
+        if (existingIdx > -1) {
+          const next = [...prev];
+          next[existingIdx].quantity += quantity;
+          showToast(`Updated quantity of ${product.name} in your bag.`, 'success');
+          return next;
+        }
 
-      showToast(`Added ${product.name} to your bag.`, 'success');
-      return [...prev, { product, quantity, selectedColor: color, selectedSize: size }];
-    });
+        showToast(`Added ${product.name} to your bag.`, 'success');
+        return [...prev, { product, quantity, selectedColor: color, selectedSize: size }];
+      });
+    } catch (e) {
+      showToast('Could not add item to bag.', 'error');
+    }
   };
 
   const removeFromCart = (productId: string, color: string, size: string) => {
-    setCart((prev) => {
-      const filtered = prev.filter(
-        (item) =>
-          !(item.product.id === productId &&
-            item.selectedColor === color &&
-            item.selectedSize === size)
-      );
-      showToast('Item removed from your bag.', 'info');
-      return filtered;
-    });
+    try {
+      setCart((prev) => {
+        const filtered = prev.filter(
+          (item) =>
+            !(item.product.id === productId &&
+              item.selectedColor === color &&
+              item.selectedSize === size)
+        );
+        showToast('Item removed from your bag.', 'info');
+        return filtered;
+      });
+    } catch (e) {
+      showToast('Could not remove item from bag.', 'error');
+    }
   };
 
   const updateCartQuantity = (productId: string, color: string, size: string, quantity: number) => {
-    if (quantity <= 0) {
-      removeFromCart(productId, color, size);
-      return;
+    try {
+      if (quantity <= 0) {
+        removeFromCart(productId, color, size);
+        return;
+      }
+      setCart((prev) =>
+        prev.map((item) =>
+          item.product.id === productId &&
+          item.selectedColor === color &&
+          item.selectedSize === size
+            ? { ...item, quantity }
+            : item
+        )
+      );
+    } catch (e) {
+      showToast('Could not update bag quantity.', 'error');
     }
-    setCart((prev) =>
-      prev.map((item) =>
-        item.product.id === productId &&
-        item.selectedColor === color &&
-        item.selectedSize === size
-          ? { ...item, quantity }
-          : item
-      )
-    );
   };
 
   const clearCart = () => {
-    setCart([]);
+    try {
+      setCart([]);
+    } catch (e) {
+      showToast('Could not clear bag.', 'error');
+    }
   };
 
   const toggleWishlist = (productId: string) => {
-    setWishlist((prev) => {
-      const exists = prev.includes(productId);
-      const prodName = mockProducts.find((p) => p.id === productId)?.name || 'Product';
-      if (exists) {
-        showToast(`Removed ${prodName} from your wishlist.`, 'info');
-        return prev.filter((id) => id !== productId);
-      } else {
-        showToast(`Added ${prodName} to your wishlist.`, 'success');
-        return [...prev, productId];
-      }
-    });
+    try {
+      setWishlist((prev) => {
+        const exists = prev.includes(productId);
+        const prodName = mockProducts.find((p) => p.id === productId)?.name || 'Product';
+        if (exists) {
+          showToast(`Removed ${prodName} from your wishlist.`, 'info');
+          return prev.filter((id) => id !== productId);
+        } else {
+          if (!isLoggedIn) {
+            showToast(`Saved ${prodName} to local wishlist. Log in to sync.`, 'success');
+          } else {
+            showToast(`Added ${prodName} to your wishlist.`, 'success');
+          }
+          return [...prev, productId];
+        }
+      });
+    } catch (error) {
+      showToast('Could not update wishlist.', 'error');
+    }
   };
 
   const placeOrder = (shippingAddress: Order['shippingAddress']) => {
-    const subtotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-    const shipping = subtotal > 1000 ? 0 : 25;
-    const tax = Math.round(subtotal * 0.08 * 100) / 100;
-    const total = subtotal + shipping + tax;
+    try {
+      const subtotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+      const shipping = subtotal > 1000 ? 0 : 25;
+      const tax = Math.round(subtotal * 0.08 * 100) / 100;
+      const total = subtotal + shipping + tax;
 
-    const newOrder: Order = {
-      id: `ord-${Math.floor(100000 + Math.random() * 900000)}`,
-      date: new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      }),
-      items: [...cart],
-      subtotal,
-      shipping,
-      tax,
-      total,
-      status: 'processing',
-      shippingAddress
-    };
+      const newOrder: Order = {
+        id: `ord-${Math.floor(100000 + Math.random() * 900000)}`,
+        date: new Date().toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }),
+        items: [...cart],
+        subtotal,
+        shipping,
+        tax,
+        total,
+        status: 'processing',
+        shippingAddress
+      };
 
-    setOrders((prev) => [newOrder, ...prev]);
-    clearCart();
-    showToast('Your order has been placed successfully!', 'success');
-    return newOrder;
+      setOrders((prev) => [newOrder, ...prev]);
+      clearCart();
+      showToast('Your order has been placed successfully!', 'success');
+      return newOrder;
+    } catch (error) {
+      showToast('Failed to place order.', 'error');
+      throw error;
+    }
   };
 
   const updateProfile = (profile: Partial<UserProfile>) => {
-    setUserProfile((prev) => ({ ...prev, ...profile }));
-    showToast('Profile details updated.', 'success');
+    try {
+      setUserProfile((prev) => ({ ...prev, ...profile }));
+      showToast('Profile details updated.', 'success');
+    } catch (error) {
+      showToast('Failed to update profile.', 'error');
+    }
   };
 
   return (
@@ -739,6 +836,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         wishlist,
         orders,
         userProfile,
+        isLoggedIn,
+        login,
+        logout,
         addToCart,
         removeFromCart,
         updateCartQuantity,

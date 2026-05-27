@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CreditCard, Truck, ShieldCheck, Lock, Award } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { sanitizeInput } from '../utils/security';
 
 export const Checkout: React.FC = () => {
   const { cart, userProfile, placeOrder, showToast } = useApp();
@@ -52,13 +53,26 @@ export const Checkout: React.FC = () => {
 
   const handleShippingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const sanitizedForm = {
+      fullName: sanitizeInput(shippingForm.fullName.trim()),
+      addressLine1: sanitizeInput(shippingForm.addressLine1.trim()),
+      addressLine2: sanitizeInput(shippingForm.addressLine2.trim()),
+      city: sanitizeInput(shippingForm.city.trim()),
+      state: sanitizeInput(shippingForm.state.trim()),
+      zipCode: sanitizeInput(shippingForm.zipCode.trim()),
+      country: sanitizeInput(shippingForm.country.trim()),
+      phone: sanitizeInput(shippingForm.phone.trim()),
+    };
+
+    setShippingForm(sanitizedForm);
+
     if (
-      shippingForm.fullName &&
-      shippingForm.addressLine1 &&
-      shippingForm.city &&
-      shippingForm.state &&
-      shippingForm.zipCode &&
-      shippingForm.phone
+      sanitizedForm.fullName &&
+      sanitizedForm.addressLine1 &&
+      sanitizedForm.city &&
+      sanitizedForm.state &&
+      sanitizedForm.zipCode &&
+      sanitizedForm.phone
     ) {
       setStep(2);
     } else {
@@ -68,11 +82,23 @@ export const Checkout: React.FC = () => {
 
   const handlePaymentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const sanitizedPayment = {
+      cardholderName: sanitizeInput(paymentForm.cardholderName.trim()),
+      cardNumber: sanitizeInput(paymentForm.cardNumber.replace(/\s/g, '')),
+      expiryDate: sanitizeInput(paymentForm.expiryDate.trim()),
+      cvc: sanitizeInput(paymentForm.cvc.trim()),
+    };
+
+    setPaymentForm(prev => ({
+      ...prev,
+      cardholderName: sanitizedPayment.cardholderName,
+    }));
+
     if (
-      paymentForm.cardholderName &&
-      paymentForm.cardNumber.replace(/\s/g, '').length >= 15 &&
-      paymentForm.expiryDate.includes('/') &&
-      paymentForm.cvc.length >= 3
+      sanitizedPayment.cardholderName &&
+      sanitizedPayment.cardNumber.length >= 15 &&
+      sanitizedPayment.expiryDate.includes('/') &&
+      sanitizedPayment.cvc.length >= 3
     ) {
       setStep(3);
     } else {
@@ -81,8 +107,16 @@ export const Checkout: React.FC = () => {
   };
 
   const handleCompleteOrder = () => {
-    const orderObj = placeOrder(shippingForm);
-    navigate(`/order-confirmation?orderId=${orderObj.id}`);
+    try {
+      const orderObj = placeOrder(shippingForm);
+      if (orderObj && orderObj.id) {
+        navigate(`/order-confirmation?orderId=${orderObj.id}`);
+      } else {
+        showToast('Error generating transaction record.', 'error');
+      }
+    } catch (error) {
+      showToast('An error occurred during transaction processing. Please try again.', 'error');
+    }
   };
 
   return (

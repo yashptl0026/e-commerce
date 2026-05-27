@@ -21,7 +21,7 @@ export const FAQ: React.FC = () => {
       items: [
         {
           q: "What is your shipping and delivery policy?",
-          a: "Lumina Luxe offers complimentary express delivery on all orders over $1,000 globally. For orders under $1,000, express delivery is available for a flat rate of $25. Delivery typically takes 5-7 business days, fully insured with real-time digital tracking."
+          a: "Aetheria Luxe offers complimentary express delivery on all orders over $1,000 globally. For orders under $1,000, express delivery is available for a flat rate of $25. Delivery typically takes 5-7 business days, fully insured with real-time digital tracking."
         },
         {
           q: "Do you ship internationally?",
@@ -78,7 +78,7 @@ export const FAQ: React.FC = () => {
           a: "We accept all major credit cards (Visa, Mastercard, American Express, Discover), secure digital wallets (Apple Pay, Google Pay, PayPal), and select luxury financing plans like Klarna."
         },
         {
-          q: "Is shopping on Lumina Luxe secure?",
+          q: "Is shopping on Aetheria Luxe secure?",
           a: "Absolutely. Our platform utilizes state-of-the-art secure socket layer (SSL) encryption, PCI-DSS Level 1 payment processing hubs, and robust fraud prevention algorithms to protect your commercial security."
         }
       ]

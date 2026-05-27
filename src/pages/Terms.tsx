@@ -7,7 +7,7 @@ export const Terms: React.FC = () => {
     {
       icon: <Scale className="w-5 h-5 text-primary" />,
       title: "1. Acceptance of Terms",
-      content: "By accessing, browsing, or using the Lumina Luxe digital platform, you explicitly acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these terms, please discontinue using this website."
+      content: "By accessing, browsing, or using the Aetheria Luxe digital platform, you explicitly acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these terms, please discontinue using this website."
     },
     {
       icon: <Users className="w-5 h-5 text-primary" />,
@@ -27,12 +27,12 @@ export const Terms: React.FC = () => {
     {
       icon: <ShieldAlert className="w-5 h-5 text-primary" />,
       title: "5. Intellectual Property",
-      content: "All design components, interfaces, imagery, styling presets, text, custom illustrations, and software code compiled on Lumina Luxe are protected by international trademark, copyright, and digital proprietary rights laws. Reproduction or cloning is strictly prohibited."
+      content: "All design components, interfaces, imagery, styling presets, text, custom illustrations, and software code compiled on Aetheria Luxe are protected by international trademark, copyright, and digital proprietary rights laws. Reproduction or cloning is strictly prohibited."
     },
     {
       icon: <Globe className="w-5 h-5 text-primary" />,
       title: "6. Limitation of Liability",
-      content: "Lumina Luxe, its executives, and manufacturing facilities shall not be held liable for any indirect, incidental, punitive, or consequential damages arising from the shipping delays, out-of-stock anomalies, or system unavailability. Purchases are subject to our standard warranties."
+      content: "Aetheria Luxe, its executives, and manufacturing facilities shall not be held liable for any indirect, incidental, punitive, or consequential damages arising from the shipping delays, out-of-stock anomalies, or system unavailability. Purchases are subject to our standard warranties."
     }
   ];
 
@@ -86,8 +86,8 @@ export const Terms: React.FC = () => {
         className="mt-12 text-center text-xs text-on-surface-variant max-w-lg mx-auto leading-relaxed border-t border-border pt-8"
       >
         For inquiries regarding our terms, commercial licensing, or physical boutique showroom guidelines, please contact our Legal Department at{" "}
-        <a href="mailto:legal@luminaluxe.com" className="text-primary underline hover:text-secondary transition-colors">
-          legal@luminaluxe.com
+        <a href="mailto:legal@aetherialuxe.com" className="text-primary underline hover:text-secondary transition-colors">
+          legal@aetherialuxe.com
         </a>.
       </motion.div>
     </main>

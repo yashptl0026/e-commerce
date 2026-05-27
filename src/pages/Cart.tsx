@@ -33,10 +33,10 @@ export const Cart: React.FC = () => {
   const handleApplyPromo = (e: React.FormEvent) => {
     e.preventDefault();
     const code = promoCode.trim().toUpperCase();
-    if (code === 'LUMINA20') {
+    if (code === 'AETHERIA20') {
       setDiscountPercent(0.2);
       setDiscountAmount(0);
-      setAppliedCode('LUMINA20 (20% OFF)');
+      setAppliedCode('AETHERIA20 (20% OFF)');
       showToast('Promo code applied: 20% discount!', 'success');
     } else if (code === 'WELCOME') {
       setDiscountAmount(50);
@@ -44,7 +44,7 @@ export const Cart: React.FC = () => {
       setAppliedCode('WELCOME ($50 OFF)');
       showToast('Promo code applied: $50 discount!', 'success');
     } else {
-      showToast('Invalid promo code. Try LUMINA20 or WELCOME.', 'error');
+      showToast('Invalid promo code. Try AETHERIA20 or WELCOME.', 'error');
     }
     setPromoCode('');
   };

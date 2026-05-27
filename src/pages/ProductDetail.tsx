@@ -64,7 +64,7 @@ const DEFAULT_MOCK_REVIEWS: Review[] = [
     rating: 5,
     date: 'May 20, 2026',
     headline: 'Exceeded all luxury expectations',
-    comment: 'Lumina Luxe delivers once again. The packaging, signature detailing, and structural design feel incredibly premium. Definitely worth the investment.',
+    comment: 'Aetheria Luxe delivers once again. The packaging, signature detailing, and structural design feel incredibly premium. Definitely worth the investment.',
     verified: true
   },
   {
@@ -176,7 +176,7 @@ export const ProductDetail: React.FC = () => {
   };
 
   const handleReserve = () => {
-    showToast(`Zenith Reservation: 1x ${product.name} (${selectedColor} / ${selectedSize}) reserved successfully at Lumina Soho store desk!`, 'success');
+    showToast(`Zenith Reservation: 1x ${product.name} (${selectedColor} / ${selectedSize}) reserved successfully at Aetheria Soho store desk!`, 'success');
   };
 
   const toggleAccordion = (section: string) => {
@@ -243,7 +243,7 @@ export const ProductDetail: React.FC = () => {
         {/* Product Configurations Side */}
         <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-8">
           <div className="space-y-4">
-            <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Lumina Luxury System</span>
+            <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Aetheria Luxury System</span>
             <div className="flex justify-between items-start gap-4">
               <h1 className="text-3xl sm:text-4xl font-display font-extrabold text-on-surface leading-tight">
                 {product.name}
@@ -455,7 +455,7 @@ export const ProductDetail: React.FC = () => {
                     className="overflow-hidden"
                   >
                     <p className="pb-5 text-xs text-on-surface-variant leading-relaxed">
-                      {product.shippingInfo || 'Complimentary express delivery in signature Lumina Luxe packaging. Fully insured and tracked in real-time. Secure returns are accepted within 30 days of shipment receipt.'}
+                      {product.shippingInfo || 'Complimentary express delivery in signature Aetheria Luxe packaging. Fully insured and tracked in real-time. Secure returns are accepted within 30 days of shipment receipt.'}
                     </p>
                   </motion.div>
                 )}

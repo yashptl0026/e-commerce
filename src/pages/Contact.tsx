@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Clock, Send, CheckCircle, MapPin } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { sanitizeInput, validateEmail, checkRateLimit } from '../utils/security';
 
 export const Contact: React.FC = () => {
   const { showToast } = useApp();
@@ -15,10 +16,33 @@ export const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.name.trim() && formData.email.trim() && formData.message.trim()) {
+    const cleanName = sanitizeInput(formData.name.trim());
+    const cleanEmail = sanitizeInput(formData.email.trim());
+    const cleanMessage = sanitizeInput(formData.message.trim());
+
+    if (!cleanName || !cleanEmail || !cleanMessage) {
+      showToast('Please fill in all required fields.', 'error');
+      return;
+    }
+
+    if (!validateEmail(cleanEmail)) {
+      showToast('Please enter a valid email address.', 'error');
+      return;
+    }
+
+    // Rate Limit Check (30 seconds limit)
+    const rateCheck = checkRateLimit('contact', 30000);
+    if (!rateCheck.allowed) {
+      showToast(`Please wait ${rateCheck.timeLeft}s before sending another message.`, 'error');
+      return;
+    }
+
+    try {
       showToast('Your message has been sent to our Concierge desk.', 'success');
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
+    } catch (error) {
+      showToast('Failed to send message. Please try again.', 'error');
     }
   };
 
@@ -26,8 +50,8 @@ export const Contact: React.FC = () => {
     {
       icon: <Mail className="w-5 h-5 text-primary" />,
       label: "Email Concierge",
-      value: "concierge@luminaluxe.com",
-      link: "mailto:concierge@luminaluxe.com",
+      value: "concierge@aetherialuxe.com",
+      link: "mailto:concierge@aetherialuxe.com",
       desc: "Response within 12 hours"
     },
     {
@@ -111,7 +135,7 @@ export const Contact: React.FC = () => {
                 <span>HQ & Flagship Boutique</span>
               </div>
               <p className="text-xs text-on-surface-variant leading-relaxed">
-                Lumina Luxe Gallery Boutique<br />
+                Aetheria Luxe Gallery Boutique<br />
                 742 Frost Obsidian Boulevard, Soho<br />
                 New York, NY 10001
               </p>

@@ -12,7 +12,7 @@ export const Privacy: React.FC = () => {
     {
       icon: <Smartphone className="w-5 h-5 text-primary" />,
       title: "2. Device & Usage Data",
-      content: "When you visit Lumina Luxe, we automatically gather diagnostic details about your device, browser, IP address, timezone, and interactive behaviors on our platform. This data is leveraged to customize your luxury interface presentation."
+      content: "When you visit Aetheria Luxe, we automatically gather diagnostic details about your device, browser, IP address, timezone, and interactive behaviors on our platform. This data is leveraged to customize your luxury interface presentation."
     },
     {
       icon: <Lock className="w-5 h-5 text-primary" />,
@@ -86,8 +86,8 @@ export const Privacy: React.FC = () => {
         className="mt-12 text-center text-xs text-on-surface-variant max-w-lg mx-auto leading-relaxed border-t border-border pt-8"
       >
         If you have questions regarding this Privacy Policy, our data processing techniques, or wish to submit a data erasure request, please contact our Privacy Team at{" "}
-        <a href="mailto:privacy@luminaluxe.com" className="text-primary underline hover:text-secondary transition-colors">
-          privacy@luminaluxe.com
+        <a href="mailto:privacy@aetherialuxe.com" className="text-primary underline hover:text-secondary transition-colors">
+          privacy@aetherialuxe.com
         </a>.
       </motion.div>
     </main>
