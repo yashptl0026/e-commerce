@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Heart, ShoppingBag, Star } from 'lucide-react';
@@ -12,6 +12,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { wishlist, toggleWishlist, addToCart } = useApp();
   const isWishlisted = wishlist.includes(product.id);
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -38,11 +39,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         className="glass-level-1 rounded-2xl p-3 sm:p-4 flex flex-col gap-3 sm:gap-4 card-hover overflow-hidden relative"
       >
         {/* Image Frame */}
-        <div className="relative aspect-square rounded-xl overflow-hidden bg-surface-container img-zoom">
+        <div className="relative aspect-square rounded-xl overflow-hidden bg-surface-container img-zoom z-0">
+          {!isImgLoaded && (
+            <div className="absolute inset-0 bg-surface-container-high animate-pulse flex items-center justify-center z-10">
+              <div className="w-6 h-6 rounded-full border-2 border-primary/20 border-t-primary animate-spin" />
+            </div>
+          )}
           <img
             src={product.images[0]}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-700"
+            loading="lazy"
+            onLoad={() => setIsImgLoaded(true)}
+            className={`w-full h-full object-cover transition-transform duration-700 ${isImgLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
           />
 
           {/* Badges */}
@@ -62,11 +70,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {/* Wishlist Button */}
           <button
             onClick={handleWishlistToggle}
-            className={`absolute top-2 right-2 sm:top-3 sm:right-3 p-1.5 sm:p-2 rounded-full glass-level-2 z-10 hover:scale-110 active:scale-95 transition-all ${
+            aria-label={`Toggle wishlist for ${product.name}`}
+            className={`absolute top-2 right-2 sm:top-3 sm:right-3 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full glass-level-2 z-10 hover:scale-110 active:scale-95 transition-all cursor-pointer ${
               isWishlisted ? 'text-primary' : 'text-on-surface hover:text-primary'
             }`}
           >
-            <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isWishlisted ? 'fill-primary' : ''}`} />
+            <Heart className={`w-4 h-4 sm:w-4 sm:h-4 ${isWishlisted ? 'fill-primary' : ''}`} />
           </button>
 
           {/* Quick Add Overlay */}
@@ -110,9 +119,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {/* Mobile-only Quick Add Button */}
             <button
               onClick={handleQuickAdd}
-              className="sm:hidden p-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full hover:bg-primary hover:text-on-primary transition-all active:scale-90"
+              aria-label={`Quick add ${product.name} to bag`}
+              className="sm:hidden w-11 h-11 bg-primary/10 text-primary border border-primary/20 rounded-full hover:bg-primary hover:text-on-primary transition-all active:scale-90 flex items-center justify-center cursor-pointer"
             >
-              <ShoppingBag className="w-3.5 h-3.5" />
+              <ShoppingBag className="w-4 h-4" />
             </button>
           </div>
         </div>

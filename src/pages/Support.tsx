@@ -14,7 +14,7 @@ export const Support: React.FC = () => {
   const faqs = [
     {
       q: 'What is your shipping and delivery policy?',
-      a: 'Lumina Luxe offers complimentary express delivery on all orders over $1,000 globally. For orders under $1,000, express delivery is available for a flat rate of $25. Delivery typically takes 5-7 business days, fully insured with real-time digital tracking.'
+      a: 'Aetheria Luxe offers complimentary express delivery on all orders over $1,000 globally. For orders under $1,000, express delivery is available for a flat rate of $25. Delivery typically takes 5-7 business days, fully insured with real-time digital tracking.'
     },
     {
       q: 'How do I request a return or exchange?',
@@ -36,7 +36,7 @@ export const Support: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: 'bot',
-      text: 'Greetings. I am your Lumina digital support assistant. How may I guide your luxury acquisition experience today?',
+      text: 'Greetings. I am your Aetheria digital support assistant. How may I guide your luxury acquisition experience today?',
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ]);
@@ -79,7 +79,7 @@ export const Support: React.FC = () => {
       } else if (q.includes('size') || q.includes('fit') || q.includes('tailor')) {
         botResponseText = "Our items follow a standard architectural drape. We offer bespoke sizing calibrations at our physical showrooms in Soho and Tokyo. Let me know if you would like me to schedule a showroom slot.";
       } else if (q.includes('hours') || q.includes('store') || q.includes('showroom')) {
-        botResponseText = "Lumina Luxe showrooms are located in Soho (NYC), Mayfair (London), and Ginza (Tokyo). Hours are Monday to Saturday: 10:00 AM - 8:00 PM, and Sunday: 11:00 AM - 6:00 PM.";
+        botResponseText = "Aetheria Luxe showrooms are located in Soho (NYC), Mayfair (London), and Ginza (Tokyo). Hours are Monday to Saturday: 10:00 AM - 8:00 PM, and Sunday: 11:00 AM - 6:00 PM.";
       }
 
       setMessages((prev) => [
@@ -153,7 +153,7 @@ export const Support: React.FC = () => {
                   <span className="w-2.5 h-2.5 rounded-full bg-green-500 absolute bottom-0 right-0 border border-background"></span>
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-sm text-on-surface">Lumina Support</h3>
+                  <h3 className="font-display font-bold text-sm text-on-surface">Aetheria Support</h3>
                   <span className="text-[10px] text-primary uppercase font-bold tracking-widest">Live Automated Support</span>
                 </div>
               </div>

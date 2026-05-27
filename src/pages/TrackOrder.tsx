@@ -44,7 +44,7 @@ export const TrackOrder: React.FC = () => {
         history: [
           { status: "In Transit - Departed Sorting Facility", location: "Cincinnati Hub, OH", time: "May 24, 2026 - 11:20 AM" },
           { status: "Processing - Arrived at Hub", location: "Cincinnati Hub, OH", time: "May 23, 2026 - 04:45 PM" },
-          { status: "Order Picked & Inspected", location: "Lumina Distribution Center, NY", time: "May 23, 2026 - 09:15 AM" },
+          { status: "Order Picked & Inspected", location: "Aetheria Distribution Center, NY", time: "May 23, 2026 - 09:15 AM" },
           { status: "Payment Confirmed - Order Placed", location: "Digital Boutique Terminal", time: "May 22, 2026 - 08:30 PM" }
         ]
       };
@@ -139,8 +139,8 @@ export const TrackOrder: React.FC = () => {
                 className="space-y-6 relative z-10"
               >
                 {/* Tracking Status Pipeline */}
-                <div className="glass-level-1 p-6 sm:p-8 rounded-3xl border border-white/5 shadow-xl space-y-8">
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-white/5">
+                <div className="glass-level-1 p-6 sm:p-8 rounded-3xl shadow-xl space-y-8">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-border">
                     <div>
                       <span className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Order Reference</span>
                       <h3 className="text-xl font-display font-extrabold text-on-surface">{trackingResult.orderId}</h3>
@@ -161,7 +161,7 @@ export const TrackOrder: React.FC = () => {
                           <div className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all ${
                             isDone
                               ? 'bg-primary text-on-primary border-primary font-bold shadow-lg shadow-primary/20'
-                              : 'bg-white/5 border-white/10 text-on-surface-variant'
+                              : 'bg-surface-container border-border text-on-surface-variant'
                           } ${isCurrent ? 'ring-4 ring-primary/20 animate-pulse' : ''}`}>
                             {isDone ? <CheckCircle2 className="w-5 h-5" /> : <Package className="w-5 h-5" />}
                           </div>
@@ -182,17 +182,17 @@ export const TrackOrder: React.FC = () => {
                 {/* Grid for shipping details and logs */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                   {/* Shipping Logs */}
-                  <div className="md:col-span-7 glass-level-1 p-6 rounded-3xl border border-white/5 shadow-xl space-y-6">
+                  <div className="md:col-span-7 glass-level-1 p-6 rounded-3xl shadow-xl space-y-6">
                     <h4 className="font-display font-extrabold text-xs uppercase tracking-widest text-on-surface flex items-center gap-2">
                       <Truck className="w-4.5 h-4.5 text-primary" /> Delivery Audit Log
                     </h4>
                     
-                    <div className="space-y-6 pl-2 relative border-l border-white/10 ml-3">
+                    <div className="space-y-6 relative border-l border-border ml-3">
                       {trackingResult.history.map((log: any, idx: number) => (
                         <div key={idx} className="relative pl-6 space-y-1">
                           {/* Bullet point indicator */}
-                          <span className={`absolute -left-[5px] top-1.5 w-2 h-2 rounded-full ${
-                            idx === 0 ? 'bg-primary ring-4 ring-primary/20 scale-125' : 'bg-white/20'
+                          <span className={`absolute -left-1 top-1.5 w-2 h-2 rounded-full ${
+                            idx === 0 ? 'bg-primary ring-4 ring-primary/20 scale-125' : 'bg-on-surface-variant/30'
                           }`}></span>
                           <h5 className={`text-xs font-semibold ${idx === 0 ? 'text-primary' : 'text-on-surface'}`}>
                             {log.status}
@@ -210,7 +210,7 @@ export const TrackOrder: React.FC = () => {
                   {/* Delivery Metadata */}
                   <div className="md:col-span-5 space-y-6">
                     {/* Details card */}
-                    <div className="glass-level-1 p-6 rounded-3xl border border-white/5 shadow-xl space-y-4">
+                    <div className="glass-level-1 p-6 rounded-3xl shadow-xl space-y-4">
                       <h4 className="font-display font-extrabold text-xs uppercase tracking-widest text-on-surface flex items-center gap-2">
                         <ShieldCheck className="w-4.5 h-4.5 text-primary" /> Shipment Details
                       </h4>
@@ -231,7 +231,7 @@ export const TrackOrder: React.FC = () => {
                     </div>
 
                     {/* Items in shipment */}
-                    <div className="glass-level-1 p-6 rounded-3xl border border-white/5 shadow-xl space-y-4">
+                    <div className="glass-level-1 p-6 rounded-3xl shadow-xl space-y-4">
                       <h4 className="font-display font-extrabold text-xs uppercase tracking-widest text-on-surface">Items Staged</h4>
                       <div className="space-y-3">
                         {trackingResult.items.map((item: any, idx: number) => (

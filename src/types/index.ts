@@ -3,7 +3,7 @@ export interface Product {
   name: string;
   price: number;
   originalPrice?: number;
-  category: 'fashion' | 'electronics' | 'accessories' | 'decor';
+  category: 'fashion' | 'footwear' | 'watches' | 'electronics' | 'accessories' | 'beauty' | 'decor';
   subCategory?: string;
   description: string;
   images: string[];

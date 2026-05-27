@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SlidersHorizontal, ChevronDown, RefreshCw } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
+import { SEO } from '../components/SEO';
 
 export const Collection: React.FC = () => {
   const { products } = useApp();
@@ -82,7 +83,15 @@ export const Collection: React.FC = () => {
 
   // Count items per category
   const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { fashion: 0, electronics: 0, accessories: 0, decor: 0 };
+    const counts: Record<string, number> = {
+      fashion: 0,
+      footwear: 0,
+      watches: 0,
+      electronics: 0,
+      accessories: 0,
+      beauty: 0,
+      decor: 0
+    };
     products.forEach((p) => {
       if (counts[p.category] !== undefined) {
         counts[p.category]++;
@@ -181,8 +190,17 @@ export const Collection: React.FC = () => {
     };
   }, [currentPage, totalPages]);
 
+  const canonicalUrl = categoryParam
+    ? `${window.location.origin}${window.location.pathname}?category=${categoryParam}`
+    : `${window.location.origin}${window.location.pathname}`;
+
   return (
     <main className="flex-grow pt-20 pb-16 md:pt-28 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
+      <SEO
+        title={categoryParam ? `${categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1)} Collection` : 'Our Collection'}
+        description={`Explore our curated selection of high-performance ${categoryParam || 'luxury'} products tailored for aesthetics, utility, and design.`}
+        canonical={canonicalUrl}
+      />
       {/* Header Banner */}
       <header className="mb-12 space-y-6">
         <nav className="flex items-center gap-2 text-xs text-on-surface-variant font-display font-medium tracking-widest uppercase">
