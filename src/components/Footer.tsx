@@ -65,6 +65,7 @@ export const Footer: React.FC = () => {
           <nav className="flex flex-col gap-2.5 text-sm">
             <Link to="/track-order" className="text-on-surface-variant hover:text-primary transition-colors">Track Order</Link>
             <Link to="/faq" className="text-on-surface-variant hover:text-primary transition-colors">FAQ Help</Link>
+            <Link to="/return-policy" className="text-on-surface-variant hover:text-primary transition-colors">Return Policy</Link>
             <Link to="/support" className="text-on-surface-variant hover:text-primary transition-colors">Concierge Desk</Link>
             <Link to="/contact" className="text-on-surface-variant hover:text-primary transition-colors">Contact Us</Link>
           </nav>

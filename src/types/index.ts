@@ -5,6 +5,7 @@ export interface Product {
   originalPrice?: number;
   category: 'fashion' | 'footwear' | 'watches' | 'electronics' | 'accessories' | 'beauty' | 'decor';
   subCategory?: string;
+  brand?: string;
   description: string;
   images: string[];
   colors: { name: string; hex: string }[];

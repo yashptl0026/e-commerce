@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Heart, ShoppingBag, Star } from 'lucide-react';
+import { Heart, ShoppingBag, Star, Eye } from 'lucide-react';
 import type { Product } from '../types';
 import { useApp } from '../context/AppContext';
 
@@ -10,9 +10,15 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { wishlist, toggleWishlist, addToCart } = useApp();
+  const { wishlist, toggleWishlist, addToCart, openQuickView } = useApp();
   const isWishlisted = wishlist.includes(product.id);
   const [isImgLoaded, setIsImgLoaded] = useState(false);
+
+  const handleQuickViewToggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openQuickView(product);
+  };
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -78,6 +84,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <Heart className={`w-4 h-4 sm:w-4 sm:h-4 ${isWishlisted ? 'fill-primary' : ''}`} />
           </button>
 
+          {/* Quick View Button */}
+          <button
+            onClick={handleQuickViewToggle}
+            aria-label={`Quick view ${product.name}`}
+            className="absolute top-14 right-2 sm:top-16 sm:right-3 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full glass-level-2 z-10 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer text-on-surface hover:text-primary"
+          >
+            <Eye className="w-4 h-4 sm:w-4 sm:h-4" />
+          </button>
+
           {/* Quick Add Overlay */}
           <div className="absolute inset-x-0 bottom-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10 hidden sm:block">
             <button
@@ -93,13 +108,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Details */}
         <div className="flex-grow flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-1 text-[9px] sm:text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">
-              <span>{product.subCategory || product.category}</span>
+            <div className="flex items-center gap-1.5 text-[9px] sm:text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">
+              <span>{product.brand || product.subCategory || product.category}</span>
               <span>•</span>
-              <span className="flex items-center gap-0.5">
-                <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-primary text-primary" />
-                {product.rating}
-              </span>
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-2.5 h-2.5 sm:w-3 sm:h-3 ${
+                      i < Math.floor(product.rating)
+                        ? 'fill-primary text-primary'
+                        : 'text-on-surface-variant/20'
+                    }`}
+                  />
+                ))}
+                <span className="ml-1 text-on-surface font-semibold">{product.rating}</span>
+              </div>
             </div>
             <h4 className="text-sm sm:text-body-lg font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-1 mb-0.5 sm:mb-1">
               {product.name}

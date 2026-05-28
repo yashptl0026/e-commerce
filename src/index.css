@@ -308,3 +308,13 @@ select option {
   background-color: var(--color-surface-container);
   color: var(--color-on-surface);
 }
+
+/* Back to Top positioning */
+.back-to-top {
+  right: 24px;
+}
+
+/* Demo Switcher positioning */
+.demo-switcher-wrap {
+  right: 0;
+}

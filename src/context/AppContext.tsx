@@ -20,6 +20,9 @@ interface AppContextType {
   toast: { message: string; type: 'success' | 'error' | 'info' } | null;
   showToast: (message: string, type?: 'success' | 'error' | 'info') => void;
   hideToast: () => void;
+  activeQuickViewProduct: Product | null;
+  openQuickView: (product: Product) => void;
+  closeQuickView: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -499,7 +502,7 @@ const mockProducts: Product[] = [
     subCategory: 'Watches',
     description: 'A minimalist stealth mechanical wristwatch with a sleek carbon dial and a matte black stainless steel band.',
     images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuBaVin4vL3N81p2nwWolEyE5B3dID4aCUul9Y4_mfVt7zLRWXpnBzOf7WjzMDoeKWrVj0fM657rTDQZbHmfwOZm2L79fUOQhace737wHPUENab7I0iTrgrMfgt49Y2K4gDppElJKh_AaYIqynyc7zSrMYDFh72h-fOis-3euwczdcSuuDOMW5r9B06pR50jLc7Z8F5ex_uf8qPkQkGRGEF-ayg4ibnjTZdIs068RbCDx7vmrZyluN-_vyWG_iorUkjV0-hlC-tdhPU'
+      '/shadow-chronograph.png'
     ],
     colors: [
       { name: 'Shadow Black', hex: '#171717' }
@@ -545,6 +548,134 @@ const mockProducts: Product[] = [
     ]
   }
 ];
+
+const decorProducts: Product[] = [
+  {
+    id: 'scandi-lounge-chair',
+    name: 'Scandi Lounge Chair',
+    price: 520.00,
+    category: 'decor',
+    subCategory: 'Chairs',
+    brand: 'NordicForm',
+    description: 'An iconic lounge chair blending timeless Scandinavian design with unparalleled relaxation. Sculpted from premium white-oiled oak frame and upholstered in high-density bouclé fabric.',
+    images: [
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAIKPiC59wj4tkQHNKxwKcka_A3IlKDHSBr_Ui75LJjfr6rE0d_rFL96od3sFuwbb2BVoKs8oj6S6vKKXo5MUhw3x_CwpqLPBYXWhAO-Pxm8JXmtF4WFoiBz8_nzaJfU_mAywSgWJCo_5T21SC-Q1hFHioQNaXGQ4z32lUxkqqMR6PPl9P5FDSlW-ERBO_VfKeJ0b9ijmwsusYo-XB2UDxt6bWb4FaA1RQ3HhT0uWID53xEOZ26KOZ1gsQueE0kUKw78sNG7opujPo'
+    ],
+    colors: [
+      { name: 'Cream Bouclé', hex: '#FAF9F6' },
+      { name: 'Oatmeal Wool', hex: '#D2B48C' }
+    ],
+    sizes: ['Standard'],
+    rating: 4.9,
+    isNew: true,
+    details: [
+      'Solid FSC-certified white-oiled European oak wood frame',
+      'Premium textured bouclé fabric (80% wool, 20% cotton)',
+      'Handcrafted joinery detailing for longevity',
+      'Ergonomically contoured seat for luxurious lumbar comfort'
+    ],
+    sustainability: [
+      'Wood sourced from responsibly managed forests',
+      'Oeko-Tex certified organic fiber textiles'
+    ]
+  },
+  {
+    id: 'minimalist-oak-sideboard',
+    name: 'Minimalist Oak Sideboard',
+    price: 1100.00,
+    category: 'decor',
+    subCategory: 'Tables',
+    brand: 'NordicForm',
+    description: 'A beautifully resolved storage solution with slatted sliding doors. Provides elegant styling and clean concealment for modern living spaces.',
+    images: [
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBNs8x75EYALHnv1U3hRE36ksR3Cxer862Uhys_vuxozoV8JGB7qoXKs99M8IbfSmtR7dDG2zUKWsraiTHGPMBUECM-YAHXNehT_z10GCX-5RFwPml22Z0lpU8dY8CzckHpzuSGplP4keJzaj8IVw1d7jpPaAWsWEz8B0JiUiARw7vCqMLepATHHBFgF9VbtM4QNVs8AWMj0vbmgwr8ILAZfBMroGygBitOHSEg2xpU9oudhu6gfNGfuK_O5bmbgyFwajkRsTXLSeA'
+    ],
+    colors: [
+      { name: 'Natural Oak', hex: '#EEDC82' },
+      { name: 'Dark Smoked Oak', hex: '#5C4033' }
+    ],
+    sizes: ['Standard'],
+    rating: 4.8,
+    details: [
+      'Seamless slatted sliding doors with soft-close track mechanism',
+      'Veneered oak storage frame with solid oak leg details',
+      'Adjustable internal shelving layouts with wire pathways',
+      'Finished with natural zero-VOC ecological oils'
+    ],
+    sustainability: [
+      '100% recyclable timber frame materials',
+      'Zero volatile organic compounds in finishes'
+    ]
+  },
+  {
+    id: 'terrazzo-side-table',
+    name: 'Terrazzo Side Table',
+    price: 290.00,
+    category: 'decor',
+    subCategory: 'Tables',
+    brand: 'Artisan Studio',
+    description: 'A sculptural side table showcasing a solid cylindrical base and a polished geometric top made from custom organic flecked terrazzo.',
+    images: [
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBtaY_pUePO5Pk45hQH4ngkh8rlN-8Hv5kV31Aren82KPmH80jo3q9rU3Z9FLfPxNLOLEfRRc5w--wZ_Hi20t5dcxMsm7w3x9GhrOM7GM9BNe5ePNeI4Yd3eOwbhNifeGqOzKBeOGajJEJ61mNvvWZpgQyUWsBVuRWW1BWJsP0k_ycrs5hpfC1dJ1ur_G7Lq1XbOVK2lForACVUH7X7kEdlmZMhO5KbEWyF2NT17807E8lOrwC5Fa9CRSMXmPzjo5am8dhMkQ1ySp0'
+    ],
+    colors: [
+      { name: 'Cream Multi-Fleck', hex: '#EAE6DF' },
+      { name: 'Obsidian Speckle', hex: '#2B2B2B' }
+    ],
+    sizes: ['Standard'],
+    rating: 4.7,
+    isSale: true,
+    originalPrice: 350.00,
+    details: [
+      'Cast terrazzo composite top featuring natural marble aggregates',
+      'Durable stain-resistant satin seal coating',
+      'Sleek circular profile coordinates with modern seating',
+      'Heavy monolithic design prevents tipping'
+    ]
+  },
+  {
+    id: 'nordic-pendant-light',
+    name: 'Nordic Pendant Light',
+    price: 180.00,
+    category: 'decor',
+    subCategory: 'Lighting',
+    brand: 'LumenCraft',
+    description: 'An architectural dome pendant lamp crafted from spun aluminum with a matte sand texture, casting a soft glare-free downward glow.',
+    images: [
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBno99WOBueYImcyeAmMN08wvq37AS2WBU0zsUftVC-qKNVS5bcD8gM2eGpJFKBEPJoO6iQGPg7kGbDPUaAfDz1LHSWhVSKVrUnswu3FFVRfurU-tDjMXbaG6RBsgPzldeFcGX7jqtaDWcGWodg7TyHju6kgHJ0XiOLpAcwNLRsVWuLSvPovkw2GXg83eXBmS5_KjaC7gpJvCnX218Io_SkngtNBeGsMxMW0PPni0r_xghP9LNU8_Kd77YWdAUqg3HOMsv1p9eaSuE'
+    ],
+    colors: [
+      { name: 'Sand White', hex: '#ECEAE2' },
+      { name: 'Charcoal Black', hex: '#1C1C1C' }
+    ],
+    sizes: ['Standard'],
+    rating: 4.6,
+    details: [
+      'Spun grade-A aluminum shade with textured powdercoat finish',
+      'Textile cord matching the shade color (3-meter length)',
+      'Compatible with E26 smart LED bulbs (not included)',
+      'Polished brass interior detail for warmer light bounce'
+    ]
+  }
+];
+
+const productsWithBrands: Product[] = mockProducts.map(p => {
+  let brand = 'Aetheria';
+  if (p.id.includes('watch') || p.id.includes('chronograph')) {
+    brand = 'Obsidian Labs';
+  } else if (p.id.includes('sneaker') || p.id.includes('boot')) {
+    brand = 'Lunar Design';
+  } else if (p.id.includes('audio')) {
+    brand = 'Aura';
+  } else if (p.id.includes('cargo') || p.id.includes('pack')) {
+    brand = 'Obsidian Labs';
+  } else if (p.id.includes('serum')) {
+    brand = 'Aetheria Beauty';
+  }
+  return { ...p, brand };
+});
+
+const finalProductsList: Product[] = [...productsWithBrands, ...decorProducts];
 
 const defaultProfile: UserProfile = {
   fullName: 'Alexander Mercer',
@@ -619,6 +750,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
 
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
+  const [activeQuickViewProduct, setActiveQuickViewProduct] = useState<Product | null>(null);
+
+  const openQuickView = (product: Product) => {
+    setActiveQuickViewProduct(product);
+  };
+
+  const closeQuickView = () => {
+    setActiveQuickViewProduct(null);
+  };
 
   useEffect(() => {
     try {
@@ -831,7 +971,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   return (
     <AppContext.Provider
       value={{
-        products: mockProducts,
+        products: finalProductsList,
         cart,
         wishlist,
         orders,
@@ -848,7 +988,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         updateProfile,
         toast,
         showToast,
-        hideToast
+        hideToast,
+        activeQuickViewProduct,
+        openQuickView,
+        closeQuickView
       }}
     >
       {children}
