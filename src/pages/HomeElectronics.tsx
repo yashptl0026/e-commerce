@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Cpu, Zap, Radio, Volume2, Bluetooth, Battery, Star, ArrowRight } from 'lucide-react';
+import { Cpu, Zap, Radio, Volume2, Bluetooth, Battery, ArrowRight } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
 import { SEO } from '../components/SEO';

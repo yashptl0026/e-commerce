@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Star, ShoppingBag, Eye, Heart } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
 import { SEO } from '../components/SEO';
 
 export const HomeFashion: React.FC = () => {
-  const { products, openQuickView, wishlist, toggleWishlist } = useApp();
+  const { products } = useApp();
   const navigate = useNavigate();
   const carouselRef = useRef<HTMLDivElement>(null);
 

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingBag, Eye, Star, Info, ArrowRight, Heart } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
 import { SEO } from '../components/SEO';
 
 export const HomeFurniture: React.FC = () => {
-  const { products, openQuickView, wishlist, toggleWishlist } = useApp();
+  const { products, openQuickView } = useApp();
   const navigate = useNavigate();
 
   // Filter decor/furniture products
