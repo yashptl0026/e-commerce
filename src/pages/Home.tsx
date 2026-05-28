@@ -118,7 +118,7 @@ export const Home: React.FC = () => {
           <h1 className="text-4xl sm:text-6xl font-display font-extrabold text-on-surface leading-[1.1] tracking-tight">
             Redefining Modern <span className="text-gradient-primary">Elegance</span>
           </h1>
-          <p className="text-body-lg text-on-surface-variant max-w-xl mx-auto lg:mx-0 text-base sm:text-lg leading-relaxed">
+          <p className="text-body-lg text-on-surface-variant  mx-auto lg:mx-0 text-base sm:text-lg leading-relaxed">
             Discover a curated collection of premium products designed for the modern aesthete. Where flawless digital craftsmanship meets unparalleled product quality.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">

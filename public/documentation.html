@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aetheria Luxe - React E-Commerce Theme Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1e3a8a;
+      --color-primary-light: #e0f2fe;
+      --color-on-primary-container: #0369a1;
+      --color-accent: #c5a880;
+      --color-bg-sidebar: #0f1115;
+      --color-bg-content: #f8fafc;
+      --color-text-dark: #111827;
+      --color-text-muted: #4b5563;
+      --color-border: #e2e8f0;
+      --color-code-bg: #1e293b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--color-text-dark);
+      background-color: var(--color-bg-content);
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    aside {
+      width: 280px;
+      background-color: var(--color-bg-sidebar);
+      color: #ffffff;
+      padding: 40px 24px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      overflow-y: auto;
+      z-index: 100;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .brand {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 0%, var(--color-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    .nav-link {
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      margin-bottom: 4px;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link.active {
+      color: #ffffff;
+      background-color: var(--color-primary);
+      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+    }
+
+    /* Main Content */
+    main {
+      margin-left: 280px;
+      padding: 60px 80px;
+      flex-grow: 1;
+      /* max-w-7xl; */
+    }
+
+    header {
+      margin-bottom: 50px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 30px;
+    }
+
+    h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--color-text-dark);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+    }
+
+    p {
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Code Blocks */
+    pre {
+      background-color: var(--color-code-bg);
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    code {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+    }
+
+    p code {
+      background-color: #e2e8f0;
+      color: #0f172a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    /* Lists */
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 24px;
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* Highlight box */
+    .note-box {
+      background-color: var(--color-primary-light);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 12px 12px 0;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .note-box p {
+      color: var(--color-on-primary-container);
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    th, td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.9rem;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Colors visualization */
+    .color-swatch {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      margin-right: 8px;
+      vertical-align: middle;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background-color: #f1f5f9;
+      color: var(--color-text-muted);
+    }
+
+    .badge-react {
+      background-color: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .badge-vite {
+      background-color: #fae8ff;
+      color: #a21caf;
+    }
+
+    .badge-tw {
+      background-color: #ecfdf5;
+      color: #047857;
+    }
+
+    @media (max-width: 1024px) {
+      aside {
+        display: none;
+      }
+      main {
+        margin-left: 0;
+        padding: 40px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Sidebar -->
+  <aside>
+    <div class="brand">AETHERIA LUXE</div>
+    
+    <div class="nav-title">Introduction</div>
+    <a href="#welcome" class="nav-link">Welcome</a>
+    <a href="#features" class="nav-link">Theme Features</a>
+    <a href="#tech-stack" class="nav-link">Tech Stack</a>
+    
+    <div class="nav-title">Setup & Install</div>
+    <a href="#installation" class="nav-link">Installation Guide</a>
+    <a href="#commands" class="nav-link">NPM Scripts</a>
+    
+    <div class="nav-title">Design System</div>
+    <a href="#color-variables" class="nav-link">Color Tokens</a>
+    <a href="#typography" class="nav-link">Typography / Fonts</a>
+    <a href="#glassmorphism" class="nav-link">Glassmorphism</a>
+    
+    <div class="nav-title">Structure</div>
+    <a href="#directory" class="nav-link">Directory Package</a>
+    <a href="#customization" class="nav-link">Customization Guide</a>
+    <a href="#credits" class="nav-link">Credits & Assets</a>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main>
+    <header>
+      <h1>Aetheria Luxe - React E-Commerce Theme</h1>
+      <p>Premium Luxury Multi-Niche Storefront Template & Design System. Build high-converting e-commerce web applications with React, Vite, and Tailwind CSS.</p>
+    </header>
+
+    <!-- Welcome Section -->
+    <section id="welcome">
+      <h2>Welcome</h2>
+      <p>Thank you for purchasing <strong>Aetheria Luxe</strong>! Aetheria Luxe is an editorial-grade, ultra-premium React template built for high-end digital commerce. Featuring five pre-built storefront demos matching top-selling ThemeForest niches, dynamic transparent navigation menus, high-performance product Quick View HUD overlays, interactive Scandinavian living hotspot maps, and RTL direction mirror options, this template provides everything a developer needs to build stunning retail sites.</p>
+      <div class="note-box">
+        <p>This template is built with 100% compliant React 19 standards, Vite for lightning-fast Hot Module Replacement (HMR), and Tailwind CSS v4 for utility-first styling.</p>
+      </div>
+    </section>
+
+    <!-- Theme Features Section -->
+    <section id="features">
+      <h2>Theme Features</h2>
+      <p>Aetheria Luxe includes state-of-the-art interactive sections built specifically for premium marketplace shoppers:</p>
+      <ul>
+        <li><strong>5 Distinct Storefront Demos</strong>:
+          <ul>
+            <li><em>Luxe Showcase</em> (Default): High-end minimal multibrand store layout.</li>
+            <li><em>Haute Couture</em> (Fashion): Editorial design focusing on large pictures, lookbooks, and fashion statements.</li>
+            <li><em>Cybertech Store</em> (Electronics): Tech dark-mode grids, interactive specs tabs, and promotional drop timers.</li>
+            <li><em>Bespoke Timepieces</em> (Watches): Rich typography, gold-accented mechanical watch grids, and brand heritage timelines.</li>
+            <li><em>Scandinavian Living</em> (Furniture): Earthy minimalist design with an <strong>Interactive Room Hotspots Map</strong>.</li>
+          </ul>
+        </li>
+        <li><strong>Global Quick View Modal HUD</strong>: Instant overlays displaying rating stars, details, specs accordions, and quick checkout options.</li>
+        <li><strong>Transparent Mega Menu</strong>: Multi-column navigation dropdown displaying category selectors, featured deals, and site demos.</li>
+        <li><strong>Interactive Room Hotspots</strong>: Pulser pins positioned over room scenes that reveal products and launch Quick View buying panels.</li>
+        <li><strong>Full LTR / RTL Direction Support</strong>: Switch page orientation instantly in the drawer switcher. Layouts dynamically mirror alignments.</li>
+        <li><strong>Elegance Dark Mode Toggle</strong>: Transitions seamlessly between clean light styles and rich premium dark presets.</li>
+        <li><strong>Automated Support Concierge Desk</strong>: Smart chatbot interface simulating live support tracking, return queries, and appointments.</li>
+      </ul>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech-stack">
+      <h2>Tech Stack & Dependencies</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Technology / Library</th>
+            <th>Version</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>React</strong></td>
+            <td><code>^19.2.6</code></td>
+            <td><span class="badge badge-react">Core</span></td>
+            <td>Component-based UI state architecture.</td>
+          </tr>
+          <tr>
+            <td><strong>Vite</strong></td>
+            <td><code>^8.0.12</code></td>
+            <td><span class="badge badge-vite">Dev Server</span></td>
+            <td>Fast frontend tooling and building framework.</td>
+          </tr>
+          <tr>
+            <td><strong>Tailwind CSS</strong></td>
+            <td><code>^4.3.0</code></td>
+            <td><span class="badge badge-tw">Styles</span></td>
+            <td>Utility-first styling utility.</td>
+          </tr>
+          <tr>
+            <td><strong>React Router DOM</strong></td>
+            <td><code>^7.15.1</code></td>
+            <td><span class="badge">Navigation</span></td>
+            <td>Declarative client-side routing.</td>
+          </tr>
+          <tr>
+            <td><strong>Framer Motion</strong></td>
+            <td><code>^12.40.0</code></td>
+            <td><span class="badge">Animations</span></td>
+            <td>Transitions, fade sweeps, and drawer gesture motions.</td>
+          </tr>
+          <tr>
+            <td><strong>Lucide React</strong></td>
+            <td><code>^1.16.0</code></td>
+            <td><span class="badge">Icons</span></td>
+            <td>Clean vector stroke icon library.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Installation Guide Section -->
+    <section id="installation">
+      <h2>Installation Guide</h2>
+      <p>Follow these quick commands to set up the project files locally on your workstation:</p>
+      
+      <h3>Prerequisites</h3>
+      <p>Ensure you have <a href="https://nodejs.org/" target="_blank">Node.js</a> (Version 18+ recommended) and NPM installed on your machine.</p>
+
+      <h3>Step-by-Step Setup</h3>
+      <ol>
+        <li>Unzip the theme package on your hard drive.</li>
+        <li>Open your command shell (Terminal or Command Prompt) and navigate to the directory:
+          <pre><code>cd /path/to/extracted/luxe</code></pre>
+        </li>
+        <li>Install project dependencies:
+          <pre><code>npm install</code></pre>
+        </li>
+        <li>Start the local development server:
+          <pre><code>npm run dev</code></pre>
+        </li>
+        <li>Open your browser and navigate to the local address displayed in your terminal (typically <code>http://localhost:5173</code>).</li>
+      </ol>
+    </section>
+
+    <!-- NPM Scripts Section -->
+    <section id="commands">
+      <h2>NPM Scripts</h2>
+      <p>The theme provides pre-configured scripts in <code>package.json</code> for development, building, and validation:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>npm run dev</code></td>
+            <td>Starts the Vite hot-reloading development server on <code>localhost:5173</code>.</td>
+          </tr>
+          <tr>
+            <td><code>npm run build</code></td>
+            <td>Compiles TypeScript syntax and compiles the production bundles into the output folder <code>/dist</code>.</td>
+          </tr>
+          <tr>
+            <td><code>npm run lint</code></td>
+            <td>Executes ESLint diagnostics to audit syntax code style compliance.</td>
+          </tr>
+          <tr>
+            <td><code>npm run preview</code></td>
+            <td>Launches a local production server to test compiled builds before staging.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Color Tokens Section -->
+    <section id="color-variables">
+      <h2>Color Tokens & CSS Variables</h2>
+      <p>The design system is fully tokenized via vanilla CSS custom properties in <code>src/index.css</code>. Editing these variables immediately updates the theme globally:</p>
+      
+      <h3>Light Mode Palette</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>CSS Variable</th>
+            <th>Swatch</th>
+            <th>Hex Value</th>
+            <th>Application</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--color-background</code></td>
+            <td><span class="color-swatch" style="background-color: #f5f7fa;"></span></td>
+            <td><code>#f5f7fa</code></td>
+            <td>Global background behind sections.</td>
+          </tr>
+          <tr>
+            <td><code>--color-surface</code></td>
+            <td><span class="color-swatch" style="background-color: #ffffff;"></span></td>
+            <td><code>#ffffff</code></td>
+            <td>Cards, panels, and dropdown containers.</td>
+          </tr>
+          <tr>
+            <td><code>--color-primary</code></td>
+            <td><span class="color-swatch" style="background-color: #1e3a8a;"></span></td>
+            <td><code>#1e3a8a</code></td>
+            <td>Core accent lines, CTA buttons, and highlighted states.</td>
+          </tr>
+          <tr>
+            <td><code>--color-secondary</code></td>
+            <td><span class="color-swatch" style="background-color: #581c87;"></span></td>
+            <td><code>#581c87</code></td>
+            <td>Secondary banners and luxury gradients.</td>
+          </tr>
+          <tr>
+            <td><code>--color-on-surface</code></td>
+            <td><span class="color-swatch" style="background-color: #111827;"></span></td>
+            <td><code>#111827</code></td>
+            <td>Core heading title texts.</td>
+          </tr>
+          <tr>
+            <td><code>--color-border</code></td>
+            <td><span class="color-swatch" style="background-color: #e5e7eb;"></span></td>
+            <td><code>#e5e7eb</code></td>
+            <td>Dividers and card borders.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Dark Mode Palette</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>CSS Variable</th>
+            <th>Swatch</th>
+            <th>Hex Value</th>
+            <th>Application</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--color-background</code></td>
+            <td><span class="color-swatch" style="background-color: #0f1115;"></span></td>
+            <td><code>#0f1115</code></td>
+            <td>Global background in dark setting.</td>
+          </tr>
+          <tr>
+            <td><code>--color-surface</code></td>
+            <td><span class="color-swatch" style="background-color: #161b22;"></span></td>
+            <td><code>#161b22</code></td>
+            <td>Dark cards and container modules.</td>
+          </tr>
+          <tr>
+            <td><code>--color-primary</code></td>
+            <td><span class="color-swatch" style="background-color: #adc6ff;"></span></td>
+            <td><code>#adc6ff</code></td>
+            <td>Glowing neon elements and CTAs in dark mode.</td>
+          </tr>
+          <tr>
+            <td><code>--color-border</code></td>
+            <td><span class="color-swatch" style="background-color: #2a2f3a;"></span></td>
+            <td><code>#2a2f3a</code></td>
+            <td>Dark borders and dividers.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Typography Section -->
+    <section id="typography">
+      <h2>Typography & Fonts</h2>
+      <p>We leverage Google Fonts to load rich modern typography families. These are configured dynamically in <code>index.html</code> and tokenized in CSS:</p>
+      <ul>
+        <li><strong>Display Font (Headings)</strong>: <code>"Plus Jakarta Sans", system-ui, sans-serif</code>. It provides a geometric, high-fashion statement to headers, titles, and section markers.</li>
+        <li><strong>Body Font (Paragraphs/Labels)</strong>: <code>"Inter", system-ui, sans-serif</code>. Highly readable on both high-density digital displays and mobile viewports.</li>
+      </ul>
+      <pre><code>/* Configuration in src/index.css */
+--font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+--font-body: "Inter", system-ui, sans-serif;</code></pre>
+    </section>
+
+    <!-- Glassmorphism Section -->
+    <section id="glassmorphism">
+      <h2>Glassmorphism Design System</h2>
+      <p>Aetheria Luxe leverages sophisticated backdrop-filter glass layers to create premium depth cues. You can apply these styles via class helpers:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Class Name</th>
+            <th>Styling Effect</th>
+            <th>Best Use Cases</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.glass-level-1</code></td>
+            <td>White overlay at <code>rgba(255,255,255,0.75)</code> with a <code>12px</code> blur, thin borders, and soft shadows.</td>
+            <td>Standard product listing cards and secondary dashboard modules.</td>
+          </tr>
+          <tr>
+            <td><code>.glass-level-2</code></td>
+            <td>Heavier glass filter overlay with a <code>24px</code> blur and distinct outer drop-shadow contours.</td>
+            <td>Floating interactive elements, popover overlays, and quick drawers.</td>
+          </tr>
+          <tr>
+            <td><code>.premium-glass</code></td>
+            <td>Premium frosted glass backing featuring inline white highlight borders and depth gloss highlights.</td>
+            <td>Main quick-view modal sheets, dashboard menus, and sidebar panels.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Directory Section -->
+    <section id="directory">
+      <h2>Directory Package Structure</h2>
+      <p>A clear view of where files live in this template to coordinate clean expansion:</p>
+      <pre><code>luxe/
+├── public/                 # Static local assets (logos, campaign images, watch image)
+│   ├── about_campaign.png
+│   ├── shadow-chronograph.png
+│   └── documentation.html  # This instruction file
+├── src/
+│   ├── components/         # Global reusable components
+│   │   ├── BackToTop.tsx   # Floating scroll-to-top handler
+│   │   ├── DemoSwitcher.tsx# Collapsible preview pane (Home & LTR/RTL controls)
+│   │   ├── Footer.tsx      # Multi-column footer block
+│   │   ├── NavBar.tsx      # Dynamic mega menu navigation block
+│   │   ├── ProductCard.tsx # Hover triggers, star widgets, and quick buy buttons
+│   │   ├── QuickViewModal.tsx # Glassmorphic product preview HUD modal
+│   │   └── SEO.tsx         # Page metadata SEO configuration
+│   ├── context/            # React global context providers
+│   │   ├── AppContext.tsx  # Product catalog database, cart operations, wishlist logs
+│   │   └── ThemeContext.tsx# Dark/Light theme switching scripts
+│   ├── pages/              # Primary view pages
+│   │   ├── Home.tsx        # Multi-niche Showcase Layout (Home 1)
+│   │   ├── HomeFashion.tsx # Haute Couture (Home 2)
+│   │   ├── HomeElectronics.tsx # Cybertech Tech (Home 3)
+│   │   ├── HomeWatches.tsx # Bespoke Timepieces (Home 4)
+│   │   ├── HomeFurniture.tsx # Scandinavian Living Hotspot (Home 5)
+│   │   ├── Collection.tsx  # Side filtering inventory grid page
+│   │   ├── ProductDetail.tsx# Specification tabs, accordion logs, review postings
+│   │   ├── Cart.tsx        # Checkout product details
+│   │   ├── Checkout.tsx    # Secure multi-step payment address fields
+│   │   ├── Support.tsx     # FAQ accordion and smart assistant chatbot
+│   │   └── ReturnPolicy.tsx# Refund guidelines & exclusions page
+│   ├── types/              # TypeScript typings
+│   │   └── index.ts        # Product definitions
+│   ├── App.tsx             # Primary router mapping and layout setups
+│   ├── main.tsx            # App bootstrap mounting
+│   └── index.css           # Global custom design system tokens & directives
+├── package.json            # NPM project configuration
+└── vite.config.ts          # Vite build plugin definitions</code></pre>
+    </section>
+
+    <!-- Customization Section -->
+    <section id="customization">
+      <h2>Customization Guide</h2>
+      
+      <h3>Adding New Products</h3>
+      <p>To inject products into your store, modify the <code>mockProducts</code> array located inside <code>src/context/AppContext.tsx</code>. Follow this TypeScript shape:</p>
+      <pre><code>{
+  id: 'unique-product-slug',
+  name: 'Luxury Product Title',
+  price: 999.00,
+  category: 'fashion' | 'watches' | 'electronics' | 'decor' | 'beauty',
+  subCategory: 'Bags',
+  description: 'Detailed description string.',
+  images: ['/image-path.jpg'],
+  colors: [{ name: 'Black', hex: '#000000' }],
+  sizes: ['S', 'M', 'L'],
+  rating: 4.8,
+  details: ['Detail bullet point 1', 'Detail bullet point 2']
+}</code></pre>
+
+      <h3>Managing Categories</h3>
+      <p>To add or update product categories, adjust the filtering controls on <code>src/pages/Collection.tsx</code>. Sidebar elements automatically sync brand filters by checking current products.</p>
+    </section>
+
+    <!-- Credits Section -->
+    <section id="credits">
+      <h2>Credits & Assets</h2>
+      <p>Credits and links for resources used in this theme development:</p>
+      <ul>
+        <li><strong>Open Source Icons</strong>: <a href="https://lucide.dev/" target="_blank">Lucide React</a> - Crisp vector icon assets.</li>
+        <li><strong>Animations</strong>: <a href="https://motion.dev/" target="_blank">Framer Motion</a> - Smooth, hardware-accelerated transitions.</li>
+        <li><strong>Custom Fonts</strong>: <a href="https://fonts.google.com/" target="_blank">Google Fonts</a> - Plus Jakarta Sans & Inter typefaces.</li>
+        <li><strong>Product Images</strong>: Product images are pre-bundled using free placeholder assets from Google User Content networks and are styled strictly for demonstration and listing layout representations.</li>
+      </ul>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support">
+      <h2>Customer Support</h2>
+      <p>If you encounter any questions or require custom setup configurations regarding Aetheria Luxe, please feel free to drop a line to our marketplace support concierge: <a href="mailto:support@aetherialuxe.com">support@aetherialuxe.com</a>. We typically reply within 24 hours.</p>
+    </section>
+  </main>
+
+</body>
+</html>

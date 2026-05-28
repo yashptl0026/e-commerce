@@ -75,7 +75,7 @@ export const Support: React.FC = () => {
       if (q.includes('track') || q.includes('order') || q.includes('status')) {
         botResponseText = "To track your order, please log in to your account dashboard under 'Order History' or provide your order ID (e.g. ORD-123456) so I can verify its real-time shipping status.";
       } else if (q.includes('return') || q.includes('exchange') || q.includes('refund')) {
-        botResponseText = "Returns are accepted within 30 days of delivery. You can generate a prepaid return label via the 'Support' section of your profile panel. Ensure original security labels remain attached.";
+        botResponseText = "Returns are accepted within 30 days of delivery. You can review our full guidelines or initiate a return directly on our Return Policy page (available at /return-policy or in the footer). Ensure original security labels remain attached.";
       } else if (q.includes('size') || q.includes('fit') || q.includes('tailor')) {
         botResponseText = "Our items follow a standard architectural drape. We offer bespoke sizing calibrations at our physical showrooms in Soho and Tokyo. Let me know if you would like me to schedule a showroom slot.";
       } else if (q.includes('hours') || q.includes('store') || q.includes('showroom')) {

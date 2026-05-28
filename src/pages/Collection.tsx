@@ -17,6 +17,7 @@ export const Collection: React.FC = () => {
 
   // Filter States
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [maxPrice, setMaxPrice] = useState<number>(3000);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -24,6 +25,15 @@ export const Collection: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState<boolean>(false);
   const observerRef = useRef<HTMLDivElement | null>(null);
+
+  // Dynamic brand extraction
+  const brandOptions = useMemo(() => {
+    const brands = new Set<string>();
+    products.forEach((p) => {
+      if (p.brand) brands.add(p.brand);
+    });
+    return Array.from(brands);
+  }, [products]);
 
   // Sync category state with query params
   useEffect(() => {
@@ -38,11 +48,12 @@ export const Collection: React.FC = () => {
   // Reset page to 1 when any filter criteria changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedCategories, maxPrice, selectedColor, selectedSize, sortBy, searchParam, filterParam]);
+  }, [selectedCategories, selectedBrands, maxPrice, selectedColor, selectedSize, sortBy, searchParam, filterParam]);
 
   // Handle reset filters
   const handleClearFilters = () => {
     setSelectedCategories([]);
+    setSelectedBrands([]);
     setMaxPrice(3000);
     setSelectedColor(null);
     setSelectedSize(null);
@@ -119,6 +130,11 @@ export const Collection: React.FC = () => {
           return false;
         }
 
+        // Brand Filter
+        if (selectedBrands.length > 0 && product.brand && !selectedBrands.includes(product.brand)) {
+          return false;
+        }
+
         // Price Filter
         if (product.price > maxPrice) {
           return false;
@@ -155,7 +171,7 @@ export const Collection: React.FC = () => {
         if (!a.isNew && b.isNew) return 1;
         return 0;
       });
-  }, [products, searchParam, selectedCategories, maxPrice, filterParam, selectedColor, selectedSize, sortBy]);
+  }, [products, searchParam, selectedCategories, selectedBrands, maxPrice, filterParam, selectedColor, selectedSize, sortBy]);
 
   // Infinite Scroll / Auto-loading Configuration
   const itemsPerPage = 6;
@@ -285,6 +301,35 @@ export const Collection: React.FC = () => {
                     </span>
                     <span className="ml-auto text-xs font-semibold text-on-surface-variant/40 bg-white/5 px-2 py-0.5 rounded-full font-display">
                       {categoryCounts[cat]}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Brand Filter */}
+            <div className="space-y-4">
+              <h3 className="font-display font-bold text-sm uppercase tracking-widest text-on-surface border-b border-white/5 pb-2">
+                Brand
+              </h3>
+              <div className="space-y-3">
+                {brandOptions.map((brand) => (
+                  <label key={brand} className="flex items-center gap-3 group cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={selectedBrands.includes(brand)}
+                      onChange={() => {
+                        setSelectedBrands((prev) =>
+                          prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
+                        );
+                        setCurrentPage(1);
+                      }}
+                      className="w-4.5 h-4.5 rounded border-white/20 bg-white/5 text-primary focus:ring-primary/40 focus:ring-offset-0 focus:outline-none cursor-pointer"
+                    />
+                    <span className={`text-sm transition-colors capitalize ${
+                      selectedBrands.includes(brand) ? 'text-primary font-semibold' : 'text-on-surface-variant group-hover:text-on-surface'
+                    }`}>
+                      {brand}
                     </span>
                   </label>
                 ))}
@@ -474,6 +519,29 @@ export const Collection: React.FC = () => {
                       />
                       <span className={`text-sm capitalize ${selectedCategories.includes(cat) ? 'text-primary' : 'text-on-surface-variant'}`}>
                         {cat}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+
+                {/* Mobile Brand */}
+                <div className="space-y-3">
+                  <h4 className="font-display font-semibold text-xs uppercase tracking-widest text-on-surface-variant">Brand</h4>
+                  {brandOptions.map((brand) => (
+                    <label key={brand} className="flex items-center gap-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={selectedBrands.includes(brand)}
+                        onChange={() => {
+                          setSelectedBrands((prev) =>
+                            prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
+                          );
+                          setCurrentPage(1);
+                        }}
+                        className="w-4.5 h-4.5 rounded border-white/20 bg-white/5 text-primary"
+                      />
+                      <span className={`text-sm ${selectedBrands.includes(brand) ? 'text-primary' : 'text-on-surface-variant'}`}>
+                        {brand}
                       </span>
                     </label>
                   ))}

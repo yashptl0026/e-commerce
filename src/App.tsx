@@ -8,6 +8,10 @@ import { Toast } from './components/Toast';
 
 // Pages
 import { Home } from './pages/Home';
+import { HomeFashion } from './pages/HomeFashion';
+import { HomeElectronics } from './pages/HomeElectronics';
+import { HomeWatches } from './pages/HomeWatches';
+import { HomeFurniture } from './pages/HomeFurniture';
 import { Collection } from './pages/Collection';
 import { ProductDetail } from './pages/ProductDetail';
 import { Cart } from './pages/Cart';
@@ -18,10 +22,13 @@ import { Support } from './pages/Support';
 import { About } from './pages/About';
 import { Privacy } from './pages/Privacy';
 import { Terms } from './pages/Terms';
+import { ReturnPolicy } from './pages/ReturnPolicy';
 import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
 import { TrackOrder } from './pages/TrackOrder';
 import { NotFound } from './pages/NotFound';
+import { DemoSwitcher } from './components/DemoSwitcher';
+import { BackToTop } from './components/BackToTop';
 
 // ScrollToTop utility helper to reset window scroll position on route change
 function ScrollToTop() {
@@ -61,6 +68,10 @@ function App() {
         {/* Main Content Area */}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/home-fashion" element={<HomeFashion />} />
+          <Route path="/home-electronics" element={<HomeElectronics />} />
+          <Route path="/home-watches" element={<HomeWatches />} />
+          <Route path="/home-furniture" element={<HomeFurniture />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
@@ -71,6 +82,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/return-policy" element={<ReturnPolicy />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/track-order" element={<TrackOrder />} />
@@ -82,6 +94,12 @@ function App() {
         
         {/* Toast Notification HUD */}
         <Toast />
+
+        {/* Global Back To Top Action */}
+        <BackToTop />
+
+        {/* Global Demo Switcher HUD */}
+        <DemoSwitcher />
         </Router>
       </AppProvider>
     </ThemeProvider>

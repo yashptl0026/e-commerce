@@ -1,16 +1,68 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Heart, User, Menu, X, Search, Sun, Moon, Monitor, ChevronRight, Trash2, Minus, Plus } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { useTheme } from '../context/ThemeContext';
 import { sanitizeInput, validateEmail } from '../utils/security';
+import { QuickViewModal } from './QuickViewModal';
 
 export const NavBar: React.FC = () => {
   const { cart, wishlist, isLoggedIn, login, logout, userProfile, showToast, updateCartQuantity, removeFromCart } = useApp();
   const { theme, setTheme } = useTheme();
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const [isHomeDropdownOpen, setIsHomeDropdownOpen] = useState(false);
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const isDarkHeroPage = ['/home-fashion', '/home-electronics', '/home-watches'].includes(location.pathname);
+  const useDarkNavStyle = isDarkHeroPage && !isScrolled;
+
+  const navClasses = useDarkNavStyle
+    ? "fixed top-0 w-full z-50 bg-black/20 backdrop-blur-md border-none rounded-none h-16 text-white transition-all duration-300"
+    : "fixed top-0 w-full z-50 premium-glass border-x-0 border-t-0 rounded-none shadow-2xl h-16 transition-all duration-300";
+
+  const linkClass = (isActive: boolean) => {
+    if (useDarkNavStyle) {
+      return `text-label-sm font-medium transition-colors hover:text-white pb-1 border-b-2 ${
+        isActive ? 'border-white text-white' : 'border-transparent text-white/70'
+      }`;
+    }
+    return `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${
+      isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
+    }`;
+  };
+
+  const actionButtonClass = `w-11 h-11 flex items-center justify-center rounded-full transition-all cursor-pointer ${
+    useDarkNavStyle
+      ? 'text-white/80 hover:text-white hover:bg-white/10'
+      : 'text-on-surface-variant hover:text-primary hover:bg-white/5'
+  }`;
+
+  const cartButtonClass = `rounded-full flex items-center justify-center w-11 h-11 shadow-lg active:scale-95 duration-150 ease-in-out relative border cursor-pointer ${
+    useDarkNavStyle
+      ? 'bg-white/10 text-white border-white/20 hover:bg-white/20'
+      : 'bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 text-primary'
+  }`;
+
+  const logoClass = `text-body-lg font-display font-extrabold tracking-tighter text-xl md:text-2xl transition-colors ${
+    useDarkNavStyle ? 'text-white' : 'text-on-surface'
+  }`;
+
+  const mobileToggleClass = `md:hidden w-11 h-11 flex items-center justify-center transition-colors cursor-pointer ${
+    useDarkNavStyle ? 'text-white hover:text-white/80' : 'text-on-surface hover:text-primary'
+  }`;
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
@@ -138,13 +190,13 @@ export const NavBar: React.FC = () => {
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 premium-glass border-x-0 border-t-0 rounded-none shadow-2xl h-16">
+      <nav className={navClasses}>
         <div className="flex justify-between items-center w-full px-4 md:px-6 max-w-7xl mx-auto h-full">
           {/* Mobile Menu Toggle */}
           <button
             onClick={toggleMobileMenu}
             aria-label="Toggle navigation menu"
-            className="md:hidden w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors cursor-pointer"
+            className={mobileToggleClass}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -152,37 +204,209 @@ export const NavBar: React.FC = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="text-body-lg font-display font-extrabold tracking-tighter text-on-surface text-xl md:text-2xl"
+            className={logoClass}
           >
             AETHERIA LUXE
           </Link>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex gap-8 items-center h-full">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
-                }`
-              }
+            {/* Home Dropdown */}
+            <div
+              className="relative h-full flex items-center"
+              onMouseEnter={() => {
+                setIsHomeDropdownOpen(true);
+                setIsMegaMenuOpen(false);
+                setIsProfileOpen(false);
+                setIsSearchOpen(false);
+                setIsSupportOpen(false);
+              }}
+              onMouseLeave={() => setIsHomeDropdownOpen(false)}
             >
-              Home
-            </NavLink>
-            <NavLink
-              to="/collection"
-              className={({ isActive }) =>
-                `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
-                }`
-              }
+              <NavLink
+                to="/"
+                className={() => {
+                  const isActiveHome = [
+                    '/',
+                    '/home-fashion',
+                    '/home-electronics',
+                    '/home-watches',
+                    '/home-furniture'
+                  ].includes(location.pathname);
+                  return linkClass(isActiveHome);
+                }}
+              >
+                Home
+              </NavLink>
+
+              <AnimatePresence>
+                {isHomeDropdownOpen && (
+                  <motion.div
+                    key="home-dropdown"
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 dropdown-glass rounded-2xl p-2 shadow-2xl z-50 before:content-[''] before:absolute before:inset-x-0 before:-top-3 before:h-3"
+                  >
+                    {[
+                      { name: 'Luxe Default', path: '/' },
+                      { name: 'Haute Couture', path: '/home-fashion' },
+                      { name: 'Cybertech', path: '/home-electronics' },
+                      { name: 'Bespoke Watches', path: '/home-watches' },
+                      { name: 'Scandinavian Home', path: '/home-furniture' }
+                    ].map((demo) => (
+                      <Link
+                        key={demo.path}
+                        to={demo.path}
+                        onClick={() => setIsHomeDropdownOpen(false)}
+                        className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
+                      >
+                        {demo.name}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            <div
+              className="relative h-full flex items-center"
+              onMouseEnter={() => {
+                setIsMegaMenuOpen(true);
+                setIsProfileOpen(false);
+                setIsSearchOpen(false);
+                setIsSupportOpen(false);
+              }}
+              onMouseLeave={() => setIsMegaMenuOpen(false)}
             >
-              Collections
-            </NavLink>
+              <NavLink
+                to="/collection"
+                className={({ isActive }) => linkClass(isActive)}
+              >
+                Collections
+              </NavLink>
+
+              <AnimatePresence>
+                {isMegaMenuOpen && (
+                  <motion.div
+                    key="mega-menu"
+                    initial={{ opacity: 0, y: 15, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 15, scale: 0.98 }}
+                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[95vw] max-w-5xl dropdown-glass rounded-3xl p-8 grid grid-cols-1 md:grid-cols-4 gap-8 text-left z-50 border border-border shadow-2xl"
+                    onMouseEnter={() => setIsMegaMenuOpen(true)}
+                    onMouseLeave={() => setIsMegaMenuOpen(false)}
+                  >
+                    {/* Column 1: Categories */}
+                    <div className="space-y-4">
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-primary border-b border-border pb-2">
+                        Shop By Category
+                      </h3>
+                      <ul className="space-y-3">
+                        {[
+                          { name: 'Haute Couture', path: '/collection?category=fashion' },
+                          { name: 'Designer Footwear', path: '/collection?category=footwear' },
+                          { name: 'Luxury Timepieces', path: '/collection?category=watches' },
+                          { name: 'Futuristic Tech', path: '/collection?category=electronics' },
+                          { name: 'Daily Accessories', path: '/collection?category=accessories' },
+                          { name: 'Organic Beauty', path: '/collection?category=beauty' },
+                          { name: 'Scandinavian Home', path: '/collection?category=decor' }
+                        ].map((cat) => (
+                          <li key={cat.name}>
+                            <Link
+                              to={cat.path}
+                              onClick={() => setIsMegaMenuOpen(false)}
+                              className="text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors block"
+                            >
+                              {cat.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Column 2: Browse Demos */}
+                    <div className="space-y-4">
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-primary border-b border-border pb-2">
+                        Homepage Demos
+                      </h3>
+                      <ul className="space-y-3">
+                        {[
+                          { name: 'Luxe Default', path: '/' },
+                          { name: 'Haute Couture', path: '/home-fashion' },
+                          { name: 'Cybertech', path: '/home-electronics' },
+                          { name: 'Bespoke Watches', path: '/home-watches' },
+                          { name: 'Scandinavian Living', path: '/home-furniture' }
+                        ].map((demo) => (
+                          <li key={demo.name}>
+                            <Link
+                              to={demo.path}
+                              onClick={() => setIsMegaMenuOpen(false)}
+                              className="text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors block"
+                            >
+                              {demo.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Column 3: Featured Product */}
+                    <div className="space-y-4">
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-primary border-b border-border pb-2">
+                        Featured Showcase
+                      </h3>
+                      <Link
+                        to="/product/obsidian-smart-watch"
+                        onClick={() => setIsMegaMenuOpen(false)}
+                        className="block group/promo bg-surface-container rounded-2xl p-4 border border-border text-center overflow-hidden"
+                      >
+                        <div className="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-surface-container-high relative">
+                          <img
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBno99WOBueYImcyeAmMN08wvq37AS2WBU0zsUftVC-qKNVS5bcD8gM2eGpJFKBEPJoO6iQGPg7kGbDPUaAfDz1LHSWhVSKVrUnswu3FFVRfurU-tDjMXbaG6RBsgPzldeFcGX7jqtaDWcGWodg7TyHju6kgHJ0XiOLpAcwNLRsVWuLSvPovkw2GXg83eXBmS5_KjaC7gpJvCnX218Io_SkngtNBeGsMxMW0PPni0r_xghP9LNU8_Kd77YWdAUqg3HOMsv1p9eaSuE"
+                            alt="Obsidian Watch"
+                            className="w-full h-full object-contain group-hover/promo:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <h4 className="text-xs font-display font-extrabold text-on-surface group-hover/promo:text-primary transition-colors uppercase font-semibold">
+                          Obsidian Smart Watch
+                        </h4>
+                        <p className="text-[9px] text-primary font-bold mt-1 font-display">$299.00</p>
+                      </Link>
+                    </div>
+
+                    {/* Column 4: Story & Quality */}
+                    <div className="space-y-4">
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-primary border-b border-border pb-2">
+                        Our Standard
+                      </h3>
+                      <div className="bg-gradient-dynamic text-white p-5 rounded-2xl flex flex-col justify-between h-[180px] shadow-lg relative overflow-hidden">
+                        <div className="absolute inset-0 bg-black/10 z-0"></div>
+                        <div className="space-y-2 relative z-10">
+                          <h4 className="font-display font-extrabold text-xs uppercase tracking-widest">
+                            Crafting Luxury
+                          </h4>
+                          <p className="text-[10px] text-white/80 leading-relaxed">
+                            Every piece is curated to represent the highest level of detail, sustainability, and digital craftsmanship.
+                          </p>
+                        </div>
+                        <Link
+                          to="/about"
+                          onClick={() => setIsMegaMenuOpen(false)}
+                          className="bg-white text-primary text-[9px] font-display font-bold uppercase tracking-widest py-2 px-4 rounded-xl text-center shadow-md hover:scale-[1.02] active:scale-95 transition-all relative z-10 font-semibold"
+                        >
+                          Explore Our Story
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
             <NavLink
               to="/about"
-              className={({ isActive }) =>
-                `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
-                }`
-              }
+              className={({ isActive }) => linkClass(isActive)}
             >
               Our Story
             </NavLink>
@@ -200,10 +424,7 @@ export const NavBar: React.FC = () => {
             >
               <NavLink
                 to="/support"
-                className={({ isActive }) =>
-                  `text-label-sm font-medium transition-colors hover:text-primary pb-1 border-b-2 ${isActive ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant'
-                  }`
-                }
+                className={({ isActive }) => linkClass(isActive)}
               >
                 Support
               </NavLink>
@@ -258,7 +479,7 @@ export const NavBar: React.FC = () => {
             <button
               onClick={toggleSearch}
               aria-label="Open search bar"
-              className="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-full transition-all cursor-pointer"
+              className={actionButtonClass}
             >
               <Search className="w-5 h-5" />
             </button>
@@ -267,7 +488,7 @@ export const NavBar: React.FC = () => {
             <Link
               to="/dashboard?tab=wishlist"
               aria-label="View wishlist"
-              className="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-full transition-all relative hidden sm:flex cursor-pointer"
+              className={`${actionButtonClass} relative hidden sm:flex`}
             >
               <Heart className="w-5 h-5" />
               {wishlistCount > 0 && (
@@ -284,8 +505,11 @@ export const NavBar: React.FC = () => {
                 aria-expanded={isProfileOpen}
                 aria-haspopup="true"
                 aria-label="Profile and settings"
-                className={`w-11 h-11 hover:text-primary hover:bg-white/5 rounded-full transition-all cursor-pointer flex items-center justify-center ${isProfileOpen ? 'text-primary bg-white/5' : 'text-on-surface-variant'
-                  }`}
+                className={`w-11 h-11 rounded-full transition-all cursor-pointer flex items-center justify-center ${
+                  isProfileOpen 
+                    ? (useDarkNavStyle ? 'text-white bg-white/10' : 'text-primary bg-white/5')
+                    : (useDarkNavStyle ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-on-surface-variant hover:text-primary hover:bg-white/5')
+                }`}
               >
                 <User className="w-5 h-5" />
               </button>
@@ -416,7 +640,7 @@ export const NavBar: React.FC = () => {
             <button
               onClick={() => setIsMiniCartOpen(true)}
               aria-label="View shopping bag"
-              className="bg-primary/10 text-primary hover:bg-primary/20 rounded-full flex items-center justify-center w-11 h-11 shadow-lg active:scale-95 duration-150 ease-in-out relative border border-primary/20 cursor-pointer text-primary"
+              className={cartButtonClass}
             >
               <ShoppingBag className="w-5 h-5" />
               {totalCartItems > 0 && (
@@ -741,6 +965,9 @@ export const NavBar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Global Quick View Modal */}
+      <QuickViewModal />
     </>
   );
 };

@@ -229,9 +229,8 @@ export const ProductDetail: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => setActiveImageIdx(idx)}
-                  className={`aspect-[4/5] rounded-xl overflow-hidden glass-level-1 border transition-all ${
-                    activeImageIdx === idx ? 'border-primary ring-2 ring-primary/20 scale-102' : 'border-border hover:border-on-surface/20'
-                  }`}
+                  className={`aspect-[4/5] rounded-xl overflow-hidden glass-level-1 border transition-all ${activeImageIdx === idx ? 'border-primary ring-2 ring-primary/20 scale-102' : 'border-border hover:border-on-surface/20'
+                    }`}
                 >
                   <img src={img} alt={`${product.name} View ${idx + 1}`} className="w-full h-full object-cover rounded-xl" />
                 </button>
@@ -281,7 +280,7 @@ export const ProductDetail: React.FC = () => {
           <div className="space-y-6">
             {/* Color Selector */}
             <div className="space-y-3">
-              <span className="text-xs font-display font-bold uppercase tracking-wider text-on-surface-variant">
+              <span className="text-xs font-display font-bold uppercase tracking-wider text-on-surface-variant mb-2 block">
                 Color: {selectedColor}
               </span>
               <div className="flex gap-3">
@@ -294,8 +293,8 @@ export const ProductDetail: React.FC = () => {
                       style={{ backgroundColor: color.hex }}
                       title={color.name}
                       className={`w-9 h-9 rounded-full relative transition-all border border-white/10 ${isSelected
-                          ? 'ring-2 ring-primary ring-offset-2 ring-offset-[#10131a] scale-110'
-                          : 'hover:scale-105'
+                        ? 'ring-2 ring-primary ring-offset-2 ring-offset-[#10131a]'
+                        : 'hover:scale-105'
                         }`}
                     >
                       {isSelected && (
@@ -322,8 +321,8 @@ export const ProductDetail: React.FC = () => {
                         key={size}
                         onClick={() => setSelectedSize(size)}
                         className={`py-2 rounded-xl text-xs font-display font-semibold border transition-all ${isSelected
-                            ? 'bg-primary text-on-primary border-primary font-bold'
-                            : 'glass-level-1 border-white/10 text-on-surface hover:bg-white/5'
+                          ? 'bg-primary text-on-primary border-primary font-bold'
+                          : 'glass-level-1 border-white/10 text-on-surface hover:bg-white/5'
                           }`}
                       >
                         {size}
@@ -336,7 +335,7 @@ export const ProductDetail: React.FC = () => {
 
             {/* Quantity Selector */}
             <div className="space-y-3">
-              <span className="text-xs font-display font-bold uppercase tracking-wider text-on-surface-variant">
+              <span className="text-xs font-display font-bold uppercase tracking-wider text-on-surface-variant mb-2 block">
                 Quantity
               </span>
               <div className="flex items-center glass-level-1 border border-white/10 rounded-full w-max p-1">
@@ -640,8 +639,8 @@ export const ProductDetail: React.FC = () => {
       </section>
 
       {/* Recommendations Slider */}
-      <section className="w-full bg-surface-container-lowest border-t border-border py-12 md:py-24 mt-16 md:mt-32">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <section className="w-full pt-16 md:pt-32">
+        <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-end mb-10">
             <div>
               <span className="text-[10px] text-primary uppercase font-bold tracking-[0.2em] mb-1.5 block">Complete the look</span>
