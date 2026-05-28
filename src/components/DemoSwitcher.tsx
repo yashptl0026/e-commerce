@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Palette, X, ChevronRight, LayoutGrid, CheckCircle } from 'lucide-react';
+import { Palette, X, LayoutGrid, CheckCircle } from 'lucide-react';
 
 export const DemoSwitcher: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

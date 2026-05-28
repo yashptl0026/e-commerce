@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Compass, Award, Star, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
 import { SEO } from '../components/SEO';
@@ -102,7 +102,7 @@ export const HomeWatches: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {timelineSteps.map((step, idx) => (
+            {timelineSteps.map((step) => (
               <div key={step.year} className="bg-[#141311] border border-[#c5a880]/10 p-8 rounded-3xl relative overflow-hidden group hover:border-[#c5a880]/30 transition-all duration-300">
                 <span className="text-4xl font-serif italic text-[#c5a880]/20 group-hover:text-[#c5a880]/40 transition-colors font-semibold block mb-4">
                   {step.year}
