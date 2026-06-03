@@ -77,6 +77,7 @@ export const Footer: React.FC = () => {
           <nav className="flex flex-col gap-2.5 text-sm">
             <Link to="/about" className="text-on-surface-variant hover:text-primary transition-colors">About Us</Link>
             <Link to="/about" className="text-on-surface-variant hover:text-primary transition-colors">Global Showrooms</Link>
+            <Link to="/components" className="text-on-surface-variant hover:text-primary transition-colors font-semibold">Components Guide</Link>
             <Link to="/privacy" className="text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="text-on-surface-variant hover:text-primary transition-colors">Terms of Service</Link>
           </nav>

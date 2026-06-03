@@ -125,6 +125,9 @@
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
   --radius-full: 9999px;
+
+  /* Custom Spacing Override */
+  --spacing-20: 80px;
 }
 
 /* Glassmorphism Styles */
@@ -325,3 +328,11 @@ select option {
 .demo-switcher-wrap {
   right: 0;
 }
+
+/* Responsive Section Spacing Overrides (Reduce padding from nearly 80px to 70px on desktop) */
+@media (min-width: 768px) {
+  :root {
+    --spacing-20: 70px;
+  }
+}
+

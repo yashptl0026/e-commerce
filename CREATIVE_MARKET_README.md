@@ -1,6 +1,6 @@
-# Creative Market & ThemeForest Listing Documentation
+# E-Commerce Template Marketplace Listing Documentation
 
-This document contains pre-formatted text, descriptions, features checklist, and metadata that you can copy and paste directly into your **Creative Market** or **ThemeForest** product listing page.
+This document contains pre-formatted text, descriptions, features checklist, and metadata that you can copy and paste directly into your **Creative Market**, **ThemeForest**, or other marketplace product listing pages.
 
 ---
 
