@@ -219,7 +219,7 @@ export const Collection: React.FC = () => {
       />
       {/* Header Banner */}
       <header className="mb-12 space-y-6">
-        <nav className="flex items-center gap-2 text-xs text-on-surface-variant font-display font-medium tracking-widest uppercase">
+        <nav className="flex items-center gap-2 text-xs text-on-surface-variant font-display font-medium tracking-widest">
           <Link to="/" className="hover:text-primary transition-colors">Home</Link>
           <span className="text-on-surface-variant/40">/</span>
           <span className="text-primary">Collections</span>
@@ -233,7 +233,7 @@ export const Collection: React.FC = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div>
-            <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface tracking-tight uppercase">
+            <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface tracking-tight">
               {categoryParam ? `${categoryParam} Collection` : 'Our Collection'}
             </h1>
             <p className="text-body-md text-on-surface-variant max-w-2xl mt-2 leading-relaxed text-sm sm:text-base">
@@ -243,7 +243,7 @@ export const Collection: React.FC = () => {
 
           {/* Sort Controller */}
           <div className="flex items-center gap-3 w-full md:w-auto z-10">
-            <span className="text-xs font-display font-semibold tracking-wider text-on-surface-variant uppercase whitespace-nowrap">
+            <span className="text-xs font-display font-semibold tracking-wider text-on-surface-variant whitespace-nowrap">
               Sort By:
             </span>
             <div className="relative flex-grow md:flex-grow-0 min-w-[180px]">
@@ -282,7 +282,7 @@ export const Collection: React.FC = () => {
           <div className="glass-level-1 p-6 rounded-2xl space-y-6 sticky top-28 border border-white/5 shadow-xl">
             {/* Category Filter */}
             <div className="space-y-4">
-              <h3 className="font-display font-bold text-sm uppercase tracking-widest text-on-surface border-b border-white/5 pb-2">
+              <h3 className="font-display font-bold text-sm tracking-widest text-on-surface border-b border-slate-200 dark:border-white/5 pb-2">
                 Category
               </h3>
               <div className="space-y-3">
@@ -292,7 +292,7 @@ export const Collection: React.FC = () => {
                       type="checkbox"
                       checked={selectedCategories.includes(cat)}
                       onChange={() => handleCategoryToggle(cat)}
-                      className="w-4.5 h-4.5 rounded border-white/20 bg-white/5 text-primary focus:ring-primary/40 focus:ring-offset-0 focus:outline-none cursor-pointer"
+                      className="w-4.5 h-4.5 rounded border-slate-350 dark:border-white/20 bg-slate-100 dark:bg-white/5 text-primary focus:ring-primary/40 focus:ring-offset-0 focus:outline-none cursor-pointer"
                     />
                     <span className={`text-sm transition-colors capitalize ${
                       selectedCategories.includes(cat) ? 'text-primary font-semibold' : 'text-on-surface-variant group-hover:text-on-surface'
@@ -309,7 +309,7 @@ export const Collection: React.FC = () => {
 
             {/* Brand Filter */}
             <div className="space-y-4">
-              <h3 className="font-display font-bold text-sm uppercase tracking-widest text-on-surface border-b border-white/5 pb-2">
+              <h3 className="font-display font-bold text-sm tracking-widest text-on-surface border-b border-slate-200 dark:border-white/5 pb-2">
                 Brand
               </h3>
               <div className="space-y-3">
@@ -324,7 +324,7 @@ export const Collection: React.FC = () => {
                         );
                         setCurrentPage(1);
                       }}
-                      className="w-4.5 h-4.5 rounded border-white/20 bg-white/5 text-primary focus:ring-primary/40 focus:ring-offset-0 focus:outline-none cursor-pointer"
+                      className="w-4.5 h-4.5 rounded border-slate-350 dark:border-white/20 bg-slate-100 dark:bg-white/5 text-primary focus:ring-primary/40 focus:ring-offset-0 focus:outline-none cursor-pointer"
                     />
                     <span className={`text-sm transition-colors capitalize ${
                       selectedBrands.includes(brand) ? 'text-primary font-semibold' : 'text-on-surface-variant group-hover:text-on-surface'
@@ -338,7 +338,7 @@ export const Collection: React.FC = () => {
 
             {/* Price Filter */}
             <div className="space-y-4">
-              <h3 className="font-display font-bold text-sm uppercase tracking-widest text-on-surface border-b border-white/5 pb-2">
+              <h3 className="font-display font-bold text-sm tracking-widest text-on-surface border-b border-slate-200 dark:border-white/5 pb-2">
                 Max Price
               </h3>
               <div className="space-y-2">
@@ -352,7 +352,7 @@ export const Collection: React.FC = () => {
                     setMaxPrice(parseInt(e.target.value));
                     setCurrentPage(1);
                   }}
-                  className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none"
+                  className="w-full h-1 bg-slate-200 dark:bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none"
                 />
                 <div className="flex justify-between text-xs font-semibold text-on-surface-variant font-display">
                   <span>$100</span>
@@ -363,7 +363,7 @@ export const Collection: React.FC = () => {
 
             {/* Color Filter */}
             <div className="space-y-4">
-              <h3 className="font-display font-bold text-sm uppercase tracking-widest text-on-surface border-b border-white/5 pb-2">
+              <h3 className="font-display font-bold text-sm tracking-widest text-on-surface border-b border-slate-200 dark:border-white/5 pb-2">
                 Color Palette
               </h3>
               <div className="flex flex-wrap gap-2.5">
@@ -380,8 +380,8 @@ export const Collection: React.FC = () => {
                       title={color.name}
                       className={`w-7 h-7 rounded-full transition-all relative ${
                         isSelected
-                          ? 'ring-2 ring-primary ring-offset-2 ring-offset-[#10131a] scale-110'
-                          : 'hover:scale-105 border border-white/10'
+                          ? 'ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-[#10131a] scale-110'
+                          : 'hover:scale-105 border border-slate-200 dark:border-white/10'
                       }`}
                     />
                   );
@@ -391,7 +391,7 @@ export const Collection: React.FC = () => {
 
             {/* Size Filter */}
             <div className="space-y-4">
-              <h3 className="font-display font-bold text-sm uppercase tracking-widest text-on-surface border-b border-white/5 pb-2">
+              <h3 className="font-display font-bold text-sm tracking-widest text-on-surface border-b border-slate-200 dark:border-white/5 pb-2">
                 Sizes
               </h3>
               <div className="grid grid-cols-3 gap-2">
@@ -407,7 +407,7 @@ export const Collection: React.FC = () => {
                       className={`py-1.5 rounded-lg font-display text-xs font-semibold border transition-all ${
                         isSelected
                           ? 'bg-primary text-on-primary border-primary font-bold'
-                          : 'glass-level-1 border-white/10 text-on-surface hover:bg-white/5'
+                          : 'glass-level-1 border-slate-200 dark:border-white/10 text-on-surface hover:bg-slate-100 dark:hover:bg-white/5'
                       }`}
                     >
                       {size}
@@ -420,7 +420,7 @@ export const Collection: React.FC = () => {
             {/* Clear Button */}
             <button
               onClick={handleClearFilters}
-              className="w-full py-2.5 rounded-xl font-display text-xs font-bold uppercase tracking-widest border border-white/10 text-on-surface hover:bg-white/5 transition-colors flex items-center justify-center gap-1.5"
+              className="w-full py-2.5 rounded-xl font-display text-xs font-bold tracking-wider border border-slate-200 dark:border-white/10 text-on-surface hover:bg-slate-100 dark:hover:bg-white/5 transition-colors flex items-center justify-center gap-1.5"
             >
               <RefreshCw className="w-3.5 h-3.5" /> Clear Filters
             </button>
@@ -448,7 +448,7 @@ export const Collection: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 className="glass-level-1 p-16 rounded-3xl text-center border border-white/5 flex flex-col items-center justify-center gap-4 my-8"
               >
-                <div className="w-16 h-16 rounded-full glass-level-2 flex items-center justify-center text-primary/40 border border-white/10 mb-2">
+                <div className="w-16 h-16 rounded-full glass-level-2 flex items-center justify-center text-primary/40 border border-slate-200 dark:border-white/10 mb-2">
                   <SlidersHorizontal className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-display font-semibold text-on-surface">No Products Match Your Filter</h3>
@@ -469,13 +469,13 @@ export const Collection: React.FC = () => {
           {currentPage < totalPages && (
             <div ref={observerRef} className="py-12 flex justify-center items-center text-primary/60">
               <RefreshCw className="w-5 h-5 animate-spin" />
-              <span className="ml-2 font-display text-xs font-bold tracking-widest uppercase">Loading More Pieces...</span>
+              <span className="ml-2 font-display text-xs font-bold tracking-wider">Loading More Pieces...</span>
             </div>
           )}
 
           {/* End of results message */}
           {currentPage >= totalPages && filteredProducts.length > 0 && (
-            <div className="py-12 text-center text-on-surface-variant/30 font-display text-[10px] font-bold uppercase tracking-[0.2em] border-t border-white/5 mt-8">
+            <div className="py-12 text-center text-on-surface-variant/30 font-display text-[10px] font-bold tracking-[0.2em] border-t border-slate-200 dark:border-white/5 mt-8">
               All curated products loaded
             </div>
           )}
@@ -508,14 +508,14 @@ export const Collection: React.FC = () => {
 
                 {/* Mobile Category */}
                 <div className="space-y-3">
-                  <h4 className="font-display font-semibold text-xs uppercase tracking-widest text-on-surface-variant">Category</h4>
+                  <h4 className="font-display font-semibold text-xs tracking-widest text-on-surface-variant">Category</h4>
                   {Object.keys(categoryCounts).map((cat) => (
                     <label key={cat} className="flex items-center gap-3 cursor-pointer">
                       <input
                         type="checkbox"
                         checked={selectedCategories.includes(cat)}
                         onChange={() => handleCategoryToggle(cat)}
-                        className="w-4.5 h-4.5 rounded border-white/20 bg-white/5 text-primary"
+                        className="w-4.5 h-4.5 rounded border-slate-300 dark:border-white/20 bg-slate-100 dark:bg-white/5 text-primary"
                       />
                       <span className={`text-sm capitalize ${selectedCategories.includes(cat) ? 'text-primary' : 'text-on-surface-variant'}`}>
                         {cat}
@@ -526,7 +526,7 @@ export const Collection: React.FC = () => {
 
                 {/* Mobile Brand */}
                 <div className="space-y-3">
-                  <h4 className="font-display font-semibold text-xs uppercase tracking-widest text-on-surface-variant">Brand</h4>
+                  <h4 className="font-display font-semibold text-xs tracking-widest text-on-surface-variant">Brand</h4>
                   {brandOptions.map((brand) => (
                     <label key={brand} className="flex items-center gap-3 cursor-pointer">
                       <input
@@ -538,7 +538,7 @@ export const Collection: React.FC = () => {
                           );
                           setCurrentPage(1);
                         }}
-                        className="w-4.5 h-4.5 rounded border-white/20 bg-white/5 text-primary"
+                        className="w-4.5 h-4.5 rounded border-slate-300 dark:border-white/20 bg-slate-100 dark:bg-white/5 text-primary"
                       />
                       <span className={`text-sm ${selectedBrands.includes(brand) ? 'text-primary' : 'text-on-surface-variant'}`}>
                         {brand}
@@ -549,7 +549,7 @@ export const Collection: React.FC = () => {
 
                 {/* Mobile Price */}
                 <div className="space-y-3">
-                  <h4 className="font-display font-semibold text-xs uppercase tracking-widest text-on-surface-variant">Max Price</h4>
+                  <h4 className="font-display font-semibold text-xs tracking-widest text-on-surface-variant">Max Price</h4>
                   <input
                     type="range"
                     min="100"
@@ -557,7 +557,7 @@ export const Collection: React.FC = () => {
                     step="50"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(parseInt(e.target.value))}
-                    className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary"
+                    className="w-full h-1 bg-slate-200 dark:bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary"
                   />
                   <div className="flex justify-between text-xs font-semibold text-on-surface-variant font-display">
                     <span>$100</span>
@@ -567,7 +567,7 @@ export const Collection: React.FC = () => {
 
                 {/* Mobile Color */}
                 <div className="space-y-3">
-                  <h4 className="font-display font-semibold text-xs uppercase tracking-widest text-on-surface-variant">Color</h4>
+                  <h4 className="font-display font-semibold text-xs tracking-widest text-on-surface-variant">Color</h4>
                   <div className="flex flex-wrap gap-2">
                     {colorOptions.map((color) => {
                       const isSelected = selectedColor === color.name;
@@ -576,8 +576,8 @@ export const Collection: React.FC = () => {
                           key={color.name}
                           onClick={() => setSelectedColor(isSelected ? null : color.name)}
                           style={{ backgroundColor: color.hex }}
-                          className={`w-7 h-7 rounded-full border border-white/10 relative ${
-                            isSelected ? 'ring-2 ring-primary ring-offset-2 ring-offset-[#10131a] scale-110' : ''
+                          className={`w-7 h-7 rounded-full border border-slate-200 dark:border-white/10 relative ${
+                            isSelected ? 'ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-[#10131a] scale-110' : ''
                           }`}
                         />
                       );
@@ -587,7 +587,7 @@ export const Collection: React.FC = () => {
 
                 {/* Mobile Sizes */}
                 <div className="space-y-3">
-                  <h4 className="font-display font-semibold text-xs uppercase tracking-widest text-on-surface-variant">Sizes</h4>
+                  <h4 className="font-display font-semibold text-xs tracking-widest text-on-surface-variant">Sizes</h4>
                   <div className="grid grid-cols-3 gap-2">
                     {sizeOptions.map((size) => {
                       const isSelected = selectedSize === size;
@@ -596,7 +596,7 @@ export const Collection: React.FC = () => {
                           key={size}
                           onClick={() => setSelectedSize(isSelected ? null : size)}
                           className={`py-1.5 rounded-lg font-display text-xs border ${
-                            isSelected ? 'bg-primary text-on-primary border-primary font-bold' : 'glass-level-1 border-white/10 text-on-surface'
+                            isSelected ? 'bg-primary text-on-primary border-primary font-bold' : 'glass-level-1 border-slate-200 dark:border-white/10 text-on-surface'
                           }`}
                         >
                           {size}
@@ -607,13 +607,13 @@ export const Collection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="space-y-3 pt-6 border-t border-white/10">
+              <div className="space-y-3 pt-6 border-t border-slate-200 dark:border-white/10">
                 <button
                   onClick={() => {
                     handleClearFilters();
                     setIsMobileFilterOpen(false);
                   }}
-                  className="w-full py-2.5 rounded-xl border border-white/10 text-on-surface text-sm font-semibold"
+                  className="w-full py-2.5 rounded-xl border border-slate-250 dark:border-white/10 text-on-surface text-sm font-semibold"
                 >
                   Clear All
                 </button>

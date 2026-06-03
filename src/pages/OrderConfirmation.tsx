@@ -50,7 +50,7 @@ export const OrderConfirmation: React.FC = () => {
       </motion.div>
 
       <div className="space-y-4">
-        <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface uppercase tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface tracking-tight">
           Thank you for your order
         </h1>
         <p className="text-on-surface-variant max-w-md mx-auto text-sm sm:text-base leading-relaxed">
@@ -62,11 +62,11 @@ export const OrderConfirmation: React.FC = () => {
       <div className="glass-level-1 rounded-2xl p-6 md:p-8 border border-white/5 text-left space-y-6 shadow-xl">
         <div className="flex flex-col sm:flex-row justify-between border-b border-white/5 pb-4 gap-2">
           <div>
-            <span className="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Order Number</span>
+            <span className="text-[10px] text-on-surface-variant font-bold tracking-widest">Order Number</span>
             <p className="text-sm font-display font-bold text-primary">{order.id}</p>
           </div>
           <div>
-            <span className="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Order Date</span>
+            <span className="text-[10px] text-on-surface-variant font-bold tracking-widest">Order Date</span>
             <p className="text-sm font-semibold">{order.date}</p>
           </div>
         </div>
@@ -76,7 +76,7 @@ export const OrderConfirmation: React.FC = () => {
           <div className="space-y-2 flex items-start gap-3">
             <Calendar className="w-5 h-5 text-primary shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-xs font-bold uppercase text-on-surface">Estimated Delivery</h4>
+              <h4 className="text-xs font-bold text-on-surface">Estimated Delivery</h4>
               <p className="text-xs text-on-surface-variant leading-relaxed mt-0.5">{deliveryDate}</p>
             </div>
           </div>
@@ -85,7 +85,7 @@ export const OrderConfirmation: React.FC = () => {
           <div className="space-y-2 flex items-start gap-3">
             <Truck className="w-5 h-5 text-primary shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-xs font-bold uppercase text-on-surface">Shipping Address</h4>
+              <h4 className="text-xs font-bold text-on-surface">Shipping Address</h4>
               <p className="text-xs text-on-surface-variant leading-relaxed mt-0.5">
                 {order.shippingAddress.fullName}<br />
                 {order.shippingAddress.addressLine1}, {order.shippingAddress.addressLine2 ? `${order.shippingAddress.addressLine2}, ` : ''}
@@ -97,13 +97,13 @@ export const OrderConfirmation: React.FC = () => {
 
         {/* List of items */}
         <div className="space-y-4">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-on-surface">Items Summary</h4>
+          <h4 className="text-xs font-bold tracking-wider text-on-surface">Items Summary</h4>
           <div className="space-y-3">
             {order.items.map((item, idx) => (
               <div key={idx} className="flex justify-between items-center text-sm">
                 <div className="truncate pr-4">
                   <span className="font-semibold text-on-surface">{item.product.name}</span>
-                  <span className="text-xs text-on-surface-variant block uppercase tracking-wider mt-0.5">
+                  <span className="text-xs text-on-surface-variant block tracking-wider mt-0.5">
                     {item.selectedColor} &bull; {item.selectedSize} &bull; Qty {item.quantity}
                   </span>
                 </div>

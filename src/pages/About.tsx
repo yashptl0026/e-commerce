@@ -14,8 +14,8 @@ export const About: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="relative z-10 space-y-4 max-w-3xl mx-auto"
         >
-          <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">The Aetheria Story</span>
-          <h1 className="text-4xl sm:text-6xl font-display font-extrabold tracking-tight text-on-surface uppercase">
+          <span className="text-xs tracking-[0.2em] font-semibold text-primary">The Aetheria Story</span>
+          <h1 className="text-4xl sm:text-6xl font-display font-extrabold tracking-tight text-on-surface">
             Define. Design. Deliver.
           </h1>
           <p className="text-body-lg text-on-surface-variant leading-relaxed text-sm sm:text-base">
@@ -40,7 +40,7 @@ export const About: React.FC = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40"></div>
           <div className="absolute bottom-8 left-8 max-w-md space-y-2 hidden md:block text-left">
-            <h3 className="text-lg font-display font-bold text-on-surface uppercase tracking-wider">A Cinematic Universe</h3>
+            <h3 className="text-lg font-display font-bold text-on-surface tracking-wider">A Cinematic Universe</h3>
             <p className="text-xs text-on-surface-variant leading-relaxed">
               Every detail in our collections represents hours of tailored design, high-contrast imagery, and premium technical fabric selection.
             </p>
@@ -61,7 +61,7 @@ export const About: React.FC = () => {
               <div className="w-12 h-12 rounded-full glass-level-2 flex items-center justify-center text-primary border border-primary/20">
                 <Eye className="w-5 h-5" />
               </div>
-              <h3 className="text-xl font-display font-bold uppercase tracking-wide text-on-surface">Our Vision</h3>
+              <h3 className="text-xl font-display font-bold tracking-wide text-on-surface">Our Vision</h3>
               <p className="text-sm text-on-surface-variant leading-relaxed">
                 We envision a future where high-end commerce feels fluid, responsive, and alive. By leveraging Apple-inspired hardware-software aesthetics, we construct translucent, glowing user interfaces that focus completely on showcasing premium product craftsmanship.
               </p>
@@ -76,7 +76,7 @@ export const About: React.FC = () => {
               <div className="w-12 h-12 rounded-full glass-level-2 flex items-center justify-center text-primary border border-primary/20">
                 <Compass className="w-5 h-5" />
               </div>
-              <h3 className="text-xl font-display font-bold uppercase tracking-wide text-on-surface">Creative Philosophy</h3>
+              <h3 className="text-xl font-display font-bold tracking-wide text-on-surface">Creative Philosophy</h3>
               <p className="text-sm text-on-surface-variant leading-relaxed">
                 We employ the "Frosted Obsidian" design theme—deep midnight blues layered with translucency rather than heavy drop shadows. Generous vertical spacing prevents visual clutter, giving each product segment breathing room to highlight its lifestyle design.
               </p>
@@ -90,7 +90,7 @@ export const About: React.FC = () => {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-30"></div>
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6 relative z-10 flex flex-col items-center">
           <Award className="w-12 h-12 text-white animate-pulse" />
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-white uppercase tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
             Sustainability & Responsibility
           </h2>
           <p className="text-white/80 leading-relaxed text-sm sm:text-base max-w-2xl">
@@ -102,7 +102,7 @@ export const About: React.FC = () => {
       {/* Showroom timeline */}
       <section className="w-full bg-surface-container-lowest border-t border-border py-12 md:py-24 mt-8 md:mt-16">
         <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-8 md:space-y-12">
-          <h2 className="text-2xl sm:text-3xl font-display font-bold text-on-surface text-center uppercase tracking-wider">
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-on-surface text-center tracking-wider">
             Global Showrooms
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">

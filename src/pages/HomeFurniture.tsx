@@ -58,10 +58,10 @@ export const HomeFurniture: React.FC = () => {
       {/* Hero Banner */}
       <header className="relative w-full pt-24 pb-16 md:pt-36 md:pb-28 max-w-7xl mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center justify-between gap-12 min-h-[85vh]">
         <div className="space-y-6 max-w-xl lg:w-1/2 text-center lg:text-left">
-          <span className="text-[#8C7A6B] text-xs font-bold uppercase tracking-[0.25em] block">
+          <span className="text-[#8C7A6B] text-xs font-bold tracking-[0.25em] block">
             Natural Organic Craftsmanship
           </span>
-          <h1 className="text-4xl sm:text-6xl font-display font-light leading-tight tracking-tight uppercase">
+          <h1 className="text-4xl sm:text-6xl font-display font-light leading-tight tracking-tight">
             Sculpted <br className="hidden sm:inline" />
             <span className="font-serif italic text-[#8C7A6B]">Living Spaces</span>
           </h1>
@@ -71,7 +71,7 @@ export const HomeFurniture: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
             <button
               onClick={() => navigate('/collection?category=decor')}
-              className="bg-[#8C7A6B] hover:bg-[#726255] text-white font-display font-bold text-xs uppercase tracking-widest py-4 px-10 rounded-full transition-all duration-300 shadow-xl cursor-pointer"
+              className="bg-[#8C7A6B] hover:bg-[#726255] text-white font-display font-bold text-xs tracking-wider py-4 px-10 rounded-full transition-all duration-300 shadow-xl cursor-pointer"
             >
               Shop Furniture
             </button>
@@ -80,7 +80,7 @@ export const HomeFurniture: React.FC = () => {
                 const hotspotsSection = document.getElementById('hotspots');
                 if (hotspotsSection) hotspotsSection.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="border border-[#8C7A6B]/30 hover:border-[#8C7A6B] bg-transparent text-[#2D2A26] dark:text-[#E6E1DC] font-display font-bold text-xs uppercase tracking-widest py-4 px-10 rounded-full transition-all cursor-pointer"
+              className="border border-[#8C7A6B]/30 hover:border-[#8C7A6B] bg-transparent text-[#2D2A26] dark:text-[#E6E1DC] font-display font-bold text-xs tracking-wider py-4 px-10 rounded-full transition-all cursor-pointer"
             >
               Shop The Room
             </button>
@@ -101,11 +101,11 @@ export const HomeFurniture: React.FC = () => {
       <section id="hotspots" className="py-20 md:py-32 bg-[#FAF8F5] dark:bg-[#110f0e] border-y border-border">
         <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-16">
           <div className="text-center max-w-xl mx-auto space-y-4">
-            <span className="text-[#8C7A6B] text-[10px] tracking-[0.25em] font-bold uppercase block">
+            <span className="text-[#8C7A6B] text-[10px] tracking-[0.25em] font-bold block">
               Curate The Look
             </span>
-            <h2 className="text-3xl font-display font-light uppercase tracking-wide">
-              Shop The Showcase Room
+            <h2 className="text-3xl font-display font-light tracking-wide">
+              Shop the Showcase Room
             </h2>
             <p className="text-[#6E645A] dark:text-[#BCAEA2] text-xs sm:text-sm font-light">
               Hover over or click the pulsing dots to view product summaries, and click to inspect details immediately.
@@ -154,7 +154,7 @@ export const HomeFurniture: React.FC = () => {
                         transition={{ duration: 0.15 }}
                         className="absolute bottom-10 left-1/2 -translate-x-1/2 w-48 p-4 bg-white/95 dark:bg-[#161513]/95 backdrop-blur-md rounded-2xl border border-border shadow-2xl space-y-2 z-30"
                       >
-                        <h4 className="font-display font-bold text-[10px] uppercase tracking-wider text-on-surface truncate">
+                        <h4 className="font-display font-bold text-[10px] tracking-wider text-on-surface truncate">
                           {hs.name}
                         </h4>
                         <div className="flex justify-between items-center">
@@ -163,7 +163,7 @@ export const HomeFurniture: React.FC = () => {
                           </span>
                           <button
                             onClick={() => handleHotspotClick(hs.productId)}
-                            className="text-[9px] font-display font-bold uppercase tracking-widest text-[#8C7A6B] hover:underline flex items-center gap-0.5"
+                            className="text-[9px] font-display font-bold tracking-wider text-[#8C7A6B] hover:underline flex items-center gap-0.5"
                           >
                             View <ArrowRight className="w-2.5 h-2.5" />
                           </button>
@@ -180,18 +180,18 @@ export const HomeFurniture: React.FC = () => {
 
       {/* Catalog Grid */}
       <section className="py-20 md:py-32 max-w-7xl mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-end mb-16">
-          <div className="space-y-2">
-            <span className="text-[#8C7A6B] text-[10px] tracking-[0.25em] font-bold uppercase block">
+        <div className="flex justify-between items-center gap-4 mb-10 md:mb-16">
+          <div className="space-y-1">
+            <span className="text-[#8C7A6B] text-[10px] tracking-[0.25em] font-bold block">
               Curated Accessories
             </span>
-            <h2 className="text-3xl font-display font-light uppercase tracking-wider">
-              Shop The Collection
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-light tracking-wider text-on-surface">
+              Shop the Collection
             </h2>
           </div>
           <button
             onClick={() => navigate('/collection?category=decor')}
-            className="text-[#8C7A6B] hover:text-[#726255] font-bold text-xs font-display flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="text-[#8C7A6B] hover:text-[#726255] font-bold text-xs font-display flex items-center gap-1.5 transition-colors cursor-pointer shrink-0"
           >
             Browse All <ArrowRight className="w-4 h-4" />
           </button>
@@ -206,20 +206,20 @@ export const HomeFurniture: React.FC = () => {
 
       {/* Cozy Testimonials */}
       <section className="py-20 bg-[#F4F1EA] dark:bg-[#0f0e0d] text-center max-w-4xl mx-auto px-6 space-y-6 rounded-3xl my-12">
-        <span className="text-[10px] tracking-[0.3em] font-bold text-[#8C7A6B] uppercase block">
+        <span className="text-[10px] tracking-[0.3em] font-bold text-[#8C7A6B] block">
           Client Comfort
         </span>
         <blockquote className="text-2xl sm:text-3xl font-display font-light text-on-surface leading-normal">
           "The Scandi Lounge Chair is simply beautiful. The oatmeal wool fabric feels incredibly texture-rich, and the white-oiled oak frames add such a cozy, premium character."
         </blockquote>
-        <cite className="block text-xs font-display font-bold uppercase tracking-widest text-[#8C7A6B]">
+        <cite className="block text-xs font-display font-bold tracking-wider text-[#8C7A6B]">
           — Alexander Mercer, Lead Aetheria Designer
         </cite>
       </section>
 
       {/* Furniture Newsletter */}
       <section className="py-20 max-w-2xl mx-auto px-6 text-center space-y-6">
-        <h3 className="text-xl font-display font-light uppercase tracking-wider">
+        <h3 className="text-xl font-display font-light tracking-wider">
           Receive Design Journals
         </h3>
         <p className="text-[#6E645A] dark:text-[#BCAEA2] text-xs sm:text-sm font-light leading-relaxed max-w-md mx-auto">
@@ -234,7 +234,7 @@ export const HomeFurniture: React.FC = () => {
           />
           <button
             type="submit"
-            className="bg-[#8C7A6B] text-white font-display font-bold text-[10px] uppercase tracking-widest py-3.5 px-8 rounded-full hover:bg-[#726255] transition-all cursor-pointer shadow-lg"
+            className="bg-[#8C7A6B] text-white font-display font-bold text-[10px] tracking-wider py-3.5 px-8 rounded-full hover:bg-[#726255] transition-all cursor-pointer shadow-lg"
           >
             Subscribe
           </button>

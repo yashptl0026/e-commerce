@@ -56,7 +56,7 @@ export const NavBar: React.FC = () => {
       : 'bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 text-primary'
   }`;
 
-  const logoClass = `text-body-lg font-display font-extrabold tracking-tighter text-xl md:text-2xl transition-colors ${
+  const logoClass = `text-body-lg font-display font-extrabold tracking-[0.185em] text-lg sm:text-xl md:text-2xl transition-colors ${
     useDarkNavStyle ? 'text-white' : 'text-on-surface'
   }`;
 
@@ -260,7 +260,7 @@ export const NavBar: React.FC = () => {
                         key={demo.path}
                         to={demo.path}
                         onClick={() => setIsHomeDropdownOpen(false)}
-                        className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
+                        className="block px-4 py-2 rounded-xl text-xs font-display font-semibold text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
                       >
                         {demo.name}
                       </Link>
@@ -300,7 +300,7 @@ export const NavBar: React.FC = () => {
                   >
                     {/* Column 1: Categories */}
                     <div className="space-y-4">
-                      <h3 className="text-xs font-bold uppercase tracking-widest text-primary border-b border-border pb-2">
+                      <h3 className="text-xs font-bold tracking-wider text-primary border-b border-border pb-2">
                         Shop By Category
                       </h3>
                       <ul className="space-y-3">
@@ -317,7 +317,7 @@ export const NavBar: React.FC = () => {
                             <Link
                               to={cat.path}
                               onClick={() => setIsMegaMenuOpen(false)}
-                              className="text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors block"
+                              className="text-xs font-display font-semibold text-on-surface-variant hover:text-primary transition-colors block"
                             >
                               {cat.name}
                             </Link>
@@ -328,7 +328,7 @@ export const NavBar: React.FC = () => {
 
                     {/* Column 2: Browse Demos */}
                     <div className="space-y-4">
-                      <h3 className="text-xs font-bold uppercase tracking-widest text-primary border-b border-border pb-2">
+                      <h3 className="text-xs font-bold tracking-wider text-primary border-b border-border pb-2">
                         Homepage Demos
                       </h3>
                       <ul className="space-y-3">
@@ -343,7 +343,7 @@ export const NavBar: React.FC = () => {
                             <Link
                               to={demo.path}
                               onClick={() => setIsMegaMenuOpen(false)}
-                              className="text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors block"
+                              className="text-xs font-display font-semibold text-on-surface-variant hover:text-primary transition-colors block"
                             >
                               {demo.name}
                             </Link>
@@ -354,7 +354,7 @@ export const NavBar: React.FC = () => {
 
                     {/* Column 3: Featured Product */}
                     <div className="space-y-4">
-                      <h3 className="text-xs font-bold uppercase tracking-widest text-primary border-b border-border pb-2">
+                      <h3 className="text-xs font-bold tracking-wider text-primary border-b border-border pb-2">
                         Featured Showcase
                       </h3>
                       <Link
@@ -369,7 +369,7 @@ export const NavBar: React.FC = () => {
                             className="w-full h-full object-contain group-hover/promo:scale-105 transition-transform duration-500"
                           />
                         </div>
-                        <h4 className="text-xs font-display font-extrabold text-on-surface group-hover/promo:text-primary transition-colors uppercase font-semibold">
+                        <h4 className="text-xs font-display font-extrabold text-on-surface group-hover/promo:text-primary transition-colors font-semibold">
                           Obsidian Smart Watch
                         </h4>
                         <p className="text-[9px] text-primary font-bold mt-1 font-display">$299.00</p>
@@ -378,13 +378,13 @@ export const NavBar: React.FC = () => {
 
                     {/* Column 4: Story & Quality */}
                     <div className="space-y-4">
-                      <h3 className="text-xs font-bold uppercase tracking-widest text-primary border-b border-border pb-2">
+                      <h3 className="text-xs font-bold tracking-wider text-primary border-b border-border pb-2">
                         Our Standard
                       </h3>
                       <div className="bg-gradient-dynamic text-white p-5 rounded-2xl flex flex-col justify-between h-[180px] shadow-lg relative overflow-hidden">
                         <div className="absolute inset-0 bg-black/10 z-0"></div>
                         <div className="space-y-2 relative z-10">
-                          <h4 className="font-display font-extrabold text-xs uppercase tracking-widest">
+                          <h4 className="font-display font-extrabold text-xs tracking-wider">
                             Crafting Luxury
                           </h4>
                           <p className="text-[10px] text-white/80 leading-relaxed">
@@ -394,7 +394,7 @@ export const NavBar: React.FC = () => {
                         <Link
                           to="/about"
                           onClick={() => setIsMegaMenuOpen(false)}
-                          className="bg-white text-primary text-[9px] font-display font-bold uppercase tracking-widest py-2 px-4 rounded-xl text-center shadow-md hover:scale-[1.02] active:scale-95 transition-all relative z-10 font-semibold"
+                          className="bg-white text-primary text-[10px] font-display font-bold tracking-wider py-2 px-4 rounded-xl text-center shadow-md hover:scale-[1.02] active:scale-95 transition-all relative z-10 font-semibold"
                         >
                           Explore Our Story
                         </Link>
@@ -442,28 +442,28 @@ export const NavBar: React.FC = () => {
                     <Link
                       to="/faq"
                       onClick={() => setIsSupportOpen(false)}
-                      className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
+                      className="block px-4 py-2 rounded-xl text-xs font-display font-semibold text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
                     >
                       FAQ Help
                     </Link>
                     <Link
                       to="/track-order"
                       onClick={() => setIsSupportOpen(false)}
-                      className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
+                      className="block px-4 py-2 rounded-xl text-xs font-display font-semibold text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
                     >
                       Track Order
                     </Link>
                     <Link
                       to="/contact"
                       onClick={() => setIsSupportOpen(false)}
-                      className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
+                      className="block px-4 py-2 rounded-xl text-xs font-display font-semibold text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
                     >
                       Contact Us
                     </Link>
                     <Link
                       to="/support"
                       onClick={() => setIsSupportOpen(false)}
-                      className="block px-4 py-2 rounded-xl text-[11px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all border-t border-border text-left"
+                      className="block px-4 py-2 rounded-xl text-xs font-display font-semibold text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all border-t border-border text-left"
                     >
                       Live Chat Concierge
                     </Link>
@@ -537,7 +537,7 @@ export const NavBar: React.FC = () => {
                           <Link
                             to="/dashboard?tab=profile"
                             onClick={() => setIsProfileOpen(false)}
-                            className="flex items-center justify-between px-3 py-2 rounded-xl text-[11px] font-display font-bold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
+                            className="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-display font-bold tracking-wide text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
                           >
                             <span>Dashboard Profile</span>
                             <ChevronRight className="w-3.5 h-3.5 text-on-surface-variant/40" />
@@ -545,7 +545,7 @@ export const NavBar: React.FC = () => {
                           <Link
                             to="/dashboard?tab=orders"
                             onClick={() => setIsProfileOpen(false)}
-                            className="flex items-center justify-between px-3 py-2 rounded-xl text-[11px] font-display font-bold uppercase tracking-wider text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
+                            className="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-display font-bold tracking-wide text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all text-left"
                           >
                             <span>Order Registry</span>
                             <ChevronRight className="w-3.5 h-3.5 text-on-surface-variant/40" />
@@ -556,7 +556,7 @@ export const NavBar: React.FC = () => {
                       /* Logged Out: Simulated Sign In Form */
                       <div className="space-y-3">
                         <div className="border-b border-border pb-2">
-                          <p className="text-xs font-bold text-on-surface uppercase tracking-wider">Sign In</p>
+                          <p className="text-xs font-bold text-on-surface tracking-wide">Sign In</p>
                           <p className="text-[9px] text-on-surface-variant/60 font-medium">Access your synchronized profile</p>
                         </div>
                         <form onSubmit={handleSimulatedLogin} className="space-y-2">
@@ -578,7 +578,7 @@ export const NavBar: React.FC = () => {
                           />
                           <button
                             type="submit"
-                            className="w-full bg-primary text-on-primary font-display font-bold py-2 rounded-xl text-[10px] uppercase tracking-widest hover:opacity-90 transition-opacity"
+                            className="w-full bg-primary text-on-primary font-display font-bold py-2 rounded-xl text-[10px] tracking-widest hover:opacity-90 transition-opacity"
                           >
                             Sign In
                           </button>
@@ -588,7 +588,7 @@ export const NavBar: React.FC = () => {
 
                     {/* Theme Toggle Options */}
                     <div className="border-t border-border pt-3 space-y-2">
-                      <span className="text-[9px] uppercase font-bold tracking-widest text-on-surface-variant/50 px-3 block">
+                      <span className="text-[10px] font-bold tracking-wide text-on-surface-variant/50 px-3 block">
                         Appearance
                       </span>
 
@@ -610,7 +610,7 @@ export const NavBar: React.FC = () => {
                                 }`}
                             >
                               <IconComponent className="w-3.5 h-3.5" />
-                              <span className="text-[8px] uppercase font-display tracking-wider font-semibold">{opt.name}</span>
+                              <span className="text-[9px] font-display tracking-wider font-semibold">{opt.name}</span>
                             </button>
                           );
                         })}
@@ -625,7 +625,7 @@ export const NavBar: React.FC = () => {
                             logout();
                             setIsProfileOpen(false);
                           }}
-                          className="w-full text-center py-2 rounded-xl text-[10px] font-display font-bold uppercase tracking-widest border border-error/25 text-error hover:bg-error/5 hover:border-error/40 transition-all cursor-pointer"
+                          className="w-full text-center py-2 rounded-xl text-xs font-display font-bold tracking-wide border border-error/25 text-error hover:bg-error/5 hover:border-error/40 transition-all cursor-pointer"
                         >
                           Sign Out
                         </button>
@@ -675,7 +675,7 @@ export const NavBar: React.FC = () => {
             className="fixed inset-y-0 left-0 w-4/5 max-w-sm z-50 dropdown-glass border-y-0 border-l-0 rounded-r-3xl shadow-2xl p-6 flex flex-col gap-8 md:hidden"
           >
             <div className="flex justify-between items-center">
-              <span className="font-display font-extrabold tracking-tighter text-xl text-on-surface">
+              <span className="font-display font-extrabold tracking-[0.185em] text-lg text-on-surface">
                 AETHERIA LUXE
               </span>
               <button
@@ -760,7 +760,7 @@ export const NavBar: React.FC = () => {
 
               {/* Mobile Theme Selector */}
               <div className="pt-4 border-t border-border space-y-2">
-                <span className="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant/50 block">
+                <span className="text-[10px] font-bold tracking-widest text-on-surface-variant/50 block">
                   Appearance
                 </span>
                 <div className="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl border border-border">
@@ -780,7 +780,7 @@ export const NavBar: React.FC = () => {
                           }`}
                       >
                         <IconComponent className="w-4 h-4" />
-                        <span className="text-[9px] uppercase font-display tracking-wider font-semibold">{opt.name}</span>
+                        <span className="text-[9px] font-display tracking-wider font-semibold">{opt.name}</span>
                       </button>
                     );
                   })}
@@ -848,7 +848,7 @@ export const NavBar: React.FC = () => {
             <div className="flex justify-between items-center pb-4 border-b border-border">
               <div className="flex items-center gap-2">
                 <ShoppingBag className="w-5 h-5 text-primary" />
-                <span className="font-display font-extrabold tracking-tighter text-lg text-on-surface uppercase">
+                <span className="font-display font-extrabold tracking-tight text-lg text-on-surface">
                   Your Bag ({totalCartItems})
                 </span>
               </div>
@@ -880,7 +880,7 @@ export const NavBar: React.FC = () => {
                       <h4 className="font-display font-bold text-xs text-on-surface truncate">
                         {item.product.name}
                       </h4>
-                      <p className="text-[9px] text-on-surface-variant font-medium uppercase tracking-wider mt-0.5">
+                      <p className="text-[9px] text-on-surface-variant font-medium tracking-wider mt-0.5">
                         {item.selectedColor} / {item.selectedSize}
                       </p>
                       <div className="flex items-center justify-between mt-2">
@@ -929,7 +929,7 @@ export const NavBar: React.FC = () => {
                       setIsMiniCartOpen(false);
                       navigate('/collection');
                     }}
-                    className="text-[10px] font-display font-bold uppercase tracking-wider text-primary hover:underline"
+                    className="text-[10px] font-display font-bold tracking-wider text-primary hover:underline"
                   >
                     Start Shopping
                   </button>
@@ -940,7 +940,7 @@ export const NavBar: React.FC = () => {
             {/* Footer subtotal & CTA */}
             {cart.length > 0 && (
               <div className="pt-4 border-t border-border space-y-4">
-                <div className="flex justify-between items-center font-display font-extrabold text-sm text-on-surface uppercase tracking-wider">
+                <div className="flex justify-between items-center font-display font-extrabold text-sm text-on-surface tracking-wider">
                   <span>Subtotal</span>
                   <span className="text-primary">${subtotal.toLocaleString()}</span>
                 </div>
@@ -948,14 +948,14 @@ export const NavBar: React.FC = () => {
                   <Link
                     to="/cart"
                     onClick={() => setIsMiniCartOpen(false)}
-                    className="w-full py-3 bg-white/5 border border-white/10 rounded-full font-display font-bold text-[10px] text-center hover:bg-white/10 transition-colors uppercase tracking-widest text-on-surface"
+                    className="w-full py-3 bg-white/5 border border-white/10 rounded-full font-display font-bold text-[10px] text-center hover:bg-white/10 transition-colors tracking-wider text-on-surface"
                   >
                     View Bag
                   </Link>
                   <Link
                     to="/checkout"
                     onClick={() => setIsMiniCartOpen(false)}
-                    className="w-full py-3 accent-gradient rounded-full font-display font-bold text-[10px] text-center text-white hover:opacity-90 transition-all uppercase tracking-widest shadow-lg flex items-center justify-center gap-1"
+                    className="w-full py-3 accent-gradient rounded-full font-display font-bold text-[10px] text-center text-white hover:opacity-90 transition-all tracking-wider shadow-lg flex items-center justify-center gap-1"
                   >
                     Checkout
                   </Link>

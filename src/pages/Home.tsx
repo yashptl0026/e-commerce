@@ -114,7 +114,7 @@ export const Home: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 space-y-6 max-w-2xl lg:w-1/2"
         >
-          <span className="text-xs tracking-[0.25em] font-bold text-primary uppercase block">Aetheria Luxe Showcase</span>
+          <span className="text-xs tracking-[0.25em] font-bold text-primary block">Aetheria Luxe Showcase</span>
           <h1 className="text-4xl sm:text-6xl font-display font-extrabold text-on-surface leading-[1.1] tracking-tight">
             Redefining Modern <span className="text-gradient-primary">Elegance</span>
           </h1>
@@ -155,7 +155,7 @@ export const Home: React.FC = () => {
           {/* Subtle floating overlay elements */}
           <div className="absolute bottom-6 left-6 z-20 glass-level-2 border border-border py-2 px-4 rounded-2xl flex items-center gap-2 shadow-lg">
             <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
-            <span className="text-[10px] font-display font-bold uppercase tracking-wider text-on-surface">Obsidian Edition</span>
+            <span className="text-[10px] font-display font-bold tracking-wider text-on-surface">Obsidian Edition</span>
           </div>
         </motion.div>
       </header>
@@ -163,16 +163,16 @@ export const Home: React.FC = () => {
       {/* Curated Categories */}
       <section className="w-full bg-surface-container-lowest border-y border-border py-12 md:py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-6 md:space-y-10">
-          <div className="flex justify-between items-end">
+          <div className="flex justify-between items-center gap-4">
             <motion.h2
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-3xl font-display font-bold text-on-surface border-l-4 border-primary pl-4"
+              className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-on-surface border-l-4 border-primary pl-4"
             >
               Curated Categories
             </motion.h2>
-            <div className="flex gap-2">
+            <div className="flex gap-2 shrink-0">
               <button
                 onClick={() => scrollSlider(categoriesRef, 'left')}
                 className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-on-surface/5 active:scale-95 transition-all text-on-surface-variant hover:text-on-surface cursor-pointer"
@@ -192,7 +192,7 @@ export const Home: React.FC = () => {
 
           <div
             ref={categoriesRef}
-            className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-4"
+            className="flex gap-4 md:gap-6 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory scrollbar-none pt-4 pb-4 -mt-4"
           >
             {categories.map((cat, idx) => {
               const isImageLoaded = loadedCategories[cat.key];
@@ -235,18 +235,18 @@ export const Home: React.FC = () => {
 
       {/* Trending Products */}
       <section className="py-10 md:py-20 px-4 md:px-6 max-w-7xl mx-auto space-y-6 md:space-y-10">
-        <div className="flex justify-between items-end">
+        <div className="flex justify-between items-center gap-4">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-display font-bold text-on-surface border-l-4 border-primary pl-4"
+            className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-on-surface border-l-4 border-primary pl-4"
           >
             Trending Now
           </motion.h2>
           <Link
             to="/collection"
-            className="text-primary hover:text-secondary transition-colors text-sm font-semibold flex items-center gap-2"
+            className="text-primary hover:text-secondary transition-colors text-sm font-semibold flex items-center gap-2 shrink-0"
           >
             View All <ArrowRight className="w-4 h-4" />
           </Link>
@@ -264,7 +264,7 @@ export const Home: React.FC = () => {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-30"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 text-center lg:text-left">
           <div className="space-y-4">
-            <span className="bg-white/10 text-white border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase backdrop-blur-md">
+            <span className="bg-white/10 text-white border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-widest backdrop-blur-md">
               Limited Drop
             </span>
             <h2 className="text-4xl font-display font-bold text-white leading-tight">Midnight Exclusives</h2>
@@ -279,19 +279,19 @@ export const Home: React.FC = () => {
                 <span className="block text-2xl sm:text-3xl font-display font-bold text-white">
                   {timeLeft.hours.toString().padStart(2, '0')}
                 </span>
-                <span className="text-[9px] sm:text-[10px] text-white/50 tracking-wider font-semibold uppercase">Hours</span>
+                <span className="text-[9px] sm:text-[10px] text-white/50 tracking-wider font-semibold">Hours</span>
               </div>
               <div className="glass-level-1 rounded-2xl px-3.5 py-3 sm:px-5 sm:py-4 text-center min-w-[75px] sm:min-w-[90px] border border-white/10 shadow-xl">
                 <span className="block text-2xl sm:text-3xl font-display font-bold text-white">
                   {timeLeft.minutes.toString().padStart(2, '0')}
                 </span>
-                <span className="text-[9px] sm:text-[10px] text-white/50 tracking-wider font-semibold uppercase">Mins</span>
+                <span className="text-[9px] sm:text-[10px] text-white/50 tracking-wider font-semibold">Mins</span>
               </div>
               <div className="glass-level-1 rounded-2xl px-3.5 py-3 sm:px-5 sm:py-4 text-center min-w-[75px] sm:min-w-[90px] border border-white/10 shadow-xl">
                 <span className="block text-2xl sm:text-3xl font-display font-bold text-white">
                   {timeLeft.seconds.toString().padStart(2, '0')}
                 </span>
-                <span className="text-[9px] sm:text-[10px] text-white/50 tracking-wider font-semibold uppercase">Secs</span>
+                <span className="text-[9px] sm:text-[10px] text-white/50 tracking-wider font-semibold">Secs</span>
               </div>
             </div>
             <button
@@ -360,9 +360,9 @@ export const Home: React.FC = () => {
 
       {/* Testimonials */}
       <section className="py-10 md:py-20 px-4 md:px-6 max-w-7xl mx-auto space-y-8 md:space-y-12">
-        <div className="flex justify-between items-end">
-          <h2 className="text-3xl font-display font-bold text-on-surface border-l-4 border-primary pl-4">Voices of Elegance</h2>
-          <div className="flex gap-2">
+        <div className="flex justify-between items-center gap-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-on-surface border-l-4 border-primary pl-4">Voices of Elegance</h2>
+          <div className="flex gap-2 shrink-0">
             <button
               onClick={() => scrollSlider(testimonialsRef, 'left')}
               className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-on-surface/5 active:scale-95 transition-all text-on-surface-variant hover:text-on-surface cursor-pointer"
@@ -382,7 +382,7 @@ export const Home: React.FC = () => {
 
         <div
           ref={testimonialsRef}
-          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-4"
+          className="flex gap-6 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory scrollbar-none pb-4"
         >
           <div className="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)] snap-start glass-level-1 p-8 rounded-3xl flex flex-col justify-between border border-white/5 shadow-xl">
             <div className="space-y-6">
@@ -405,7 +405,7 @@ export const Home: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-sm text-on-surface">Elena R.</h4>
-                <p className="text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Verified Buyer</p>
+                <p className="text-[11px] text-on-surface-variant tracking-wider font-semibold">Verified Buyer</p>
               </div>
             </div>
           </div>
@@ -431,7 +431,7 @@ export const Home: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-sm text-on-surface">Marcus T.</h4>
-                <p className="text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Verified Buyer</p>
+                <p className="text-[11px] text-on-surface-variant tracking-wider font-semibold">Verified Buyer</p>
               </div>
             </div>
           </div>
@@ -458,7 +458,7 @@ export const Home: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-sm text-on-surface">Sarah L.</h4>
-                <p className="text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Verified Buyer</p>
+                <p className="text-[11px] text-on-surface-variant tracking-wider font-semibold">Verified Buyer</p>
               </div>
             </div>
           </div>

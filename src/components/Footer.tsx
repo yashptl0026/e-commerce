@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
 
         {/* Brand Column */}
         <div className="col-span-1 sm:col-span-2 lg:col-span-2 space-y-6">
-          <h2 className="text-2xl font-display font-bold tracking-tighter text-on-surface">AETHERIA LUXE</h2>
+          <h2 className="text-xl font-display font-bold tracking-[0.185em] text-on-surface">AETHERIA LUXE</h2>
           <p className="font-body text-on-surface-variant max-w-sm leading-relaxed text-sm">
             Curating the finest in modern elegance. Defining the intersection of performance, design, and prestige since 2024. Experience luxury without compromise.
           </p>
@@ -61,7 +61,7 @@ export const Footer: React.FC = () => {
 
         {/* Support Links */}
         <div className="space-y-4 col-span-1">
-          <h4 className="font-display font-semibold text-sm uppercase tracking-widest text-on-surface">Support</h4>
+          <h4 className="font-display font-semibold text-sm tracking-wide text-on-surface">Support</h4>
           <nav className="flex flex-col gap-2.5 text-sm">
             <Link to="/track-order" className="text-on-surface-variant hover:text-primary transition-colors">Track Order</Link>
             <Link to="/faq" className="text-on-surface-variant hover:text-primary transition-colors">FAQ Help</Link>
@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
 
         {/* Company Links */}
         <div className="space-y-4 col-span-1">
-          <h4 className="font-display font-semibold text-sm uppercase tracking-widest text-on-surface">Company</h4>
+          <h4 className="font-display font-semibold text-sm tracking-wide text-on-surface">Company</h4>
           <nav className="flex flex-col gap-2.5 text-sm">
             <Link to="/about" className="text-on-surface-variant hover:text-primary transition-colors">About Us</Link>
             <Link to="/about" className="text-on-surface-variant hover:text-primary transition-colors">Global Showrooms</Link>
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
 
         {/* Newsletter Column */}
         <div className="col-span-1 sm:col-span-2 lg:col-span-2 space-y-4">
-          <h4 className="font-display font-semibold text-sm uppercase tracking-widest text-on-surface">Newsletter</h4>
+          <h4 className="font-display font-semibold text-sm tracking-wide text-on-surface">Newsletter</h4>
           <p className="text-sm text-on-surface-variant leading-relaxed">
             Subscribe to receive exclusive access to early drops, styling advice, and private events.
           </p>
@@ -117,8 +117,8 @@ export const Footer: React.FC = () => {
 
       {/* Footer Bottom */}
       <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
-        <span>© {new Date().getFullYear()} AETHERIA LUXE. ALL RIGHTS RESERVED.</span>
-        <div className="flex gap-6 font-display font-medium uppercase tracking-widest text-[10px]">
+        <span>© {new Date().getFullYear()} Aetheria Luxe. All rights reserved.</span>
+        <div className="flex gap-6 font-display font-medium tracking-wider text-[10px]">
           <span>Visa</span>
           <span>Amex</span>
           <span>Mastercard</span>

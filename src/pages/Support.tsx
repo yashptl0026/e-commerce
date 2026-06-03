@@ -98,8 +98,8 @@ export const Support: React.FC = () => {
     <main className="flex-grow">
       {/* Header */}
       <header className="pt-24 pb-10 md:pt-[120px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto space-y-4">
-        <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Support Desk</span>
-        <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface uppercase tracking-tight">
+        <span className="text-xs tracking-[0.2em] font-semibold text-primary">Support Desk</span>
+        <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface tracking-tight">
           Support Center
         </h1>
         <p className="text-body-md text-on-surface-variant max-w-lg text-sm sm:text-base leading-relaxed">
@@ -154,7 +154,7 @@ export const Support: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-sm text-on-surface">Aetheria Support</h3>
-                  <span className="text-[10px] text-primary uppercase font-bold tracking-widest">Live Automated Support</span>
+                  <span className="text-[10px] text-primary font-bold tracking-widest">Live Automated Support</span>
                 </div>
               </div>
 
@@ -206,12 +206,12 @@ export const Support: React.FC = () => {
               </div>
 
               {/* Quick helper buttons */}
-              <div className="px-5 py-3 border-t border-border flex gap-2 overflow-x-auto scrollbar-none whitespace-nowrap bg-surface-container-low">
+              <div className="px-5 py-3 border-t border-border flex gap-2 overflow-x-auto overflow-y-hidden scrollbar-none whitespace-nowrap bg-surface-container-low">
                 {['Track order', 'Return policy', 'Showroom hours'].map((btn) => (
                   <button
                     key={btn}
                     onClick={() => handleSendMessage(btn)}
-                    className="bg-surface-container border border-border hover:border-primary/30 rounded-full px-4 py-1.5 text-[10px] font-display font-semibold uppercase tracking-wider hover:text-primary transition-all duration-300"
+                    className="bg-surface-container border border-border hover:border-primary/30 rounded-full px-4 py-1.5 text-[10px] font-display font-semibold tracking-wider hover:text-primary transition-all duration-300"
                   >
                     {btn}
                   </button>

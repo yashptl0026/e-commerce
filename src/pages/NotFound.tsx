@@ -29,7 +29,7 @@ export const NotFound: React.FC = () => {
             className="flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-5 py-2.5 backdrop-blur-md shadow-lg shadow-primary/5 relative z-10"
           >
             <HelpCircle className="w-5 h-5 text-primary animate-pulse" />
-            <span className="text-xs sm:text-sm font-display font-bold uppercase tracking-widest text-primary">
+            <span className="text-xs sm:text-sm font-display font-bold tracking-widest text-primary">
               Page Not Found
             </span>
           </motion.div>
@@ -42,8 +42,8 @@ export const NotFound: React.FC = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="space-y-4"
         >
-          <h1 className="text-2xl sm:text-4xl font-display font-extrabold text-on-surface uppercase tracking-tight">
-            Lost In The Aetheria Universe
+          <h1 className="text-2xl sm:text-4xl font-display font-extrabold text-on-surface tracking-tight">
+            Lost in the Aetheria Universe
           </h1>
           <p className="text-sm sm:text-base text-on-surface-variant max-w-md mx-auto leading-relaxed font-body">
             The page you are looking for has either been moved, archived, or is temporarily unavailable. Let us guide you back to our curated collections.
@@ -59,7 +59,7 @@ export const NotFound: React.FC = () => {
         >
           <Link
             to="/"
-            className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-container text-on-primary font-display font-bold text-xs uppercase tracking-wider py-4 px-6 rounded-2xl transition-all duration-300 btn-primary-glow shadow-lg shadow-primary/10 cursor-pointer"
+            className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-container text-on-primary font-display font-bold text-xs tracking-wider py-4 px-6 rounded-2xl transition-all duration-300 btn-primary-glow shadow-lg shadow-primary/10 cursor-pointer"
           >
             <Home className="w-4 h-4" />
             <span>Return to Home</span>
@@ -67,7 +67,7 @@ export const NotFound: React.FC = () => {
           
           <Link
             to="/collection"
-            className="flex items-center justify-center gap-2 glass-level-1 border-white/5 text-on-surface hover:border-white/15 hover:text-primary font-display font-bold text-xs uppercase tracking-wider py-4 px-6 rounded-2xl transition-all duration-300 cursor-pointer"
+            className="flex items-center justify-center gap-2 glass-level-1 border-white/5 text-on-surface hover:border-white/15 hover:text-primary font-display font-bold text-xs tracking-wider py-4 px-6 rounded-2xl transition-all duration-300 cursor-pointer"
           >
             <ShoppingBag className="w-4 h-4" />
             <span>Shop Collection</span>
@@ -83,7 +83,7 @@ export const NotFound: React.FC = () => {
         >
           <Link
             to="/support"
-            className="inline-flex items-center gap-1.5 text-xs text-on-surface-variant hover:text-primary transition-colors uppercase font-display font-semibold tracking-widest"
+            className="inline-flex items-center gap-1.5 text-xs text-on-surface-variant hover:text-primary transition-colors font-display font-semibold tracking-widest"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Need assistance? Contact Concierge</span>

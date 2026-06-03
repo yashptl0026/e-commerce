@@ -846,13 +846,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
         if (existingIdx > -1) {
           const next = [...prev];
-          next[existingIdx].quantity += quantity;
-          showToast(`Updated quantity of ${product.name} in your bag.`, 'success');
+          const newQty = next[existingIdx].quantity + quantity;
+          if (newQty > 5) {
+            next[existingIdx].quantity = 5;
+            showToast(`Bag quantity capped at 5 for ${product.name}.`, 'info');
+          } else {
+            next[existingIdx].quantity = newQty;
+            showToast(`Updated quantity of ${product.name} in your bag.`, 'success');
+          }
           return next;
         }
 
-        showToast(`Added ${product.name} to your bag.`, 'success');
-        return [...prev, { product, quantity, selectedColor: color, selectedSize: size }];
+        const initialQty = quantity > 5 ? 5 : quantity;
+        if (quantity > 5) {
+          showToast(`Bag quantity capped at 5 for ${product.name}.`, 'info');
+        } else {
+          showToast(`Added ${product.name} to your bag.`, 'success');
+        }
+        return [...prev, { product, quantity: initialQty, selectedColor: color, selectedSize: size }];
       });
     } catch (e) {
       showToast('Could not add item to bag.', 'error');
@@ -882,12 +893,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         removeFromCart(productId, color, size);
         return;
       }
+      const cappedQty = quantity > 5 ? 5 : quantity;
+      if (quantity > 5) {
+        showToast('Bag quantity capped at 5 items per product.', 'info');
+      }
       setCart((prev) =>
         prev.map((item) =>
           item.product.id === productId &&
           item.selectedColor === color &&
           item.selectedSize === size
-            ? { ...item, quantity }
+            ? { ...item, quantity: cappedQty }
             : item
         )
       );

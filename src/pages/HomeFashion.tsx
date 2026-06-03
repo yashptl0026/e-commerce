@@ -33,7 +33,7 @@ export const HomeFashion: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40 z-10" />
 
         {/* Floating details overlay */}
-        <div className="absolute top-24 left-6 md:left-12 z-20 hidden md:block text-white/50 text-[10px] uppercase font-bold tracking-[0.3em]">
+        <div className="absolute top-24 left-6 md:left-12 z-20 hidden md:block text-white/50 text-[10px] font-bold tracking-[0.3em]">
           Volume I / Collection 2026
         </div>
 
@@ -45,10 +45,10 @@ export const HomeFashion: React.FC = () => {
             transition={{ duration: 1 }}
             className="space-y-4"
           >
-            <span className="text-white text-[11px] tracking-[0.35em] font-extrabold uppercase bg-white/10 backdrop-blur-md py-1.5 px-5 rounded-full border border-white/10 shadow-lg">
+            <span className="text-white text-[11px] tracking-[0.35em] font-extrabold bg-white/10 backdrop-blur-md py-1.5 px-5 rounded-full border border-white/10 shadow-lg">
               Aetheria Haute Couture
             </span>
-            <h1 className="text-5xl sm:text-7xl lg:text-9xl font-display font-black text-white uppercase tracking-tighter leading-[0.9]">
+            <h1 className="text-5xl sm:text-7xl lg:text-9xl font-display font-black text-white tracking-tighter leading-[0.9]">
               The Art of <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e5c07b] to-[#d09e5a]">Draping</span>
             </h1>
@@ -71,13 +71,13 @@ export const HomeFashion: React.FC = () => {
           >
             <button
               onClick={() => navigate('/collection?category=fashion')}
-              className="bg-white text-black font-display font-extrabold text-xs uppercase tracking-widest py-4 px-10 rounded-full hover:scale-105 hover:bg-[#e5c07b] hover:text-white transition-all shadow-2xl cursor-pointer"
+              className="bg-white text-black font-display font-bold text-xs tracking-wider py-4 px-10 rounded-full hover:scale-105 hover:bg-[#e5c07b] hover:text-white transition-all shadow-2xl cursor-pointer"
             >
               Shop Collection
             </button>
             <button
               onClick={() => navigate('/about')}
-              className="border border-white/20 bg-transparent text-white font-display font-extrabold text-xs uppercase tracking-widest py-4 px-10 rounded-full hover:bg-white/10 transition-all backdrop-blur-md cursor-pointer"
+              className="border border-white/20 bg-transparent text-white font-display font-bold text-xs tracking-wider py-4 px-10 rounded-full hover:bg-white/10 transition-all backdrop-blur-md cursor-pointer"
             >
               Editorial Story
             </button>
@@ -89,10 +89,10 @@ export const HomeFashion: React.FC = () => {
       <section className="py-20 md:py-32 max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
           <div className="lg:col-span-5 space-y-6">
-            <span className="text-primary text-[10px] tracking-[0.25em] font-bold uppercase block">
+            <span className="text-primary text-[10px] tracking-[0.25em] font-bold block">
               Signature Aesthetics
             </span>
-            <h2 className="text-4xl sm:text-5xl font-display font-black uppercase tracking-tight text-on-surface">
+            <h2 className="text-4xl sm:text-5xl font-display font-black tracking-tight text-on-surface">
               High Contrast, Zero Compromise.
             </h2>
             <p className="text-on-surface-variant text-sm sm:text-base leading-relaxed font-light">
@@ -100,7 +100,7 @@ export const HomeFashion: React.FC = () => {
             </p>
             <button
               onClick={() => navigate('/collection?category=fashion')}
-              className="group text-xs font-display font-extrabold uppercase tracking-widest text-primary flex items-center gap-2 hover:underline"
+              className="group text-xs font-display font-bold tracking-wider text-primary flex items-center gap-2 hover:underline"
             >
               Browse Outerwear <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </button>
@@ -129,11 +129,11 @@ export const HomeFashion: React.FC = () => {
 
         {/* Curated Lookbook grid */}
         <div className="border-t border-border pt-16">
-          <div className="flex justify-between items-end mb-12">
-            <h3 className="text-2xl sm:text-3xl font-display font-black uppercase tracking-wider text-on-surface">
+          <div className="flex justify-between items-center gap-4 mb-8 md:mb-12">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-black tracking-wider text-on-surface">
               Featured Garments
             </h3>
-            <span className="text-xs text-on-surface-variant font-medium">({featuredFashion.length} Pieces)</span>
+            <span className="text-xs text-on-surface-variant font-medium shrink-0">({featuredFashion.length} Pieces)</span>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -147,17 +147,17 @@ export const HomeFashion: React.FC = () => {
       {/* Interactive New Arrivals Panel */}
       <section className="bg-surface-container-lowest border-y border-border py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mb-12">
-            <div className="space-y-2">
-              <span className="text-[10px] tracking-[0.25em] font-bold uppercase text-primary block">
+          <div className="flex justify-between items-center gap-6 mb-8 md:mb-12">
+            <div className="space-y-1">
+              <span className="text-[10px] tracking-[0.25em] font-bold text-primary block">
                 Fresh Cuts
               </span>
-              <h2 className="text-3xl sm:text-4xl font-display font-black uppercase tracking-wider text-on-surface">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-wider text-on-surface">
                 New Additions
               </h2>
             </div>
             
-            <div className="flex gap-2">
+            <div className="flex gap-2 shrink-0">
               <button
                 onClick={() => {
                   if (carouselRef.current) carouselRef.current.scrollBy({ left: -320, behavior: 'smooth' });
@@ -182,7 +182,7 @@ export const HomeFashion: React.FC = () => {
           {/* Horizontal scroll strip */}
           <div
             ref={carouselRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 scrollbar-none"
+            className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth pt-4 pb-4 -mt-4 scrollbar-none"
           >
             {newArrivals.map((product) => (
               <div key={product.id} className="w-[280px] sm:w-[320px] shrink-0 snap-start">
@@ -195,13 +195,13 @@ export const HomeFashion: React.FC = () => {
 
       {/* Quote Banner */}
       <section className="py-20 md:py-32 px-6 text-center max-w-4xl mx-auto space-y-6">
-        <span className="text-[10px] tracking-[0.3em] font-bold text-[#e5c07b] uppercase block">
+        <span className="text-[10px] tracking-[0.3em] font-bold text-[#e5c07b] block">
           Editorial Philosophy
         </span>
         <blockquote className="text-2xl sm:text-4xl font-display italic font-light text-on-surface leading-normal">
           "Garments are not merely items we wrap around our frames. They are structured layers that coordinate our physical form with our digital aesthetic."
         </blockquote>
-        <cite className="block text-xs font-display font-bold uppercase tracking-widest text-on-surface-variant">
+        <cite className="block text-xs font-display font-bold tracking-wider text-on-surface-variant">
           — Alexander Mercer, Lead Aetheria Designer
         </cite>
       </section>
@@ -212,10 +212,10 @@ export const HomeFashion: React.FC = () => {
         
         <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <span className="text-[#e5c07b] text-[10px] tracking-[0.25em] font-bold uppercase block">
+            <span className="text-[#e5c07b] text-[10px] tracking-[0.25em] font-bold block">
               Voiced by the Elegant
             </span>
-            <h2 className="text-3xl sm:text-5xl font-display font-black uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight">
               Reviews of Haute Style
             </h2>
             
@@ -224,7 +224,7 @@ export const HomeFashion: React.FC = () => {
                 <p className="text-sm text-white/80 italic leading-relaxed">
                   "The Obsidian Zenith Parka coordinates with my urban landscape beautifully. The Liquid Carbon silk shell reflects neon glares and handles cold downpours without effort. Simply supreme."
                 </p>
-                <span className="block text-[10px] uppercase font-bold tracking-widest text-[#e5c07b]">
+                <span className="block text-[10px] font-bold tracking-wider text-[#e5c07b]">
                   Elena R. — Tokyo, Japan
                 </span>
               </div>
@@ -232,7 +232,7 @@ export const HomeFashion: React.FC = () => {
           </div>
 
           <div className="bg-white/5 border border-white/10 p-8 sm:p-12 rounded-3xl backdrop-blur-md space-y-6">
-            <h3 className="text-2xl font-display font-extrabold uppercase tracking-wider text-center sm:text-left">
+            <h3 className="text-2xl font-display font-extrabold tracking-wider text-center sm:text-left">
               Join the Editorial List
             </h3>
             <p className="text-xs text-white/60 leading-relaxed text-center sm:text-left">
@@ -247,7 +247,7 @@ export const HomeFashion: React.FC = () => {
               />
               <button
                 type="submit"
-                className="bg-white text-black font-display font-bold text-[10px] uppercase tracking-widest py-3.5 px-8 rounded-full hover:bg-[#e5c07b] hover:text-white transition-all shadow-xl"
+                className="bg-white text-black font-display font-bold text-[10px] tracking-wider py-3.5 px-8 rounded-full hover:bg-[#e5c07b] hover:text-white transition-all shadow-xl"
               >
                 Subscribe
               </button>
