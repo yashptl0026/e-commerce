@@ -40,7 +40,7 @@ export const Dashboard: React.FC = () => {
         <aside className="w-full lg:w-64 shrink-0 premium-glass p-4 rounded-2xl shadow-xl flex lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible whitespace-nowrap scrollbar-none">
           <button
             onClick={() => handleTabChange('profile')}
-            className={`w-auto lg:w-full shrink-0 text-center lg:text-left px-5 py-3 rounded-xl font-display text-xs font-bold uppercase tracking-wider flex items-center justify-center lg:justify-start gap-3 transition-all ${
+            className={`w-auto lg:w-full shrink-0 text-center lg:text-left px-5 py-3 rounded-xl font-display text-xs font-bold tracking-wider flex items-center justify-center lg:justify-start gap-3 transition-all ${
               activeTab === 'profile'
                 ? 'bg-primary text-on-primary shadow-[0_0_15px_rgba(173,198,255,0.3)]'
                 : 'text-on-surface hover:bg-white/5'
@@ -51,7 +51,7 @@ export const Dashboard: React.FC = () => {
           
           <button
             onClick={() => handleTabChange('orders')}
-            className={`w-auto lg:w-full shrink-0 text-center lg:text-left px-5 py-3 rounded-xl font-display text-xs font-bold uppercase tracking-wider flex items-center justify-center lg:justify-start gap-3 transition-all ${
+            className={`w-auto lg:w-full shrink-0 text-center lg:text-left px-5 py-3 rounded-xl font-display text-xs font-bold tracking-wider flex items-center justify-center lg:justify-start gap-3 transition-all ${
               activeTab === 'orders'
                 ? 'bg-primary text-on-primary shadow-[0_0_15px_rgba(173,198,255,0.3)]'
                 : 'text-on-surface hover:bg-white/5'
@@ -59,10 +59,10 @@ export const Dashboard: React.FC = () => {
           >
             <ShoppingBag className="w-4.5 h-4.5" /> Order History ({orders.length})
           </button>
-
+ 
           <button
             onClick={() => handleTabChange('wishlist')}
-            className={`w-auto lg:w-full shrink-0 text-center lg:text-left px-5 py-3 rounded-xl font-display text-xs font-bold uppercase tracking-wider flex items-center justify-center lg:justify-start gap-3 transition-all ${
+            className={`w-auto lg:w-full shrink-0 text-center lg:text-left px-5 py-3 rounded-xl font-display text-xs font-bold tracking-wider flex items-center justify-center lg:justify-start gap-3 transition-all ${
               activeTab === 'wishlist'
                 ? 'bg-primary text-on-primary shadow-[0_0_15px_rgba(173,198,255,0.3)]'
                 : 'text-on-surface hover:bg-white/5'
@@ -85,7 +85,7 @@ export const Dashboard: React.FC = () => {
                 className="space-y-8"
               >
                 <div className="flex justify-between items-center border-b border-white/5 pb-4">
-                  <h2 className="text-xl font-display font-bold uppercase tracking-wider text-on-surface">
+                  <h2 className="text-xl font-display font-bold tracking-wider text-on-surface">
                     Profile Details
                   </h2>
                   <button
@@ -94,7 +94,7 @@ export const Dashboard: React.FC = () => {
                       setName(userProfile.fullName);
                       setPhone(userProfile.phone);
                     }}
-                    className="text-xs font-display font-bold uppercase tracking-widest text-primary hover:underline flex items-center gap-1.5"
+                    className="text-xs font-display font-bold tracking-wider text-primary hover:underline flex items-center gap-1.5"
                   >
                     <Settings className="w-3.5 h-3.5" /> {isEditing ? 'Cancel' : 'Edit Profile'}
                   </button>
@@ -106,7 +106,7 @@ export const Dashboard: React.FC = () => {
                       <div className="flex items-center gap-3 text-on-surface-variant text-sm font-semibold">
                         <User className="w-5 h-5 text-primary shrink-0" />
                         <div>
-                          <span className="text-[10px] text-on-surface-variant/50 uppercase block">Name</span>
+                          <span className="text-[10px] text-on-surface-variant/50 block">Name</span>
                           <span className="text-on-surface">{userProfile.fullName}</span>
                         </div>
                       </div>
@@ -114,7 +114,7 @@ export const Dashboard: React.FC = () => {
                       <div className="flex items-center gap-3 text-on-surface-variant text-sm font-semibold">
                         <Mail className="w-5 h-5 text-primary shrink-0" />
                         <div>
-                          <span className="text-[10px] text-on-surface-variant/50 uppercase block">Email Address</span>
+                          <span className="text-[10px] text-on-surface-variant/50 block">Email Address</span>
                           <span className="text-on-surface">{userProfile.email}</span>
                         </div>
                       </div>
@@ -122,7 +122,7 @@ export const Dashboard: React.FC = () => {
                       <div className="flex items-center gap-3 text-on-surface-variant text-sm font-semibold">
                         <Phone className="w-5 h-5 text-primary shrink-0" />
                         <div>
-                          <span className="text-[10px] text-on-surface-variant/50 uppercase block">Phone</span>
+                          <span className="text-[10px] text-on-surface-variant/50 block">Phone</span>
                           <span className="text-on-surface">{userProfile.phone}</span>
                         </div>
                       </div>
@@ -130,7 +130,7 @@ export const Dashboard: React.FC = () => {
 
                     {/* Address summaries */}
                     <div className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
-                      <h3 className="text-xs font-display font-extrabold uppercase text-primary flex items-center gap-1.5">
+                      <h3 className="text-xs font-display font-extrabold text-primary flex items-center gap-1.5">
                         <MapPin className="w-4 h-4" /> Default Delivery Address
                       </h3>
                       {userProfile.addresses.map((addr) => (
@@ -141,7 +141,7 @@ export const Dashboard: React.FC = () => {
                           <p>{addr.country}</p>
                           <p>Phone: {addr.phone}</p>
                           {addr.isDefault && (
-                            <span className="inline-block mt-2 bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded text-[9px] uppercase tracking-wider font-bold">
+                            <span className="inline-block mt-2 bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded text-[9px] tracking-wider font-bold">
                               Default
                             </span>
                           )}
@@ -152,7 +152,7 @@ export const Dashboard: React.FC = () => {
                 ) : (
                   <form onSubmit={handleSaveProfile} className="space-y-4 max-w-md">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-on-surface-variant uppercase">Full Name</label>
+                      <label className="text-xs font-semibold text-on-surface-variant">Full Name</label>
                       <input
                         type="text"
                         value={name}
@@ -161,7 +161,7 @@ export const Dashboard: React.FC = () => {
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-on-surface-variant uppercase">Phone Number</label>
+                      <label className="text-xs font-semibold text-on-surface-variant">Phone Number</label>
                       <input
                         type="tel"
                         value={phone}
@@ -188,7 +188,7 @@ export const Dashboard: React.FC = () => {
                 exit={{ opacity: 0, y: -10 }}
                 className="space-y-6"
               >
-                <h2 className="text-xl font-display font-bold uppercase tracking-wider text-on-surface border-b border-white/5 pb-4">
+                <h2 className="text-xl font-display font-bold tracking-wider text-on-surface border-b border-white/5 pb-4">
                   Past Transactions
                 </h2>
 
@@ -203,18 +203,18 @@ export const Dashboard: React.FC = () => {
                           <div className="flex items-center gap-4">
                             <Calendar className="w-5 h-5 text-primary shrink-0" />
                             <div>
-                              <span className="text-[10px] text-on-surface-variant/50 uppercase block">Date & Transaction ID</span>
+                              <span className="text-[10px] text-on-surface-variant/50 block">Date & Transaction ID</span>
                               <span className="text-xs font-semibold">{order.date} &bull; <span className="text-primary font-display font-bold">{order.id}</span></span>
                             </div>
                           </div>
                           <div>
-                            <span className="text-[10px] text-on-surface-variant/50 uppercase block">Status</span>
-                            <span className="bg-primary/10 text-primary border border-primary/20 px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider">
+                            <span className="text-[10px] text-on-surface-variant/50 block">Status</span>
+                            <span className="bg-primary/10 text-primary border border-primary/20 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider">
                               {order.status}
                             </span>
                           </div>
                           <div>
-                            <span className="text-[10px] text-on-surface-variant/50 uppercase block">Total Amount</span>
+                            <span className="text-[10px] text-on-surface-variant/50 block">Total Amount</span>
                             <span className="text-sm font-display font-bold text-on-surface">${order.total.toLocaleString()}</span>
                           </div>
                         </div>
@@ -249,7 +249,7 @@ export const Dashboard: React.FC = () => {
                 exit={{ opacity: 0, y: -10 }}
                 className="space-y-6"
               >
-                <h2 className="text-xl font-display font-bold uppercase tracking-wider text-on-surface border-b border-white/5 pb-4">
+                <h2 className="text-xl font-display font-bold tracking-wider text-on-surface border-b border-white/5 pb-4">
                   My Wishlist ({wishlistedProducts.length})
                 </h2>
 

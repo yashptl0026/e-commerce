@@ -62,12 +62,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {/* Badges */}
           <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex flex-col gap-1 z-10">
             {product.isNew && (
-              <span className="accent-gradient text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded text-[9px] sm:text-[10px] font-bold tracking-widest uppercase shadow-lg">
+              <span className="accent-gradient text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded text-[9px] sm:text-[10px] font-bold tracking-wider shadow-lg">
                 New
               </span>
             )}
             {product.isSale && product.originalPrice && (
-              <span className="bg-error/20 text-error px-2 py-0.5 sm:px-2.5 sm:py-1 rounded text-[9px] sm:text-[10px] font-bold tracking-widest uppercase border border-error/30">
+              <span className="bg-error/20 text-error px-2 py-0.5 sm:px-2.5 sm:py-1 rounded text-[9px] sm:text-[10px] font-bold tracking-wider border border-error/30">
                 -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
               </span>
             )}
@@ -100,7 +100,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               className="w-full accent-gradient py-2.5 rounded-lg font-display text-[12px] font-bold text-white flex items-center justify-center gap-1.5 shadow-xl hover:shadow-[0_0_15px_rgba(77,142,255,0.4)] transition-all"
             >
               <ShoppingBag className="w-4 h-4" />
-              QUICK ADD
+              Quick Add
             </button>
           </div>
         </div>
@@ -108,8 +108,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Details */}
         <div className="flex-grow flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-1.5 text-[9px] sm:text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">
-              <span>{product.brand || product.subCategory || product.category}</span>
+            <div className="flex items-center gap-1.5 text-[9px] sm:text-[11px] text-on-surface-variant tracking-wider mb-1">
+              <span className="capitalize">{product.brand || product.subCategory || product.category}</span>
               <span>•</span>
               <div className="flex items-center gap-0.5">
                 {[...Array(5)].map((_, i) => (

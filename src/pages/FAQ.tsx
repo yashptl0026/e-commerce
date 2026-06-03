@@ -98,8 +98,8 @@ export const FAQ: React.FC = () => {
       <header className="pt-24 pb-10 md:pt-[120px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-4 relative">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-40 w-3/4 h-3/4 mx-auto pointer-events-none"></div>
         <div className="relative z-10 space-y-3">
-          <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Questions & Answers</span>
-          <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface uppercase tracking-tight">
+          <span className="text-xs tracking-[0.2em] font-semibold text-primary">Questions & Answers</span>
+          <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface tracking-tight">
             Frequently Asked Questions
           </h1>
           <p className="text-body-md text-on-surface-variant max-w-lg mx-auto text-sm sm:text-base leading-relaxed font-body">
@@ -121,7 +121,7 @@ export const FAQ: React.FC = () => {
                   setActiveCategory(idx);
                   setOpenIndex(null);
                 }}
-                className={`flex items-center gap-3.5 px-5 py-4 rounded-2xl font-display font-bold text-xs uppercase tracking-wider text-left border transition-all duration-300 w-full shrink-0 md:shrink-1 ${
+                className={`flex items-center gap-3.5 px-5 py-4 rounded-2xl font-display font-bold text-xs tracking-wider text-left border transition-all duration-300 w-full shrink-0 md:shrink-1 ${
                   activeCategory === idx
                     ? 'bg-primary/10 border-primary/30 text-primary shadow-lg shadow-primary/5'
                     : 'premium-glass text-on-surface-variant hover:text-on-surface'

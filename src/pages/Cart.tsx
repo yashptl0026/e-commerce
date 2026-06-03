@@ -61,7 +61,7 @@ export const Cart: React.FC = () => {
 
   return (
     <main className="flex-grow pt-20 pb-16 md:pt-28 md:pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
-      <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface mb-10 uppercase tracking-tight">
+      <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface mb-10 tracking-tight">
         Your Bag
       </h1>
 
@@ -100,7 +100,7 @@ export const Cart: React.FC = () => {
                         <h3 className="font-display font-bold text-sm sm:text-base md:text-lg text-on-surface leading-snug truncate">
                           {item.product.name}
                         </h3>
-                        <p className="text-[10px] sm:text-xs text-on-surface-variant font-medium mt-0.5 sm:mt-1 uppercase tracking-wider">
+                        <p className="text-[10px] sm:text-xs text-on-surface-variant font-medium mt-0.5 sm:mt-1 tracking-wider">
                           Color: {item.selectedColor} &bull; Size: {item.selectedSize}
                         </p>
                       </div>
@@ -111,26 +111,34 @@ export const Cart: React.FC = () => {
 
                     <div className="pt-1 sm:pt-2 flex flex-wrap justify-between items-center w-full gap-2.5">
                       {/* Quantity modifier */}
-                      <div className="flex items-center glass-level-1 border border-white/10 rounded-full p-0.5">
-                        <button
-                          onClick={() => updateCartQuantity(item.product.id, item.selectedColor, item.selectedSize, item.quantity - 1)}
-                          className="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center hover:bg-white/5 rounded-full transition-colors text-on-surface-variant hover:text-on-surface"
-                        >
-                          <Minus className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                        </button>
-                        <span className="px-2 sm:px-4 font-display font-bold text-xs sm:text-sm w-6 sm:w-8 text-center">{item.quantity}</span>
-                        <button
-                          onClick={() => updateCartQuantity(item.product.id, item.selectedColor, item.selectedSize, item.quantity + 1)}
-                          className="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center hover:bg-white/5 rounded-full transition-colors text-on-surface-variant hover:text-on-surface"
-                        >
-                          <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                        </button>
+                      <div className="flex flex-col gap-1 items-center">
+                        <div className="flex items-center glass-level-1 border border-white/10 rounded-full p-0.5">
+                          <button
+                            onClick={() => updateCartQuantity(item.product.id, item.selectedColor, item.selectedSize, item.quantity - 1)}
+                            className="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center hover:bg-white/5 rounded-full transition-colors text-on-surface-variant hover:text-on-surface"
+                          >
+                            <Minus className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                          </button>
+                          <span className="px-2 sm:px-4 font-display font-bold text-xs sm:text-sm w-6 sm:w-8 text-center">{item.quantity}</span>
+                          <button
+                            onClick={() => updateCartQuantity(item.product.id, item.selectedColor, item.selectedSize, item.quantity + 1)}
+                            disabled={item.quantity >= 5}
+                            className="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center hover:bg-white/5 disabled:opacity-30 disabled:cursor-not-allowed rounded-full transition-colors text-on-surface-variant hover:text-on-surface"
+                          >
+                            <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                          </button>
+                        </div>
+                        {item.quantity >= 5 && (
+                          <span className="text-[8px] sm:text-[9px] text-primary font-bold tracking-wider animate-pulse">
+                            Limit reached
+                          </span>
+                        )}
                       </div>
 
                       {/* Remove Button */}
                       <button
                         onClick={() => removeFromCart(item.product.id, item.selectedColor, item.selectedSize)}
-                        className="text-error/80 hover:text-error flex items-center gap-1 text-[10px] sm:text-[11px] font-display font-bold uppercase tracking-widest transition-colors hover:bg-error/5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-full border border-transparent hover:border-error/20"
+                        className="text-error/80 hover:text-error flex items-center gap-1 text-[10px] sm:text-[11px] font-display font-bold tracking-wider transition-colors hover:bg-error/5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-full border border-transparent hover:border-error/20"
                       >
                         <Trash2 className="w-3.5 h-3.5" /> <span className="hidden sm:inline">Remove</span>
                       </button>
@@ -143,7 +151,7 @@ export const Cart: React.FC = () => {
             {/* Order Summary Sidebar */}
             <div className="lg:col-span-4 space-y-6">
               <div className="glass-level-2 rounded-2xl p-6 border border-white/10 shadow-2xl space-y-6">
-                <h2 className="font-display font-bold text-lg uppercase tracking-wider text-on-surface border-b border-white/5 pb-3">
+                <h2 className="font-display font-bold text-lg tracking-wider text-on-surface border-b border-white/5 pb-3">
                   Order Summary
                 </h2>
 
@@ -184,12 +192,12 @@ export const Cart: React.FC = () => {
                   to={`/checkout?discount=${discountValue}`}
                   className="w-full py-4 accent-gradient rounded-full text-white font-display font-bold text-sm shadow-[0_0_20px_rgba(77,142,255,0.3)] hover:shadow-[0_0_30px_rgba(77,142,255,0.5)] transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-2"
                 >
-                  PROCEED TO CHECKOUT <ArrowRight className="w-4 h-4" />
+                  Proceed to Checkout <ArrowRight className="w-4 h-4" />
                 </Link>
 
                 {/* Express pay simulation */}
                 <div className="pt-4 border-t border-white/5 space-y-3">
-                  <p className="text-center text-[10px] font-display font-extrabold text-on-surface-variant tracking-wider uppercase">
+                  <p className="text-center text-[10px] font-display font-extrabold text-on-surface-variant tracking-wider">
                     Express Checkout
                   </p>
                   <div className="grid grid-cols-2 gap-3">
@@ -234,7 +242,7 @@ export const Cart: React.FC = () => {
                     </div>
                     <button
                       onClick={handleRemovePromo}
-                      className="text-xs text-on-surface-variant hover:text-error transition-colors font-bold uppercase tracking-wider"
+                      className="text-xs text-on-surface-variant hover:text-error transition-colors font-bold tracking-wider"
                     >
                       Remove
                     </button>
@@ -273,7 +281,7 @@ export const Cart: React.FC = () => {
 
       {/* Recs */}
       <section className="mt-16 md:mt-32 border-t border-white/5 pt-8 md:pt-16">
-        <h2 className="font-display font-extrabold text-2xl uppercase tracking-tight text-on-surface mb-8">Recently Viewed Items</h2>
+        <h2 className="font-display font-extrabold text-2xl tracking-tight text-on-surface mb-8">Recently Viewed Items</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {recommendations.map((item) => (
             <Link key={item.id} to={`/product/${item.id}`} className="group space-y-4">

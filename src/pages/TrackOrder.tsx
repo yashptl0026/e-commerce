@@ -67,8 +67,8 @@ export const TrackOrder: React.FC = () => {
       <header className="pt-24 pb-10 md:pt-[120px] md:pb-16 px-4 md:px-6 max-w-4xl mx-auto text-center space-y-4 relative">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-40 w-3/4 h-3/4 mx-auto pointer-events-none"></div>
         <div className="relative z-10 space-y-3">
-          <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Shipping Registry</span>
-          <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface uppercase tracking-tight">
+          <span className="text-xs tracking-[0.2em] font-semibold text-primary">Shipping Registry</span>
+          <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface tracking-tight">
             Track Your Order
           </h1>
           <p className="text-xs sm:text-sm text-on-surface-variant max-w-md mx-auto font-body leading-relaxed">
@@ -83,7 +83,7 @@ export const TrackOrder: React.FC = () => {
           <div className="glass-level-2 p-6 sm:p-8 rounded-3xl shadow-2xl mb-8 relative z-10">
             <form onSubmit={handleTrack} className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-end">
               <div className="sm:col-span-5 space-y-2">
-                <label className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">
+                <label className="text-[10px] text-on-surface-variant font-bold tracking-wider">
                   Order Identifier (ID)
                 </label>
                 <input
@@ -97,7 +97,7 @@ export const TrackOrder: React.FC = () => {
               </div>
 
               <div className="sm:col-span-5 space-y-2">
-                <label className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">
+                <label className="text-[10px] text-on-surface-variant font-bold tracking-wider">
                   Billing Email
                 </label>
                 <input
@@ -120,7 +120,7 @@ export const TrackOrder: React.FC = () => {
                     <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></span>
                   ) : (
                     <>
-                      <Search className="w-4 h-4" /> FIND
+                      <Search className="w-4 h-4" /> Find
                     </>
                   )}
                 </button>
@@ -142,11 +142,11 @@ export const TrackOrder: React.FC = () => {
                 <div className="glass-level-1 p-6 sm:p-8 rounded-3xl shadow-xl space-y-8">
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-border">
                     <div>
-                      <span className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Order Reference</span>
+                      <span className="text-[10px] text-on-surface-variant font-bold tracking-wider">Order Reference</span>
                       <h3 className="text-xl font-display font-extrabold text-on-surface">{trackingResult.orderId}</h3>
                     </div>
                     <div className="text-left sm:text-right">
-                      <span className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider block">Estimated Signature Delivery</span>
+                      <span className="text-[10px] text-on-surface-variant font-bold tracking-wider block">Estimated Signature Delivery</span>
                       <span className="font-display font-bold text-sm text-primary">{trackingResult.estimatedDelivery}</span>
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export const TrackOrder: React.FC = () => {
                             {isDone ? <CheckCircle2 className="w-5 h-5" /> : <Package className="w-5 h-5" />}
                           </div>
                           <div className="space-y-0.5">
-                            <span className={`text-xs font-display font-bold uppercase tracking-wider block ${isDone ? 'text-on-surface' : 'text-on-surface-variant/60'}`}>
+                            <span className={`text-xs font-display font-bold tracking-wider block ${isDone ? 'text-on-surface' : 'text-on-surface-variant/60'}`}>
                               {step.label}
                             </span>
                             <span className="text-[10px] text-on-surface-variant/40 leading-snug block">
@@ -183,7 +183,7 @@ export const TrackOrder: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                   {/* Shipping Logs */}
                   <div className="md:col-span-7 glass-level-1 p-6 rounded-3xl shadow-xl space-y-6">
-                    <h4 className="font-display font-extrabold text-xs uppercase tracking-widest text-on-surface flex items-center gap-2">
+                    <h4 className="font-display font-extrabold text-xs tracking-widest text-on-surface flex items-center gap-2">
                       <Truck className="w-4.5 h-4.5 text-primary" /> Delivery Audit Log
                     </h4>
                     
@@ -211,20 +211,20 @@ export const TrackOrder: React.FC = () => {
                   <div className="md:col-span-5 space-y-6">
                     {/* Details card */}
                     <div className="glass-level-1 p-6 rounded-3xl shadow-xl space-y-4">
-                      <h4 className="font-display font-extrabold text-xs uppercase tracking-widest text-on-surface flex items-center gap-2">
+                      <h4 className="font-display font-extrabold text-xs tracking-widest text-on-surface flex items-center gap-2">
                         <ShieldCheck className="w-4.5 h-4.5 text-primary" /> Shipment Details
                       </h4>
                       <div className="space-y-3 text-xs">
                         <div>
-                          <span className="text-on-surface-variant/50 block text-[10px] uppercase font-bold tracking-wider">Courier Carrier</span>
+                          <span className="text-on-surface-variant/50 block text-[10px] font-bold tracking-wider">Courier Carrier</span>
                           <span className="font-semibold text-on-surface">{trackingResult.carrier}</span>
                         </div>
                         <div>
-                          <span className="text-on-surface-variant/50 block text-[10px] uppercase font-bold tracking-wider">Tracking Code</span>
+                          <span className="text-on-surface-variant/50 block text-[10px] font-bold tracking-wider">Tracking Code</span>
                           <span className="font-mono text-on-surface">{trackingResult.trackingNumber}</span>
                         </div>
                         <div>
-                          <span className="text-on-surface-variant/50 block text-[10px] uppercase font-bold tracking-wider">Signature Address</span>
+                          <span className="text-on-surface-variant/50 block text-[10px] font-bold tracking-wider">Signature Address</span>
                           <span className="text-on-surface-variant leading-relaxed">{trackingResult.address}</span>
                         </div>
                       </div>
@@ -232,7 +232,7 @@ export const TrackOrder: React.FC = () => {
 
                     {/* Items in shipment */}
                     <div className="glass-level-1 p-6 rounded-3xl shadow-xl space-y-4">
-                      <h4 className="font-display font-extrabold text-xs uppercase tracking-widest text-on-surface">Items Staged</h4>
+                      <h4 className="font-display font-extrabold text-xs tracking-widest text-on-surface">Items Staged</h4>
                       <div className="space-y-3">
                         {trackingResult.items.map((item: any, idx: number) => (
                           <div key={idx} className="flex justify-between items-center text-xs">

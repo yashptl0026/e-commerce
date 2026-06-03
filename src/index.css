@@ -112,7 +112,7 @@
   --color-on-error-container: var(--color-on-error-container);
   --color-border: var(--color-border);
   
-  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Montserrat", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 
   /* Custom Spacing & Grid Scale */
@@ -312,6 +312,13 @@ select option {
 /* Back to Top positioning */
 .back-to-top {
   right: 24px;
+  transition: bottom 0.3s ease-in-out, transform 0.2s, opacity 0.2s !important;
+}
+
+@media (max-width: 1023px) {
+  body.mobile-sticky-bar-visible .back-to-top {
+    bottom: 88px !important;
+  }
 }
 
 /* Demo Switcher positioning */

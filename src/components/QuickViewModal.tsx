@@ -69,12 +69,12 @@ export const QuickViewModal: React.FC = () => {
               {/* Badges */}
               <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                 {activeQuickViewProduct.isNew && (
-                  <span className="accent-gradient text-white px-2.5 py-1 rounded text-[9px] font-bold tracking-widest uppercase shadow-md">
+                  <span className="accent-gradient text-white px-2.5 py-1 rounded text-[9px] font-bold tracking-wider shadow-md">
                     New
                   </span>
                 )}
                 {activeQuickViewProduct.isSale && activeQuickViewProduct.originalPrice && (
-                  <span className="bg-error/20 text-error px-2.5 py-1 rounded text-[9px] font-bold tracking-widest uppercase border border-error/30">
+                  <span className="bg-error/20 text-error px-2.5 py-1 rounded text-[9px] font-bold tracking-wider border border-error/30">
                     -{Math.round(((activeQuickViewProduct.originalPrice - activeQuickViewProduct.price) / activeQuickViewProduct.originalPrice) * 100)}%
                   </span>
                 )}
@@ -83,7 +83,7 @@ export const QuickViewModal: React.FC = () => {
 
             {/* Thumbnails list if multiple images exist */}
             {activeQuickViewProduct.images.length > 1 && (
-              <div className="flex gap-2.5 overflow-x-auto mt-4 pb-2 scrollbar-none justify-center">
+              <div className="flex gap-2.5 overflow-x-auto overflow-y-hidden mt-4 pb-2 scrollbar-none justify-center">
                 {activeQuickViewProduct.images.map((img, i) => (
                   <button
                     key={i}
@@ -104,10 +104,10 @@ export const QuickViewModal: React.FC = () => {
             <div className="space-y-5">
               {/* Brand and category */}
               <div className="flex items-center justify-between">
-                <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-primary">
+                <span className="text-[10px] font-bold tracking-[0.2em] text-primary capitalize">
                   {activeQuickViewProduct.brand || 'Aetheria'}
                 </span>
-                <span className="text-[10px] uppercase font-semibold tracking-wider text-on-surface-variant/60">
+                <span className="text-[10px] font-semibold tracking-wider text-on-surface-variant/60 capitalize">
                   {activeQuickViewProduct.subCategory || activeQuickViewProduct.category}
                 </span>
               </div>
@@ -156,7 +156,7 @@ export const QuickViewModal: React.FC = () => {
               {/* Colors selection */}
               {activeQuickViewProduct.colors.length > 0 && (
                 <div className="space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant block">
+                  <span className="text-[10px] font-bold tracking-wider text-on-surface-variant block">
                     Color: <span className="text-on-surface font-semibold capitalize">{selectedColor}</span>
                   </span>
                   <div className="flex gap-2">
@@ -181,7 +181,7 @@ export const QuickViewModal: React.FC = () => {
               {/* Sizes selection */}
               {activeQuickViewProduct.sizes.length > 0 && (
                 <div className="space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant block">
+                  <span className="text-[10px] font-bold tracking-wider text-on-surface-variant block">
                     Size: <span className="text-on-surface font-semibold">{selectedSize}</span>
                   </span>
                   <div className="flex flex-wrap gap-2">
@@ -210,28 +210,36 @@ export const QuickViewModal: React.FC = () => {
             <div className="border-t border-border pt-4 mt-6 space-y-4">
               <div className="flex items-center gap-4">
                 {/* Quantity adjuster */}
-                <div className="flex items-center bg-surface-container border border-border rounded-full p-0.5 shrink-0">
-                  <button
-                    onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
-                    className="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant cursor-pointer"
-                  >
-                    <Minus className="w-3.5 h-3.5" />
-                  </button>
-                  <span className="px-3 font-display font-bold text-sm text-center min-w-[24px]">
-                    {quantity}
-                  </span>
-                  <button
-                    onClick={() => setQuantity(prev => prev + 1)}
-                    className="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant cursor-pointer"
-                  >
-                    <Plus className="w-3.5 h-3.5" />
-                  </button>
+                <div className="flex flex-col gap-1.5 shrink-0">
+                  <div className="flex items-center bg-surface-container border border-border rounded-full p-0.5">
+                    <button
+                      onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+                      className="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant cursor-pointer"
+                    >
+                      <Minus className="w-3.5 h-3.5" />
+                    </button>
+                    <span className="px-3 font-display font-bold text-sm text-center min-w-[24px]">
+                      {quantity}
+                    </span>
+                    <button
+                      onClick={() => setQuantity(prev => Math.min(5, prev + 1))}
+                      disabled={quantity >= 5}
+                      className="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high disabled:opacity-30 disabled:cursor-not-allowed rounded-full transition-colors text-on-surface-variant cursor-pointer"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                  {quantity >= 5 && (
+                    <span className="text-[9px] text-primary font-bold tracking-wider text-center animate-pulse">
+                      Limit 5 items
+                    </span>
+                  )}
                 </div>
 
                 {/* Add to Cart button */}
                 <button
                   onClick={handleAddToCart}
-                  className="flex-grow py-3 px-6 bg-primary text-on-primary font-display text-xs font-bold uppercase tracking-widest rounded-full btn-primary-glow hover:scale-[1.02] active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                  className="flex-grow py-3 px-6 bg-primary text-on-primary font-display text-xs font-bold tracking-wider rounded-full btn-primary-glow hover:scale-[1.02] active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <ShoppingBag className="w-4 h-4" /> Add to Bag
                 </button>
@@ -249,7 +257,7 @@ export const QuickViewModal: React.FC = () => {
               </div>
 
               {/* Guarantees */}
-              <div className="flex items-center justify-center gap-4 text-[10px] text-on-surface-variant/60 font-semibold uppercase tracking-wider text-center">
+              <div className="flex items-center justify-center gap-4 text-[10px] text-on-surface-variant/60 font-semibold tracking-wider text-center">
                 <span className="flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-primary" /> Free Express Delivery
                 </span>

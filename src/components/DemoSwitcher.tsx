@@ -111,9 +111,9 @@ export const DemoSwitcher: React.FC = () => {
           {/* Pulse element */}
           <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping pointer-events-none scale-105" />
           <Palette className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform" />
-          
+
           {/* Tooltip */}
-          <span className="absolute right-full mr-3 px-3 py-1.5 rounded-lg bg-inverse-surface text-inverse-on-surface text-[10px] font-bold uppercase tracking-wider shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none border border-white/10">
+          <span className="absolute right-full mr-3 px-3 py-1.5 rounded-lg bg-inverse-surface text-inverse-on-surface text-[10px] font-bold tracking-wider shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none border border-white/10">
             Demos Switcher
           </span>
         </motion.button>
@@ -133,7 +133,7 @@ export const DemoSwitcher: React.FC = () => {
             <div className="flex items-center justify-between pb-4 border-b border-border">
               <div className="flex items-center gap-2">
                 <LayoutGrid className="w-5 h-5 text-primary" />
-                <span className="font-display font-extrabold text-sm uppercase tracking-wider text-on-surface">
+                <span className="font-display font-extrabold text-sm tracking-wider text-on-surface">
                   Theme Demos
                 </span>
               </div>
@@ -153,11 +153,10 @@ export const DemoSwitcher: React.FC = () => {
                   <button
                     key={d.id}
                     onClick={() => handleDemoClick(d.path)}
-                    className={`w-full text-left p-3.5 rounded-2xl border transition-all cursor-pointer relative overflow-hidden flex items-start gap-3 group ${
-                      isActive
-                        ? 'bg-surface-container border-primary shadow-lg ring-1 ring-primary/20'
-                        : 'bg-white/5 hover:bg-white/10 border-white/5 hover:border-white/15'
-                    }`}
+                    className={`w-full text-left p-3.5 rounded-2xl border transition-all cursor-pointer relative overflow-hidden flex items-start gap-3 group ${isActive
+                      ? 'bg-surface-container border-primary shadow-lg ring-1 ring-primary/20'
+                      : 'bg-white/5 hover:bg-white/10 border-white/5 hover:border-white/15'
+                      }`}
                   >
                     {/* Active accent block */}
                     <div
@@ -166,7 +165,7 @@ export const DemoSwitcher: React.FC = () => {
                     />
 
                     {/* Tag badge */}
-                    <span className={`text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded absolute top-2 right-2 ${d.color}`}>
+                    <span className={`text-[8px] font-bold tracking-wider px-2 py-0.5 rounded absolute top-2 right-2 ${d.color}`}>
                       {d.tag}
                     </span>
 
@@ -187,39 +186,33 @@ export const DemoSwitcher: React.FC = () => {
 
             {/* LTR/RTL Toggle */}
             <div className="border-t border-border pt-4 mt-2 space-y-2">
-              <span className="text-[9px] uppercase font-bold tracking-widest text-on-surface-variant/50 block">
+              <span className="text-[9px] font-bold tracking-widest text-on-surface-variant/50 block">
                 Layout Direction
               </span>
               <div className="grid grid-cols-2 gap-2 bg-surface-container p-1 rounded-xl border border-border">
                 <button
                   onClick={() => setIsRtl(false)}
-                  className={`py-2 text-center rounded-lg transition-all cursor-pointer ${
-                    !isRtl
-                      ? 'bg-primary text-on-primary shadow-md font-bold'
-                      : 'text-on-surface-variant/70 hover:text-on-surface hover:bg-white/5'
-                  }`}
+                  className={`py-2 text-center rounded-lg transition-all cursor-pointer ${!isRtl
+                    ? 'bg-primary text-on-primary shadow-md font-bold'
+                    : 'text-on-surface-variant/70 hover:text-on-surface hover:bg-white/5'
+                    }`}
                 >
-                  <span className="text-[9px] uppercase font-display tracking-wider font-semibold">LTR (Left)</span>
+                  <span className="text-[9px] font-display tracking-wider font-semibold">LTR (Left)</span>
                 </button>
                 <button
                   onClick={() => setIsRtl(true)}
-                  className={`py-2 text-center rounded-lg transition-all cursor-pointer ${
-                    isRtl
-                      ? 'bg-primary text-on-primary shadow-md font-bold'
-                      : 'text-on-surface-variant/70 hover:text-on-surface hover:bg-white/5'
-                  }`}
+                  className={`py-2 text-center rounded-lg transition-all cursor-pointer ${isRtl
+                    ? 'bg-primary text-on-primary shadow-md font-bold'
+                    : 'text-on-surface-variant/70 hover:text-on-surface hover:bg-white/5'
+                    }`}
                 >
-                  <span className="text-[9px] uppercase font-display tracking-wider font-semibold">RTL (Right)</span>
+                  <span className="text-[9px] font-display tracking-wider font-semibold">RTL (Right)</span>
                 </button>
               </div>
             </div>
 
             {/* Footer info */}
-            <div className="pt-4 border-t border-border mt-2">
-              <div className="bg-surface-container-high/50 border border-border p-3.5 rounded-2xl text-[10px] text-on-surface-variant/80 leading-relaxed text-center font-semibold">
-                ✨ Ready for ThemeForest review. Meets all layout guidelines & responsive standards.
-              </div>
-            </div>
+
           </motion.div>
         )}
       </AnimatePresence>

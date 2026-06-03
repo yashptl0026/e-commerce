@@ -42,8 +42,8 @@ export const Terms: React.FC = () => {
       <header className="text-center space-y-4 mb-12 md:mb-16 relative">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-40 w-3/4 h-3/4 mx-auto pointer-events-none"></div>
         <div className="relative z-10 space-y-3">
-          <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Rules & Agreements</span>
-          <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface uppercase tracking-tight">
+          <span className="text-xs tracking-[0.2em] font-semibold text-primary">Rules & Agreements</span>
+          <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface tracking-tight">
             Terms of Service
           </h1>
           <p className="text-xs text-on-surface-variant max-w-md mx-auto font-display font-medium tracking-wide">
@@ -67,7 +67,7 @@ export const Terms: React.FC = () => {
               <div className="w-10 h-10 rounded-full glass-level-2 border border-border flex items-center justify-center">
                 {section.icon}
               </div>
-              <h3 className="font-display font-bold text-sm sm:text-base text-on-surface uppercase tracking-wide">
+              <h3 className="font-display font-bold text-sm sm:text-base text-on-surface tracking-wide">
                 {section.title}
               </h3>
             </div>

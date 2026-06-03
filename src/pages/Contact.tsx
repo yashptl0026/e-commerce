@@ -76,8 +76,8 @@ export const Contact: React.FC = () => {
       <header className="pt-24 pb-10 md:pt-[120px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto text-center space-y-4 relative">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-transparent blur-3xl rounded-full opacity-40 w-3/4 h-3/4 mx-auto pointer-events-none"></div>
         <div className="relative z-10 space-y-3">
-          <span className="text-xs tracking-[0.2em] font-semibold text-primary uppercase">Client Relations</span>
-          <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface uppercase tracking-tight">
+          <span className="text-xs tracking-[0.2em] font-semibold text-primary">Client Relations</span>
+          <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface tracking-tight">
             Contact Concierge
           </h1>
           <p className="text-body-md text-on-surface-variant max-w-lg mx-auto text-sm sm:text-base leading-relaxed font-body">
@@ -103,7 +103,7 @@ export const Contact: React.FC = () => {
                   {method.icon}
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider block">
+                  <span className="text-[10px] text-on-surface-variant font-bold tracking-wider block">
                     {method.label}
                   </span>
                   {method.link ? (
@@ -130,7 +130,7 @@ export const Contact: React.FC = () => {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="glass-level-1 p-6 rounded-3xl border border-border shadow-lg space-y-4"
             >
-              <div className="flex items-center gap-2 text-primary font-display font-bold text-xs uppercase tracking-wider">
+              <div className="flex items-center gap-2 text-primary font-display font-bold text-xs tracking-wider">
                 <MapPin className="w-4.5 h-4.5" />
                 <span>HQ & Flagship Boutique</span>
               </div>
@@ -152,14 +152,14 @@ export const Contact: React.FC = () => {
             >
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <h3 className="font-display font-extrabold text-lg sm:text-xl uppercase tracking-tight text-on-surface mb-2">
+                  <h3 className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-on-surface mb-2">
                     Send Direct Inquiry
                   </h3>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {/* Name */}
                     <div className="space-y-2">
-                      <label className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">
+                      <label className="text-[10px] text-on-surface-variant font-bold tracking-wider">
                         Your Name
                       </label>
                       <input
@@ -174,7 +174,7 @@ export const Contact: React.FC = () => {
 
                     {/* Email */}
                     <div className="space-y-2">
-                      <label className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">
+                      <label className="text-[10px] text-on-surface-variant font-bold tracking-wider">
                         Email Address
                       </label>
                       <input
@@ -190,7 +190,7 @@ export const Contact: React.FC = () => {
 
                   {/* Subject */}
                   <div className="space-y-2">
-                    <label className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">
+                    <label className="text-[10px] text-on-surface-variant font-bold tracking-wider">
                       Inquiry Subject
                     </label>
                     <select
@@ -207,7 +207,7 @@ export const Contact: React.FC = () => {
 
                   {/* Message */}
                   <div className="space-y-2">
-                    <label className="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">
+                    <label className="text-[10px] text-on-surface-variant font-bold tracking-wider">
                       Your Message
                     </label>
                     <textarea
@@ -223,15 +223,15 @@ export const Contact: React.FC = () => {
                   {/* Submit button */}
                   <button
                     type="submit"
-                    className="w-full bg-primary text-on-primary font-display font-extrabold text-xs py-3.5 rounded-full flex items-center justify-center gap-1.5 btn-primary-glow active:scale-98 transition-all shadow-xl"
+                    className="w-full bg-primary text-on-primary font-display font-bold text-xs py-3.5 rounded-full flex items-center justify-center gap-1.5 btn-primary-glow active:scale-98 transition-all shadow-xl"
                   >
-                    <Send className="w-4 h-4" /> SUBMIT MESSAGE
+                    <Send className="w-4 h-4" /> Submit Message
                   </button>
                 </form>
               ) : (
                 <div className="py-12 flex flex-col items-center justify-center text-center space-y-5">
                   <CheckCircle className="w-16 h-16 text-primary animate-pulse" />
-                  <h3 className="font-display font-extrabold text-lg sm:text-xl uppercase tracking-tight text-on-surface">
+                  <h3 className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-on-surface">
                     Submission Successful
                   </h3>
                   <p className="text-xs text-on-surface-variant max-w-sm leading-relaxed">
