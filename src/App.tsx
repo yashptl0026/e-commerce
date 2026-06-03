@@ -27,6 +27,7 @@ import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
 import { TrackOrder } from './pages/TrackOrder';
 import { NotFound } from './pages/NotFound';
+import { ComponentsShowcase } from './pages/ComponentsShowcase';
 import { DemoSwitcher } from './components/DemoSwitcher';
 import { BackToTop } from './components/BackToTop';
 
@@ -86,6 +87,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/track-order" element={<TrackOrder />} />
+          <Route path="/components" element={<ComponentsShowcase />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         

@@ -97,7 +97,7 @@ export const Support: React.FC = () => {
   return (
     <main className="flex-grow">
       {/* Header */}
-      <header className="pt-24 pb-10 md:pt-[120px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto space-y-4">
+      <section className="pt-24 pb-10 md:pt-[120px] md:pb-16 px-4 md:px-6 max-w-7xl mx-auto space-y-4">
         <span className="text-xs tracking-[0.2em] font-semibold text-primary">Support Desk</span>
         <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-on-surface tracking-tight">
           Support Center
@@ -105,11 +105,11 @@ export const Support: React.FC = () => {
         <p className="text-body-md text-on-surface-variant max-w-lg text-sm sm:text-base leading-relaxed">
           Find answers to frequently asked questions regarding shipping, returns, tailoring, and care routines, or connect with our digital live support agent.
         </p>
-      </header>
+      </section>
 
-      <section className="w-full bg-surface-container-lowest border-t border-border py-12 md:py-24 mt-8 md:mt-16">
+      <section className="w-full bg-surface-container-lowest border-t border-border py-12 md:py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
+
           {/* FAQs list Side */}
           <div className="lg:col-span-6 space-y-4">
             {faqs.map((faq, idx) => {
@@ -170,17 +170,15 @@ export const Support: React.FC = () => {
                       key={idx}
                       className={`flex items-start gap-2.5 max-w-[85%] ${isBot ? '' : 'ml-auto flex-row-reverse'}`}
                     >
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center border shrink-0 text-xs ${
-                        isBot ? 'bg-primary/15 border-primary/20 text-primary' : 'bg-white/10 border-white/20 text-on-surface'
-                      }`}>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center border shrink-0 text-xs ${isBot ? 'bg-primary/15 border-primary/20 text-primary' : 'bg-white/10 border-white/20 text-on-surface'
+                        }`}>
                         {isBot ? <Headphones className="w-3.5 h-3.5" /> : <User className="w-3.5 h-3.5" />}
                       </div>
-                      
-                      <div className={`p-4 rounded-2xl text-xs leading-relaxed space-y-1 shadow-lg ${
-                        isBot
-                          ? 'premium-glass rounded-tl-sm text-on-surface-variant'
-                          : 'accent-gradient text-white rounded-tr-sm'
-                      }`}>
+
+                      <div className={`p-4 rounded-2xl text-xs leading-relaxed space-y-1 shadow-lg ${isBot
+                        ? 'premium-glass rounded-tl-sm text-on-surface-variant'
+                        : 'accent-gradient text-white rounded-tr-sm'
+                        }`}>
                         <p>{msg.text}</p>
                         <span className="block text-[9px] text-right opacity-40 font-display">
                           {msg.time}
@@ -206,7 +204,7 @@ export const Support: React.FC = () => {
               </div>
 
               {/* Quick helper buttons */}
-              <div className="px-5 py-3 border-t border-border flex gap-2 overflow-x-auto overflow-y-hidden scrollbar-none whitespace-nowrap bg-surface-container-low">
+              <div className="px-5 py-3 border-t border-border flex gap-2 overflow-x-auto overflow-y-hidden scrollbar-none whitespace-nowrap bg-surface-container-low min-h-[55px]">
                 {['Track order', 'Return policy', 'Showroom hours'].map((btn) => (
                   <button
                     key={btn}
